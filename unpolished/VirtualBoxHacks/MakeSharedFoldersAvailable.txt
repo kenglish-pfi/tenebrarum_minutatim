@@ -1,0 +1,5 @@
+# Add all users to the vboxsf group
+# Also don't forget about setting
+#        <ExtraDataItem name="VBoxInternal2/SharedFoldersEnableSymlinksCreate/home" value="1"/>
+# to VM's .vbox file if symlinks are needed.
+for u in `cut -d: -f1 /etc/passwd`; do sudo usermod -aG vboxsf $u ; done
