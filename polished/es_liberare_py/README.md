@@ -20,7 +20,13 @@ curl -XPOST http://$TARGETHOST:9200/$INDEX -d @$HOST--$INDEX.create_index.json
 #### Many Bulk Dump Files
 
 Multiple bulk dump files per document type are created.  Each file contains up to 1000 entries
-from the original index.
+from the original index.  These can be posted to the target server with the following (NOTE the use of --binary-data)
+```
+for F in bulk--*
+do
+    curl -XPOST http://$TARGETHOST:9200/$INDEX/_bulk --binary-data @$F
+done
+```
 
 #### CAUTIONs
 
