@@ -30,7 +30,8 @@ from the original index.
 
 #### References:
 
-[1]: https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
-[2]: https://qbox.io/blog/building-an-elasticsearch-index-with-python
-[3]: https://sarahleejane.github.io/learning/python/2015/10/14/creating-an-elastic-search-index-with-python.html
+1. [https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html]:(https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html)
+2. [https://qbox.io/blog/building-an-elasticsearch-index-with-python](https://qbox.io/blog/building-an-elasticsearch-index-with-python)
+3. [https://sarahleejane.github.io/learning/python/2015/10/14/creating-an-elastic-search-index-with-python.html](https://sarahleejane.github.io/learning/python/2015/10/14/creating-an-elastic-search-index-with-python.html)
+
 
