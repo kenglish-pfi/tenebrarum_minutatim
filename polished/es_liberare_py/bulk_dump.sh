@@ -29,7 +29,7 @@ curl -sS -XGET 'http://'$HOST':9200/'$INDEX'/_settings,_mapping/?pretty' | pytho
 #      curl -XPOST http://$TARGETHOST:9200/$INDEX -d @$HOST--$INDEX.create_index.json
 
 
-for DT in `( curl -sS -XGET "http://$HOST:9200/_mapping" | python doctypes_from_mapping.py $INDEX )`
+for DT in `( curl -sS -XGET "http://$HOST:9200/_mapping" | python mapping_to_doctypes.py $INDEX )`
 do
     python bulk_dump.py $HOST $INDEX $DT 0
     # above forks itself for every 1000 document-block read from index so we will 

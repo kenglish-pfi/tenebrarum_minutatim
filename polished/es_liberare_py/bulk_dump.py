@@ -11,15 +11,17 @@ p_index = sys.argv[2]
 p_doctype = sys.argv[3]
 p_id = int(sys.argv[4])
 
-es = Elasticsearch(p_server, timeout="120")
+es = Elasticsearch(p_server, timeout=120)
 
 if p_id == 0:
-    scroll = es.search(index=p_index, doc_type=p_doctype, body=u'{"query" : { "match_all" : {} }, "size" : "1000" }', search_type="scan", scroll="10m")
+    body=u'{"query" : { "match_all" : {} }, "size" : "1000" }'
+    scroll = es.search(index=p_index, doc_type=p_doctype, body=body, scroll='10m', size=1000)
     scrollid = scroll[u'_scroll_id']
 else:
     scrollid = sys.argv[5]
 
-response = es.scroll(scroll_id=scrollid, scroll= "10m")
+response = es.scroll(scroll_id=scrollid, scroll="10m")
+scrollid = response[u'_scroll_id']
 if len(response["hits"]["hits"]) != 0:
     # launch next reader process immediately ...
     print >> sys.stderr, "Received " + str(len(response["hits"]["hits"])) + "hits, launching process for scroll_id=" + response[u'_scroll_id']
