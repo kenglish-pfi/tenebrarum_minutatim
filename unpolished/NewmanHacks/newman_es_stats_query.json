@@ -1,0 +1,145 @@
+{
+    "lda-clustering" : {
+        "size": 0, 
+        "aggs" : { 
+            "distinct_idx_count" : {
+                "cardinality" : {
+                    "field" : "idx"
+                }
+            },
+            "distinct_topic_term_count" : {
+                "cardinality" : {
+                    "field" : "topic.term"
+                }
+            },
+            "topic_score__min" : {
+                "min" : {
+                    "field" : "topic.score"
+                }
+            },
+            "topic_score__max" : {
+                "max" : {
+                    "field" : "topic.score"
+                }
+            },
+            "topic_score__percentiles" : {
+                "percentiles" : {
+                    "field" : "topic.score",
+                    "percents" : [ 20, 40, 80, 90, 100 ]
+                }
+            }
+        }
+    },
+    "email_address" : {
+        "size": 0, 
+        "aggs" : { 
+            "distinct_addr__count" : { "cardinality" : { "field" : "addr" } },
+            "distinct_community__count" : { "cardinality" : { "field" : "community" } },
+            "distinct_domain__count" : { "cardinality" : { "field" : "domain" } },
+            
+            "sent_with_attachments__count" : { "filter" : { "exists" : { "field" : "sender_attachments.content_type" } } },
+            
+            "group_by_domain" : { "terms" : { "field" : "domain",  "size" : 20 } },
+            "group_by_email_id" : { "terms" : { "field" : "email_id", "size" : 20 } },
+            
+            "first_received__date_histogram" : {
+                "date_histogram" : {
+                    "field" : "first_received",
+                    "interval" : "month",
+                    "min_doc_count" : 1
+                }
+            },
+            "first_sent__date_histogram" : {
+                "date_histogram" : {
+                    "field" : "first_sent",
+                    "interval" : "month",
+                    "min_doc_count" : 1
+                }
+            }
+        }
+    },
+    "emails" : {
+        "size": 0, 
+        "aggs" : { 
+            "distinct_addrs__count" : { "cardinality" : { "field" : "addrs" } },
+            "distinct_alt_ref_id__count" : { "cardinality" : { "field" : "alt_ref_id" } },
+            "distinct_bccs__count" : { "cardinality" : { "field" : "bccs" } },
+            "distinct_body__count" : { "cardinality" : { "field" : "body" } },
+            "distinct_body_lang__count" : { "cardinality" : { "field" : "body_lang" } },
+            "distinct_categories__count" : { "cardinality" : { "field" : "categories" } },
+            "distinct_ccs__count" : { "cardinality" : { "field" : "ccs" } },
+            "distinct_communities__count" : { "cardinality" : { "field" : "communities.community" } },
+            "distinct_delivered_to__count" : { "cardinality" : { "field" : "delivered_to" } },
+            "distinct_entities_all__count" : { "cardinality" : { "field" : "entities.entity_all" } },
+            "distinct_entities_full__count" : { "cardinality" : { "field" : "entities.entity_full" } },
+            "distinct_entity_location__count" : { "cardinality" : { "field" : "entities.entity_location" } },
+            "distinct_entity_misc__count" : { "cardinality" : { "field" : "entities.entity_misc" } },
+            "distinct_entity_organization__count" : { "cardinality" : { "field" : "entities.entity_organization" } },
+            "distinct_entity_person__count" : { "cardinality" : { "field" : "entities.entity_person" } },
+            "distinct_forensic-bcc__count" : { "cardinality" : { "field" : "forensic-bcc" } },
+            "distinct_id__count" : { "cardinality" : { "field" : "id" } },
+            "distinct_inreplyto__count" : { "cardinality" : { "field" : "inreplyto" } },
+            "distinct_label__count" : { "cardinality" : { "field" : "label" } },
+            "distinct_messageid__count" : { "cardinality" : { "field" : "messageid" } },
+            "distinct_numbers__count" : { "cardinality" : { "field" : "numbers.normalized" } },
+            "distinct_numbers_type__count" : { "cardinality" : { "field" : "numbers.type" } },
+            "distinct_original_artifact__count" : { "cardinality" : { "field" : "original_artifact.filename" } },
+            "distinct_original_artifact_type__count" : { "cardinality" : { "field" : "original_artifact.type" } },
+            "distinct_originating_ips__count" : { "cardinality" : { "field" : "originating_ips" } },
+            "distinct_originating_cities__count" : { "cardinality" : { "field" : "originating_locations.city" } },
+            "distinct_phone_numbers__count" : { "cardinality" : { "field" : "phone_numbers" } },
+            "distinct_senders__count" : { "cardinality" : { "field" : "senders" } },
+            "distinct_subject__count" : { "cardinality" : { "field" : "subject" } },
+            "distinct_subject_lang__count" : { "cardinality" : { "field" : "subject_lang" } },
+            "distinct_tos__count" : { "cardinality" : { "field" : "tos" } },
+
+            "geo__hash" : { "geohash_grid": { "field": "originating_locations.geo_coord", "precision": 3 } },
+            
+            "with_attachments__count" : { "filter" : { "exists" : { "field" : "attachments.content_type" } } },
+            "body_translated__count" :  { "filter" : { "exists" : { "field" : "body_translated" } } },
+            
+            "group_by_communities" : { "terms" : { "field" : "communities.community",  "size" : 20 } },
+            "group_by_communities_count" : { "terms" : { "field" : "communities_count",  "size" : 20 } },
+
+            "date_histogram" : {
+                "date_histogram" : {
+                    "field" : "datetime",
+                    "interval" : "month",
+                    "min_doc_count" : 1
+                }
+            }
+        }
+    },
+    "attachments" : {
+        "size": 0, 
+        "aggs" : { 
+            "distinct_alt_ref_id__count" : { "cardinality" : { "field" : "alt_ref_id" } },
+            "distinct_content__count" : { "cardinality" : { "field" : "content" } },
+            "distinct_content_type__count" : { "cardinality" : { "field" : "content_type" } },
+            "distinct_extension__count" : { "cardinality" : { "field" : "extension" } },
+            "distinct_filename__count" : { "cardinality" : { "field" : "filename" } },
+            "distinct_original_artifact__count" : { "cardinality" : { "field" : "original_artifact.filename" } },
+            "distinct_label__count" : { "cardinality" : { "field" : "label" } },
+            
+            "content_extracted__count" : { "filter" : { "bool" : { "must": [{ "match": { "content_extracted": "t" } } ] } } },
+            
+            "human_detected__count" :   { "filter" : { "bool" : { "must": [{ "match": { "image_analytics.human_detected": "t" } } ] } } },
+            "ocr_output" :              { "filter" : { "bool" : { "must": [{ "match": { "image_analytics.ocr_output": "t" } } ] } } },
+            "receipt_detected__count" : { "filter" : { "bool" : { "must": [{ "match": { "image_analytics.receipt_detected": "t" } } ] } } },
+            
+            "group_by_extension" : { "terms" : { "field" : "extension",  "size" : 20 } },
+            "group_by_label" : { "terms" : { "field" : "label",  "size" : 20 } },
+            
+            "exif_geo__count" : { "filter" : { "exists" : { "field": "exif.gps.coord" } } },
+            "geo__hash" : { "geohash_grid": { "field": "exif.gps.coord", "precision": 3 } },
+            
+            "date_histogram" : {
+                "date_histogram" : {
+                    "field" : "datetime",
+                    "interval" : "month",
+                    "min_doc_count" : 1
+                }
+            }
+        }
+    }
+}
