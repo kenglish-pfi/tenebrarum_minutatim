@@ -52,12 +52,10 @@ def generate_center(current_vector, level, letter):
     print repr(X)
     return X
 
-
+# Compute arc-distance between two vectors
 def distance(Vect, Wect):
-    V = numpy.cross(Vect, Wect)
-    s = numpy.linalg.norm(V)
-    return numpy.arcsin(s)
-    
+    c = numpy.dot(Vect, Wect)
+    return numpy.arccos(c)
     
 def nibble2vect(level, letter, current_vector=numpy.array([0.0,0.0,0.0])):
     idx = ord(letter) - ord('0')
