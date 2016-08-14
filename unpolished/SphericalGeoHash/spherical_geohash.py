@@ -11,6 +11,15 @@ basi = [
                    -A([(e*e),(e*e),(-e)]),  -A([(e*e*e-e*e),(e*e*e+e*e),(e*e)]), -A([(e*e*e+e*e),(e*e*e-e*e),(e*e)]) ])
 ]
 
+#  Matrix type must be returned so that later code gets expected behavior from built-in operations.
+def decomp_vector_from_angle(theta):
+    return numpy.matrix([1.0, math.cos(theta)/e, math.sin(theta)/e]) / math.sqrt(3)
+
+# Six evenly spaced angles
+decomposition_angles = [0.0, math.pi/3.0, 2.0*math.pi/3.0, math.pi, 4.0*math.pi/3.0, 5.0*math.pi/3.0]
+# Six evenly spaced vectors about the x-axis
+decomposition_vectors_about_x_axis = map(decomp_vector_from_angle, decomposition_angles)
+
 def degrees_to_radians(angle):
     rad = math.pi * angle / 180.0
     return rad
@@ -56,38 +65,33 @@ def rot_x_matrix(current_vector):
     Vx = skew_symetric_cross(V)
     R = Vx + numpy.identity(3) + (numpy.dot(Vx, Vx) * ((1 - c) / (s * s)))
     return R
-    
-# we need 6 evenly spaced points on a circle perpendicular to the current vector
-# At the first iteration we can imagine a cube inside the sphere constructed such
-# that just the points of the corners touch the sphere.  The cube's transecting diagonals
-# are then the diameter of the sphere = 2.
-# The coordinates of the points for one basis are the points of the other basis.
-# Each vector in one base will have four vectors in the other base that are closest
-# to it.  
-    
-def generate_center(current_vector, level, letter):   
+
+# Generate one of six evenly spaced vectors oriented in a circle on the unit sphere about current_vector    
+#     To make the math "obvious" we compute the new vector about the X axis and then use a
+#     rotation matrix to orient this vector about current_vector
+#
+#     TODO:  Optimize end of this routine:
+#     The approach of iteratively sub-dividing the result vector towards the current_vector
+#     gives the correct result.  I am sure there is a more direct approach which would again
+#     be produced by rotating the result vector towards the current_vector in one step.
+def decomposition_vector(current_vector, level, letter):   
     idx = ord(letter) - ord('0')
-    angles = [0.0, math.pi/3.0, 2.0*math.pi/3.0, math.pi, 4.0*math.pi/3.0, 5.0*math.pi/3.0]
     
     if idx == 0:
         return current_vector
-    theta = angles[idx - 1]
+    W = decomposition_vectors_about_x_axis[idx-1]
     
+    # Get the rotation matrix
     R = rot_x_matrix(current_vector)
-    print "R: " + repr(R)
-    W = numpy.matrix([1.0, math.cos(theta)/e, math.sin(theta)/e]) / math.sqrt(3) 
-    print "W: " + repr(W)
     X = (W * R).A[0]  # 3x3 Matrix * 1x3 Array ==> 1x3 Matrix ... grab the one and only 1-D vector from the 1-D matrix
-    print "X: " + repr(X)
     #  This next line shouldn't be necessary, but seems to be
     X = X / numpy.linalg.norm(X)
     if level > 1:
         for i in range(level-1):
             X = current_vector + X
             X = X / numpy.linalg.norm(X)  # normalize, not divide by 2.  Divide by 2 gives the middle point on the chord and not on the sphere.
-            print str(i) + "_th X: " + repr(X)
-    print "generate_center(" + repr(xyz2latlon_deg(current_vector)) + ", " + str(level) + ", '" + letter + "') => " + repr(xyz2latlon_deg(X))
     return X
+
 
 # Compute arc-distance between two vectors
 def distance(Vect, Wect):    
@@ -96,17 +100,20 @@ def distance(Vect, Wect):
         return math.pi
     
     d = numpy.arccos(c)
-    print "distance(" + repr(xyz2latlon_deg(Vect)) + ", " + repr(xyz2latlon_deg(Wect)) + ") => " + str(d)
     return d;
-    
+
+# Converts a single character in a spherical_geohash string to an angle.
+# Called recursively to evaluate a spherical_geohash string
 def nibble2vect(level, letter, current_vector=numpy.array([0.0,0.0,0.0])):
     idx = ord(letter) - ord('0')
     if level == 0:
         vect = basi[0][idx]
     else:
-        vect = generate_center(current_vector, level, letter)
+        vect = decomposition_vector(current_vector, level, letter)
     return vect
-    
+
+# Heart of this geo-hashing code.  Recursively finds the decomposed vectors that best 
+# describe the objective vector.    
 def refine(objective, epsilon, current_vector=numpy.array([0.0,0.0,0.0]), current_error=math.pi, hash=""):
     level = len(hash)
     if level > 29 :
@@ -127,7 +134,6 @@ def refine(objective, epsilon, current_vector=numpy.array([0.0,0.0,0.0]), curren
     for u in letters[start:]:  # Very important to skip current-vector choice the first time
         U = nibble2vect(level, u, current_vector)
         dist = distance(objective, U)
-        print "?: " + str(dist) + " < " + str(min_dist) + " ll: " + repr(latlon(hash))
         if dist < min_dist:
             min_dist = dist
             min_hash = hash + u
@@ -136,7 +142,6 @@ def refine(objective, epsilon, current_vector=numpy.array([0.0,0.0,0.0]), curren
     if min_dist < epsilon:
         return [min_hash]
             
-    print min_hash
     return refine(objective, epsilon, min_U, min_dist, min_hash)
     
 
@@ -188,17 +193,15 @@ def randomTest():
         print >> sys.stderr, "geohash(" + str(lat) + ", " + str(lon) + ", 8)"
         h0 = geohash(lat, lon, 8)[0]
         h1 = geohash(lat + 0.01, lon - 0.01, 8)[0]
-        pfx = [ os.path.commonprefix([h0[0], h1[0]]), os.path.commonprefix([h0[1], h1[1]]) ]
-        N = max( len(pfx[0]), len(pfx[1]) )
+        pfx = os.path.commonprefix([h0, h1])
+        N = len(pfx)
         if N < 6 :
             print [lat, lon]
             print h0
             print h1
             return
             
-#print geovecthash8([0.15373484,  0.99290733,  0.01481033], 8)
-
-# generate_center([0.0, 180.0], 1, '1') => [0.0, 54.735610317245346]
-generate_center(numpy.array([1.0, 0.0, 0.0]), 1, '1')
-generate_center(numpy.array([-1.0, 0.0, 0.0]), 1, '1')
-
+# Close vectors to test with for multiple return case:
+#
+#    geohash(82.9727289148       , -102.972692119, 8)        => 30041310
+#    geohash(82.9727289148 + 0.01, -102.972692119 - 0.01, 8) => 30004030
