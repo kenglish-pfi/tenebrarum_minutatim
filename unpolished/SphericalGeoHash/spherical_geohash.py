@@ -131,31 +131,40 @@ def nibble2vect(level, letter, current_vector=numpy.array([0.0,0.0,0.0])):
 
 # Heart of this geo-hashing code.  Iteratively finds the decomposed vectors that best 
 # describe the objective vector.    
-def geovecthash8(xyz, level, search_level=0):
+def geovecthash8(xyz, level, search_level=0, seed_hashes = []):
     objective = A(xyz)
-    letters = ['0', '1', '2', '3', '4', '5', '6']
-    hashes = [""]
+    letters = ['0', '1', '2', '3', '4', '5', '6']    
     current_vector = A([0,0,0])
     search_dist = level_to_radians(search_level)
+    hashes = [""]
+    step_start = 0
+    step_end = level
+    if len(seed_hashes) > 0:
+        hashes = seed_hashes
+        step_start = len(seed_hashes)
+        step_end = level - step_start
     
-    for step in range(level):
-        start = 1
+    for step in range(step_start, step_end):
+        letter_start = 1
         if step > 0:
-            start = 0
+            letter_start = 0
             
         def possible(letter):
             U = nibble2vect(step, letter, current_vector)
             dist = distance(objective, U)
             return (dist, letter, U)
             
-        possibles = map(possible, letters[start:])
+        possibles = map(possible, letters[letter_start:])
         possibles.sort()
         
         # check to see if search_level criteria are matched by other options
         if search_level != 0 and step <= search_level:
             for tup in possibles[1:]:
-                if tup[0] < search_dist:
-                    hashes.append(hashes[0] + tup[1])
+                if tup[0] < search_dist + possibles[0][0]:
+                    if step < search_level:
+                        hashes = hashes + geovecthash8(xyz, search_level, search_level, [hashes[0] + tup[1]])
+                    else:
+                        hashes.append(hashes[0] + tup[1])
             
         # we will continue to drill into the best (minimal) path
         (min_dist, next_hash_letter, current_vector) = possibles[0]
