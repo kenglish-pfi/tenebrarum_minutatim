@@ -100,8 +100,8 @@ def decomposition_vector(current_vector, level, letter):
     
     # Get the rotation matrix
     R = rot_x_matrix(current_vector)
-    X = X / numpy.linalg.norm(X)
     X = (W * R).A[0]  # 3x3 Matrix * 1x3 Array ==> 1x3 Matrix ... grab the one and only 1-D vector from the 1-D matrix
+    X = X / numpy.linalg.norm(X)
     #  This next line shouldn't be necessary, but seems to be
     if level > 1:
         for i in range(level-1):
@@ -217,14 +217,29 @@ def randomTest():
             print >> sys.stderr, "geohash(" + str(lat) + ", " + str(lon) + ", 8, 4) = " + repr(h)
             
     tests.sort(reverse=True)
+    # print the 10 best and worst fits
     for i in range(10):
         print repr(tests[i])
     print " :"
     print " :"
     for i in range(10):
         print repr(tests[-i])
-        
-    
+
+def bucketDistributionTest():
+    buckets = {}
+    for i in range(6*7*7*300):
+        xyz = A([random.random() - 0.50, random.random() - 0.50, random.random() - 0.50])
+        xyz = xyz / numpy.linalg.norm(xyz)
+        hs = geovecthash8(xyz, 3)
+        bucket = hs[0]
+        if bucket not in buckets:
+            buckets[bucket] = 0
+        buckets[bucket] = buckets[bucket] + 1
+
+    for bucket in buckets:
+        print '\t'.join(bucket, buckets[bucket])
+#
+
 # Close vectors to test with for multiple return case:
 #
 #    geohash(82.9727289148       , -102.972692119, 8)        => 30041310
