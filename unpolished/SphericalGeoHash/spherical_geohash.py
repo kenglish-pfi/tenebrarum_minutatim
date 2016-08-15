@@ -1,10 +1,13 @@
 import sys, math, numpy, random, os, traceback
 
+QUARTER_EARTH_CIRCUMFRENCE = 3185500.0  # in meters
+
 def A(a):
     return numpy.array(a)
 
 e = 1.0/math.sqrt(2.0)
 # Second basis is the first basis rotated 45 degrees on all axes so all endpoints are between all endpoints of first basis
+# Second basis is not currently used.
 basi = [
     A([ A([0,0,0]), A([1,0,0]), A([0,1,0]), A([0,0,1]), A([-1,0,0]), A([0,-1,0]), A([0,0,-1]) ]), 
     A([ A([0,0,0]), A([(e*e),(e*e),(-e)]),  A([(e*e*e-e*e),(e*e*e+e*e),(e*e)]), A([(e*e*e+e*e),(e*e*e-e*e),(e*e)]), 
@@ -46,7 +49,21 @@ def latlon2xyz(latlon):
 def latlon_deg2xyz(latlon_deg):
     xyz = latlon2xyz([degrees_to_radians(latlon_deg[0]), degrees_to_radians(latlon_deg[1])])
     return xyz
- 
+
+def level_from_meters(meters):
+    dist = QUARTER_EARTH_CIRCUMFRENCE
+    level = 0
+    while dist > meters:
+        dist = dist / 2.0
+        level = level + 1
+    return level
+    
+def level_to_meters(level):
+    return QUARTER_EARTH_CIRCUMFRENCE / math.pow(2.0, level)
+    
+def level_to_radians(level):
+    return math.pi / math.pow(2.0, level + 2)
+        
  
 def skew_symetric_cross(v):
     return numpy.matrix( [ [0, -v[2], v[1]] , [v[2], 0, -v[0]] , [-v[1], v[0], 0] ])
@@ -83,9 +100,9 @@ def decomposition_vector(current_vector, level, letter):
     
     # Get the rotation matrix
     R = rot_x_matrix(current_vector)
+    X = X / numpy.linalg.norm(X)
     X = (W * R).A[0]  # 3x3 Matrix * 1x3 Array ==> 1x3 Matrix ... grab the one and only 1-D vector from the 1-D matrix
     #  This next line shouldn't be necessary, but seems to be
-    X = X / numpy.linalg.norm(X)
     if level > 1:
         for i in range(level-1):
             X = current_vector + X
@@ -112,64 +129,56 @@ def nibble2vect(level, letter, current_vector=numpy.array([0.0,0.0,0.0])):
         vect = decomposition_vector(current_vector, level, letter)
     return vect
 
-# Heart of this geo-hashing code.  Recursively finds the decomposed vectors that best 
+# Heart of this geo-hashing code.  Iteratively finds the decomposed vectors that best 
 # describe the objective vector.    
-def refine(objective, epsilon, current_vector=numpy.array([0.0,0.0,0.0]), current_error=math.pi, hash=""):
-    level = len(hash)
-    if level > 29 :
-        print "Failed to converge:"
-        print "   refine(" + ", ".join([ repr(objective), str(epsilon), repr(current_vector), str(current_error), hash]) + ")"
-        return [hash + "7"]
-
-    letters = ['0', '1', '2', '3', '4', '5', '6']
-    min_hash = hash
-    min_dist = current_error * 1.0000001  # need to epsilon this up so that the constraint "dist < min_dist" can find next steps pairs that end in [0,0,0]
-    
-    min_U = A([0,0,0])
-    start = 1
-    if level > 0:
-        start = 0
-        min_U = current_vector
-        
-    for u in letters[start:]:  # Very important to skip current-vector choice the first time
-        U = nibble2vect(level, u, current_vector)
-        dist = distance(objective, U)
-        if dist < min_dist:
-            min_dist = dist
-            min_hash = hash + u
-            min_U = U
-    
-    if min_dist < epsilon:
-        return [min_hash]
-            
-    return refine(objective, epsilon, min_U, min_dist, min_hash)
-    
-
-def geovecthash8(xyz, level):
+def geovecthash8(xyz, level, search_level=0):
     objective = A(xyz)
-    epsilon = math.pi/(math.pow(2.0, level))
-    hashes = refine(objective, epsilon)
-    # pad out to level
-    for i in range(len(hashes)):
-        if len(hashes[i]) < level:
-            hashes[i] = hashes[i] + ('0' * (level - len(hashes[i])))
-        elif len(hashes[i]) > level:
-            print >> sys.stderr, "Warning, generated hash longer than expected:"
-            print >> sys.stderr, "geovecthash8(" + repr(xyz) + ", " + str(level) + ") : " + hashes[i]
-            hashes[i] = hashes[i][0:level]
+    letters = ['0', '1', '2', '3', '4', '5', '6']
+    hashes = [""]
+    current_vector = A([0,0,0])
+    search_dist = level_to_radians(search_level)
+    
+    for step in range(level):
+        start = 1
+        if step > 0:
+            start = 0
+            
+        def possible(letter):
+            U = nibble2vect(step, letter, current_vector)
+            dist = distance(objective, U)
+            return (dist, letter, U)
+            
+        possibles = map(possible, letters[start:])
+        possibles.sort()
+        
+        # check to see if search_level criteria are matched by other options
+        if search_level != 0 and step <= search_level:
+            for tup in possibles[1:]:
+                if tup[0] < search_dist:
+                    hashes.append(hashes[0] + tup[1])
+            
+        # we will continue to drill into the best (minimal) path
+        (min_dist, next_hash_letter, current_vector) = possibles[0]
+        hashes[0] = hashes[0] + next_hash_letter
+        
     return hashes
 
    
-def geohash(lat_deg, lon_deg, level):
+def geohash(lat_deg, lon_deg, level, search_level=0):
     xyz = latlon_deg2xyz([lat_deg, lon_deg])
-    return geovecthash8(xyz, level)
+    return geovecthash8(xyz, level, search_level)
 
-def latlon(hash):
+def geovect(hash):
     current_vector=numpy.array([0.0,0.0,0.0])
     for i in range(len(hash)):
         letter = hash[i:i+1]
         current_vector = nibble2vect(i, letter, current_vector)
-    return xyz2latlon_deg(current_vector)
+    return current_vector
+
+def latlon(hash):
+    vector = geovect(hash)
+    ll = xyz2latlon_deg(vector)
+    return ll
     
     
 # Austin :      ['412504100002014005[0]', '52504100002014005[000]']
@@ -187,21 +196,41 @@ def latlon(hash):
 # print geohash8(e + .0001, e - .0001, 0, 0.001)
 
 def randomTest():
+    tests = []
     for i in range(1000):
         lat = 179.0 * (random.random() - 0.50)
         lon = 358.0 * (random.random() - 0.50)
-        print >> sys.stderr, "geohash(" + str(lat) + ", " + str(lon) + ", 8)"
-        h0 = geohash(lat, lon, 8)[0]
-        h1 = geohash(lat + 0.01, lon - 0.01, 8)[0]
-        pfx = os.path.commonprefix([h0, h1])
-        N = len(pfx)
-        if N < 6 :
-            print [lat, lon]
-            print h0
-            print h1
-            return
+        h = geohash(lat, lon, 8, 4)
+        Va = latlon_deg2xyz([lat, lon])
+        Vz = geovect(h[0])
+        tests.append( (distance(Va, Vz), lat, lon, h) )
+        if len(h) > 1:
+            print >> sys.stderr, "geohash(" + str(lat) + ", " + str(lon) + ", 8, 4) = " + repr(h)
             
+    tests.sort(reverse=True)
+    for i in range(10):
+        print repr(tests[i])
+    print " :"
+    print " :"
+    for i in range(10):
+        print repr(tests[-i])
+        
+    
 # Close vectors to test with for multiple return case:
 #
 #    geohash(82.9727289148       , -102.972692119, 8)        => 30041310
 #    geohash(82.9727289148 + 0.01, -102.972692119 - 0.01, 8) => 30004030
+
+# Earth's diameter:  12,742 km
+# approx distance between cardinal base vectors :    3185.5 km
+# approx distance between adjacent level 1 vectors : 1937.3 km
+# approx distance between adjacent level 2 vectors :  968.7 km
+# approx distance between adjacent level 3 vectors :  484.3 km
+# approx distance between adjacent level 4 vectors :  242.2 km
+# approx distance between adjacent level 5 vectors :  121.1 km
+# approx distance between adjacent level 6 vectors :   60.5 km
+# approx distance between adjacent level 7 vectors :   30.3 km
+# approx distance between adjacent level 8 vectors :   15.1 km
+# approx distance between adjacent level 9 vectors :    7.6 km
+# approx distance between adjacent level 10 vectors :   3.8 km
+# 
