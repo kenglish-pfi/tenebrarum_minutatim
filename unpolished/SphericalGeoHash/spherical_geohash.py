@@ -142,7 +142,7 @@ def geovecthash8(xyz, level, search_level=0, seed_hashes = []):
     if len(seed_hashes) > 0:
         hashes = seed_hashes
         step_start = len(seed_hashes)
-        step_end = level - step_start
+        step_end = level - step_start + 1
     
     for step in range(step_start, step_end):
         letter_start = 1
@@ -161,7 +161,7 @@ def geovecthash8(xyz, level, search_level=0, seed_hashes = []):
         if search_level != 0 and step <= search_level:
             for tup in possibles[1:]:
                 if tup[0] < search_dist + possibles[0][0]:
-                    if step < search_level:
+                    if step < search_level -1:
                         hashes = hashes + geovecthash8(xyz, search_level, search_level, [hashes[0] + tup[1]])
                     else:
                         hashes.append(hashes[0] + tup[1])
