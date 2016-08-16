@@ -15,11 +15,15 @@ basi = [
 ]
 
 #  Matrix type must be returned so that later code gets expected behavior from built-in operations.
-def decomp_vector_from_angle(theta):
+def decomp_vector_from_angle_x(theta):
     C = numpy.matrix([1.0, math.cos(theta)/e, math.sin(theta)/e]) / math.sqrt(3)
     D = C + A([0.7071067811865475244008443621048, 0.0, 0.0])
     D = D / numpy.linalg.norm(D)
     return D
+
+def decomp_vector_from_angle_x(theta):
+    X = numpy.matrix([math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0])
+    return X
 
 # Six evenly spaced angles
 decomposition_angles = [0.0, math.pi/3.0, 2.0*math.pi/3.0, math.pi, 4.0*math.pi/3.0, 5.0*math.pi/3.0]
