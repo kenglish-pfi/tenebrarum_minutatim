@@ -16,7 +16,10 @@ basi = [
 
 #  Matrix type must be returned so that later code gets expected behavior from built-in operations.
 def decomp_vector_from_angle(theta):
-    return numpy.matrix([1.0, math.cos(theta)/e, math.sin(theta)/e]) / math.sqrt(3)
+    C = numpy.matrix([1.0, math.cos(theta)/e, math.sin(theta)/e]) / math.sqrt(3)
+    D = C + A([0.7071067811865475244008443621048, 0.0, 0.0])
+    D = D / numpy.linalg.norm(D)
+    return D
 
 # Six evenly spaced angles
 decomposition_angles = [0.0, math.pi/3.0, 2.0*math.pi/3.0, math.pi, 4.0*math.pi/3.0, 5.0*math.pi/3.0]
@@ -101,8 +104,8 @@ def decomposition_vector(current_vector, level, letter):
     # Get the rotation matrix
     R = rot_x_matrix(current_vector)
     X = (W * R).A[0]  # 3x3 Matrix * 1x3 Array ==> 1x3 Matrix ... grab the one and only 1-D vector from the 1-D matrix
-    X = X / numpy.linalg.norm(X)
     #  This next line shouldn't be necessary, but seems to be
+    X = X / numpy.linalg.norm(X)
     if level > 1:
         for i in range(level-1):
             X = current_vector + X
@@ -237,9 +240,37 @@ def bucketDistributionTest():
         buckets[bucket] = buckets[bucket] + 1
 
     for bucket in buckets:
-        print '\t'.join(bucket, buckets[bucket])
+        print '\t'.join([ bucket, str(buckets[bucket]) ])
 #
 
+def reverseDistribution():
+    letters = ['0', '1', '2', '3', '4', '5', '6']
+    for a in letters[1:]:
+        for b in letters:
+            for c in letters:
+                print '\t'.join(map(str, geovect(a + b + c)))
+
+def reverseDistances():
+    hh = {}
+    letters = ['0', '1', '2', '3', '4', '5', '6']
+    for a in letters[1:]:
+        for b in letters:
+            for c in letters:
+                hh[a + b + c] = [geovect(a + b + c), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+                
+    for h0 in hh:
+        dists = []
+        u = hh[h0][0]
+        for h1 in hh:
+            if h0 != h1:
+                v = hh[h1][0]
+                dists.append(distance(u, v))
+        dists.sort()
+        for i in range(6):
+            hh[h0][i+1] = dists[i]
+        print '\t'.join(map(str, hh[h0]))
+
+                
 # Close vectors to test with for multiple return case:
 #
 #    geohash(82.9727289148       , -102.972692119, 8)        => 30041310
