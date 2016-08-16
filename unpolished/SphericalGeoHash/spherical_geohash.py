@@ -1,6 +1,6 @@
 import sys, math, numpy, random, os, traceback
 
-QUARTER_EARTH_CIRCUMFRENCE = 3185500.0  # in meters
+QUARTER_EARTH_CIRCUMFRENCE = 10018750  # in meters
 
 def A(a):
     return numpy.array(a)
@@ -157,7 +157,7 @@ def geovecthash8(xyz, level, search_level=0, seed_hashes = []):
             letter_start = 0
             
         def possible(letter):
-            U = nibble2vect(step, letter, current_vector)
+            U = nibble2vect(step, letter, current_vector)  # use same function for forward and reverse encoding for consistent results
             dist = distance(objective, U)
             return (dist, letter, U)
             
@@ -279,17 +279,4 @@ def reverseDistances():
 #
 #    geohash(82.9727289148       , -102.972692119, 8)        => 30041310
 #    geohash(82.9727289148 + 0.01, -102.972692119 - 0.01, 8) => 30004030
-
-# Earth's diameter:  12,742 km
-# approx distance between cardinal base vectors :    3185.5 km
-# approx distance between adjacent level 1 vectors : 1937.3 km
-# approx distance between adjacent level 2 vectors :  968.7 km
-# approx distance between adjacent level 3 vectors :  484.3 km
-# approx distance between adjacent level 4 vectors :  242.2 km
-# approx distance between adjacent level 5 vectors :  121.1 km
-# approx distance between adjacent level 6 vectors :   60.5 km
-# approx distance between adjacent level 7 vectors :   30.3 km
-# approx distance between adjacent level 8 vectors :   15.1 km
-# approx distance between adjacent level 9 vectors :    7.6 km
-# approx distance between adjacent level 10 vectors :   3.8 km
 # 
