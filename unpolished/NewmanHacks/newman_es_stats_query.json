@@ -98,8 +98,15 @@
             "with_attachments__count" : { "filter" : { "exists" : { "field" : "attachments.content_type" } } },
             "body_translated__count" :  { "filter" : { "exists" : { "field" : "body_translated" } } },
             
-            "group_by_communities" : { "terms" : { "field" : "communities.community",  "size" : 20 } },
-            "group_by_communities_count" : { "terms" : { "field" : "communities_count",  "size" : 20 } },
+            "top_communities" : { "terms" : { "field" : "communities.community",  "size" : 20 } },
+            "top_communities_count" : { "terms" : { "field" : "communities_count",  "size" : 20 } },
+            "top_addresses" : { "terms" : { "field" : "addrs", "size" : 20 } },
+            "top_entity_all" : { "terms" : { "field" : "entities.body_entities.entity_all", "size" : 20 } },
+            "top_entity_full" : { "terms" : { "field" : "entities.body_entities.entity_full", "size" : 20 } },
+            "top_entity_location" : { "terms" : { "field" : "entities.body_entities.entity_location", "size" : 20 } },
+            "top_entity_misc" : { "terms" : { "field" : "entities.body_entities.entity_misc", "size" : 20 } },
+            "top_entity_organization" : { "terms" : { "field" : "entities.body_entities.entity_organization", "size" : 20 } },
+            "top_entity_person" : { "terms" : { "field" : "entities.body_entities.entity_person", "size" : 20 } },
 
             "date_histogram" : {
                 "date_histogram" : {
@@ -129,6 +136,14 @@
             
             "group_by_extension" : { "terms" : { "field" : "extension",  "size" : 20 } },
             "group_by_label" : { "terms" : { "field" : "label",  "size" : 20 } },
+            
+            "top_addresses" : { "terms" : { "field" : "addrs", "size" : 20 } },
+            "top_entity_all" : { "terms" : { "field" : "entities.body_entities.entity_all", "size" : 20 } },
+            "top_entity_full" : { "terms" : { "field" : "entities.body_entities.entity_full", "size" : 20 } },
+            "top_entity_location" : { "terms" : { "field" : "entities.body_entities.entity_location", "size" : 20 } },
+            "top_entity_misc" : { "terms" : { "field" : "entities.body_entities.entity_misc", "size" : 20 } },
+            "top_entity_organization" : { "terms" : { "field" : "entities.body_entities.entity_organization", "size" : 20 } },
+            "top_entity_person" : { "terms" : { "field" : "entities.body_entities.entity_person", "size" : 20 } },
             
             "exif_geo__count" : { "filter" : { "exists" : { "field": "exif.gps.coord" } } },
             "geo__hash" : { "geohash_grid": { "field": "exif.gps.coord", "precision": 3 } },

@@ -21,7 +21,7 @@ def decomp_vector_from_angle_x(theta):
     D = D / numpy.linalg.norm(D)
     return D
 
-def decomp_vector_from_angle_x(theta):
+def decomp_vector_from_angle(theta):
     X = numpy.matrix([math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0])
     return X
 

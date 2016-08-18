@@ -15,26 +15,43 @@ def get_script_dir(follow_symlinks=True):
     if follow_symlinks:
         path = os.path.realpath(path)
     return os.path.dirname(path)
+#
+
+def isDateTime(key):
+    if isinstance(key, basestring) and key[4:5] == '-' and key[7:8] == '-' and key[10:11] == 'T' and key[13:14] == ':' and key[16:17] == ':' :
+        return True
+    return False
+#
+
+def format_value(field_name, val):
+    if isDateTime(val):
+        return val[0:10] + u' ' + val[12:18]
+    else:
+        return val
+#
 
 def print_results(doc_type, query_response):
     for agg in query_response[u'aggregations']:
         if u'doc_count' in query_response[u'aggregations'][agg]:
-            print u'\t'.join([ u"", u"", u"", doc_type, agg, u"", unicode(query_response[u'aggregations'][agg][u'doc_count']) ])
+            print u'\t'.join([ doc_type, agg, u"", u"", unicode(query_response[u'aggregations'][agg][u'doc_count']) ])
         elif u'value' in query_response[u'aggregations'][agg]:
-            print u'\t'.join([ u"", u"", u"", doc_type, agg, u"", unicode(query_response[u'aggregations'][agg][u'value']) ])
+            value = format_value(agg, query_response[u'aggregations'][agg][u'value'])
+            print u'\t'.join([ doc_type, agg, u"", u"", value ])
         elif u'buckets' in query_response[u'aggregations'][agg]:
             for dict in query_response[u'aggregations'][agg][u'buckets']:
                 if u'key_as_string' in dict:
-                    print u'\t'.join([ u"", u"", u"", doc_type, agg, dict[u'key_as_string'], unicode(dict[u'doc_count']) ])
+                    idx_str = format_value(agg, dict[u'key_as_string'])
+                    print u'\t'.join([ doc_type, agg, u"", idx_str, unicode(dict[u'doc_count']) ])
                 else:
                     if agg == u"geo__hash": 
                         lats, lons = geohash.decode(dict[u'key'])
-                        print u'\t'.join([ u"", u"", u"", doc_type, agg, unicode(dict[u'key']), unicode(dict[u'doc_count']), lats, lons])
+                        print u'\t'.join([ doc_type, agg, u"", unicode(dict[u'key']), unicode(dict[u'doc_count']), u"", lats, lons])
                     else:
-                        print u'\t'.join([ u"", u"", u"", doc_type, agg, unicode(dict[u'key']), unicode(dict[u'doc_count']) ])
+                        print u'\t'.join([ doc_type, agg, u"", unicode(dict[u'key']), unicode(dict[u'doc_count']) ])
         else:
             print u'\t'.join([ doc_type, agg, unicode(query_response[u'aggregations'][agg]) ])
-    
+#
+
 def get_index_stats(index, server, port):
     queries = {}
     # A dictinary of queries for each doc_type each query being with a bunch of agg ... cardinality pieces
