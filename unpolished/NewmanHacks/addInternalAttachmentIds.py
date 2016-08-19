@@ -6,7 +6,7 @@ from elasticsearch import Elasticsearch
 import json
 import os.path
 import datetime, dateutil.parser
-
+import re
 
 # NOTE: this will be multiplied by the number of shards of the index 
 #       so we could have ATTACHMENTS_PER_EMAIL*SHARDS*scrollSize attachments 
@@ -42,7 +42,69 @@ def cleanAttachmentFilename(filename):
     if "->" in filename:
         return filename[0:filename.index("->")]
     return filename
+# This code is copy and pasted from:
+#  https://github.com/Sotera/pst-extraction/blob/master/src/email_extract_json_unicode.py#L293  (extract())
+#  https://github.com/Sotera/pst-extraction/blob/master/src/email_extract_json_unicode.py#L301  (extract())
+#  https://github.com/Sotera/pst-extraction/blob/master/src/email_extract_json_unicode.py#L144  (convert_encoded())
+#  https://github.com/Sotera/pst-extraction/blob/master/src/email_extract_json_unicode.py#L93   (clean_string())
+#
+from email.header import decode_header
+def pstExtractFilenameCleanAlgorithm(fileName):
+    EXPR_OPTS = { 'fix_utf8' : (r'[^\x00-\x7F]', ' '), 
+                  'fix_tab' : (r'\t', ' '), 
+                  'fix_newline' : (r'\n', '[:newline:]'), 
+                  'fix_cr' : (r'\r', ' '), 
+                  'fix_forwardslash' : (r'/','_') 
+                  } 
+    def nth(arr, i, out_of_range=None):
+        if len(arr) > i:
+            return arr[i]
+        return out_of_range
+        
+    def clean_string(sz, expr_list): 
+        return reduce(lambda x,r: re.sub(nth(r,0),nth(r,1,' '), x), expr_list, sz) 
+        
+    def convert_encoded(text): 
+        try: 
+            decoded_header = decode_header(text) 
+            return u''.join([ unicode(str, charset or 'utf-8') for str, charset in decoded_header ]) 
+        except: 
+            return text 
 
+    fileName = convert_encoded(fileName) if fileName else "attach_{}".format(attach_count.next())
+    fileName = clean_string(
+        fileName,
+        [
+            EXPR_OPTS['fix_utf8'],
+            EXPR_OPTS['fix_forwardslash'],
+            (r' ', '_'),
+            (r'&', '_')
+        ])
+    return fileName
+
+# This code is copy and pasted from:
+#  https://github.com/Sotera/pst-extraction/blob/master/src/utils/functions.py#L10 (head)
+#  https://github.com/Sotera/pst-extraction/blob/master/src/email_extract_json_unicode.py#L99  (dateToUTCstr())
+#  https://github.com/Sotera/pst-extraction/blob/master/src/email_extract_json_unicode.py#L224  (extract())
+from email.utils import parsedate_tz
+def pstExtractEmailDateCleanAlgorithm(mail_date):
+    #from utils.functions import head
+    def head(arr):
+        return arr[0]
+    def dateToUTCstr(str_date): 
+        # this fails to parse timezones out of formats like 
+        # Tue, 17 Jun 2010 08:33:51 EDT 
+        # so it will assume the local timezone for those cases 
+        try: 
+            dt = dateutil.parser.parse(str_date) 
+        except: # TypeError: 
+            dt= datetime.datetime(*parsedate_tz(str_date)[:6]) 
+        if not dt.tzinfo: 
+            dt = dt.replace(tzinfo=dateutil.tz.tzutc()) 
+        dt_tz = dt.astimezone(dateutil.tz.tzutc()) 
+        return dt_tz.strftime('%Y-%m-%dT%H:%M:%S') 
+    return dateToUTCstr(head(mail_date)) if mail_date else None
+    
 # This code is very specific to one customer's weird foo_att_crossref file
 # 
 def loadAlternateIds(crossrefPath, fileFromDatePath):
@@ -53,35 +115,41 @@ def loadAlternateIds(crossrefPath, fileFromDatePath):
         line = line.rstrip()
         M = line.split('\t')
         if len(M) == 3:
-            (filename, from_address, date_str) = M
-            ugly_date = date_str[6:]
-            dt = dateutil.parser.parse(ugly_date);
-            iso_date =dt.strftime("%Y-%m-%dT%H:%M:%S")
+            (filename, from_line, date_line) = M
+            # Our fileFromDate.tab file contains the full path to
+            # the eml file, just the basename is in the customer's 
             filename = os.path.basename(filename)
-            first_lookup[ filename ] = (from_address[6:], iso_date)
+            sender_line = from_line[6:]
+            datetime_str = pstExtractEmailDateCleanAlgorithm( [date_line[6:]] )
+            email_tup = (sender_line, datetime_str)
+            first_lookup[ filename ] = email_tup
+            MSGID = filename[0:-5]
+            alternateEmailIdDict[ email_tup ] = MSGID
     g.close()
     
-    line_num = 0
     f = open(crossrefPath)
     for line in f:
-        line_num = line_num + 1
-        # Skip header
-        if line_num == 1:
-            continue
-            
         A = line.split('\t')
         if len(A) == 6:
-            # These not-so-obvious column names are IBM's choices ... just using what is in the CSV
+            # These not-so-obvious column names are customer's choices ... just using what is in the CSV
             # MSGID is the alt_ref_id of the email and can be repeated many times in one CSV file.
-            # ATTACHMENT is the alt_ref_id of the attachment
+            # ATTACHMENT is the alt_ref_id of the attachment, DISPLAY is the name of the attached file
+            # and can be nested with "->" if the files are containers (zip, rar, etc)
             (MSGID, MSGTYPE, ATTACHMENT, DISPLAY, CASE, ACCOUNT) = A
-            emailBaseFilename = MSGID + "E.eml"
+            if MSGID == "MSGID":
+                # then skip header
+                continue
+            
+            emailBaseFilename = MSGID + "E.eml"            
+            if emailBaseFilename not in first_lookup:
+                print >> sys.stderr, 'MSGID "' + MSGID + '" referenced in "' + crossrefPath + '" not found as filename ../"' + emailBaseFilename + '" in file "' + fileFromDatePath + '"'
+                continue
             (from_address, date_str) = first_lookup[emailBaseFilename]
+            # First we prune to just the container zip/rar etc because our Ingest code doesn't peek inside these
             attachmentBaseFilename = cleanAttachmentFilename(DISPLAY)
-            email_tup = (from_address, date_str)
-            if email_tup not in alternateEmailIdDict:
-                alternateEmailIdDict[ email_tup ] = MSGID
-                # print >> sys.stderr, repr(email_tup) + " => " + MSGID
+            # Then we apply the pst_extract transformation so we'll match what is in the inded
+            attachmentBaseFilename = pstExtractFilenameCleanAlgorithm(attachmentBaseFilename)
+
             attach_tup = (from_address, date_str, attachmentBaseFilename)
             if attach_tup in alternateAttachmentIdDict:
                 print >> sys.stderr, "Unexpected repeat attachment key: "  + repr(attach_tup)
