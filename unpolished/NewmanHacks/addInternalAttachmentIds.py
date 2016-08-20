@@ -104,30 +104,70 @@ def pstExtractEmailDateCleanAlgorithm(mail_date):
         dt_tz = dt.astimezone(dateutil.tz.tzutc()) 
         return dt_tz.strftime('%Y-%m-%dT%H:%M:%S') 
     return dateToUTCstr(head(mail_date)) if mail_date else None
+#
+
+def dumpAlternateIds(first_lookup, alternateEmailIdDict, alternateAttachmentIdDict):
+    altlogf = codecs.open("alternateIds.log", "w", "utf-8")
+    print >> altlogf, "first_lookup = {"
+    for filename in first_lookup:
+        print >> altlogf, filename + " : " + repr(first_lookup[ filename ]) + ","
+    print >> altlogf, "}"
+    print >> altlogf, "alternateEmailIdDict = {"
+    for email_tup in alternateEmailIdDict:
+        print >> altlogf, repr(email_tup) + " : " + alternateEmailIdDict[email_tup] + ","
+    print >> altlogf, "}"
+    print >> altlogf, "alternateAttachmentIdDict = {"
+    for attach_tup in alternateAttachmentIdDict:
+        print >> altlogf, repr(attach_tup) + " : " + alternateAttachmentIdDict[attach_tup] + ","
+    print >> altlogf, "}"
+    altlogf.close()
+
     
 # This code is very specific to one customer's weird foo_att_crossref file
-# 
+#
+#   For the emails, the customer's "product ID" is the same as the *.eml filename
+#   except for the suffix "E.eml".
+#
+#   To make things more complicated, the Ingest process threw away the filenames
+#   and we cannot afford to re-ingest so we have hacked a per-file identifier
+#   based on the sender line and the date line.
+#
+#   To make things even more complicated, the ingest process applied multiple
+#   transforms to the "sender's line" e.g. the header "From: " and transformed
+#   the datetime to ISO format ... (and sometimes failed at this).
+#
 def loadAlternateIds(crossrefPath, fileFromDatePath):
     first_lookup = {}
 
-    g = open(fileFromDatePath)
+    g = codecs.open(fileFromDatePath, "r", "iso-8859-1")
     for line in g:
         line = line.rstrip()
         M = line.split('\t')
         if len(M) == 3:
-            (filename, from_line, date_line) = M
+            (eml_filepath, from_line, date_line) = M
             # Our fileFromDate.tab file contains the full path to
             # the eml file, just the basename is in the customer's 
-            filename = os.path.basename(filename)
+            eml_filename = os.path.basename(eml_filepath)
             sender_line = from_line[6:]
-            datetime_str = pstExtractEmailDateCleanAlgorithm( [date_line[6:]] )
+            if len(date_line) <= 6:
+                print >> sys.stderr, "Short date_line: '" + date_line + "'"
+                continue
+            date_ugly_str = date_line[6:]
+            try:
+                datetime_str = pstExtractEmailDateCleanAlgorithm( [ date_ugly_str ] )  # (this routine wants an array)
+            except:
+                print >> sys.stderr, "Exception parsing date: pstExtractEmailDateCleanAlgorithm(['" + date_ugly_str + "'])"
+                continue
+            if datetime == None:
+                print >> sys.stderr, "pstExtractEmailDateCleanAlgorithm(['" + date_ugly_str + "']) FAILED:  returned None"
+                continue
             email_tup = (sender_line, datetime_str)
-            first_lookup[ filename ] = email_tup
-            MSGID = filename[0:-5]
+            first_lookup[ eml_filename ] = email_tup
+            MSGID = eml_filename[0:-5]
             alternateEmailIdDict[ email_tup ] = MSGID
     g.close()
     
-    f = open(crossrefPath)
+    f = codecs.open(crossrefPath, "r", "iso-8859-1")
     for line in f:
         A = line.split('\t')
         if len(A) == 6:
@@ -148,15 +188,17 @@ def loadAlternateIds(crossrefPath, fileFromDatePath):
             # First we prune to just the container zip/rar etc because our Ingest code doesn't peek inside these
             attachmentBaseFilename = cleanAttachmentFilename(DISPLAY)
             # Then we apply the pst_extract transformation so we'll match what is in the inded
-            attachmentBaseFilename = pstExtractFilenameCleanAlgorithm(attachmentBaseFilename)
+            attachmentBaseFilename = pstExtractFilenameCleanAlgorithm(attachmentBaseFilename).lower()
 
             attach_tup = (from_address, date_str, attachmentBaseFilename)
             if attach_tup in alternateAttachmentIdDict:
-                print >> sys.stderr, "Unexpected repeat attachment key: "  + repr(attach_tup)
+                print >> sys.stderr, "Warning: Repeated attachment key: "  + repr(attach_tup)
             else:
                 alternateAttachmentIdDict[ attach_tup ] = ATTACHMENT
             
     f.close()
+    
+    dumpAlternateIds(first_lookup, alternateEmailIdDict, alternateAttachmentIdDict)
 #
 
 QUERY = '''{
@@ -182,6 +224,8 @@ def main(serverName, indexName, crossrefPath, fileFromDatePath):
     scroll = esScrollMails.search(index=indexName, doc_type="emails", body=QUERY, search_type="scan", scroll="10m")
     scrollId = scroll[u'_scroll_id']
     
+    bulkf = open("bulk_changes.elasticbulk.jsonish", "w")
+    
     progress = 0
     processed = 0
     while(True):
@@ -197,44 +241,47 @@ def main(serverName, indexName, crossrefPath, fileFromDatePath):
         for r in response[u'hits'][u'hits']:
             progress = progress + len(response[u'hits'][u'hits'])
             source = r[u"_source"]
-            tup = (source["senders_line"][0], source["datetime"])
-            # print repr(tup)
-            if tup not in alternateEmailIdDict:
-                print >> sys.stderr, "Sender+Date not found in alternateEmailIdDict: " + repr(tup)
-                continue
-                
-            op_dict = {
-                u"update": {
-                    u"_index": indexName, 
-                    u"_type" : u"emails", 
-                    u"_id": r[u"_id"]
-                }
-            }
-            bulk_data.append(op_dict)
-            bulk_data.append( {"doc" : {"alt_ref_id" : alternateEmailIdDict[tup] } } )
-            processed = processed + 1
-            
-            for attachment in source[u"attachments"]:
-                tup = (source["senders_line"][0], source["datetime"], attachment[u"filename"])
+            if "senders_line" in source and "datetime" in source and len(source["senders_line"]) > 0:
+                tup = (source["senders_line"][0], source["datetime"])
                 # print repr(tup)
-                if tup not in alternateAttachmentIdDict:
-                    print >> sys.stderr, "Sender+Date+Filename not found in alternateAttachmentIdDict: " + repr(tup)
+                if tup not in alternateEmailIdDict:
+                    print >> sys.stderr, "Sender+Date not found in alternateEmailIdDict: " + repr(tup)
                     continue
                     
                 op_dict = {
                     u"update": {
                         u"_index": indexName, 
-                        u"_type" : u"attachments", 
-                        u"_id": attachment[u"guid"]
+                        u"_type" : u"emails", 
+                        u"_id": r[u"_id"]
                     }
                 }
                 bulk_data.append(op_dict)
-                bulk_data.append( {"doc" : {"alt_ref_id" : alternateAttachmentIdDict[tup] } } )
+                bulk_data.append( {"doc" : {"alt_ref_id" : alternateEmailIdDict[tup] } } )
+                processed = processed + 1
+                
+                for attachment in source[u"attachments"]:
+                    tup = (source["senders_line"][0], source["datetime"], attachment[u"filename"])
+                    # print repr(tup)
+                    if tup not in alternateAttachmentIdDict:
+                        print >> sys.stderr, "Sender+Date+Filename not found in alternateAttachmentIdDict: " + repr(tup)
+                        continue
+                        
+                    op_dict = {
+                        u"update": {
+                            u"_index": indexName, 
+                            u"_type" : u"attachments", 
+                            u"_id": attachment[u"guid"]
+                        }
+                    }
+                    bulk_data.append(op_dict)
+                    bulk_data.append( {"doc" : {"alt_ref_id" : alternateAttachmentIdDict[tup] } } )
 
         # Each update gets its own connection
         if len(bulk_data) > 0:
-            bulk_result = Elasticsearch(serverName).bulk(index=indexName, body=bulk_data, refresh="true")
-            # print >> sys.stderr, repr(bulk_result)
+            bulk_result = Elasticsearch(serverName, timeout=60).bulk(index=indexName, body=bulk_data, refresh="true")
+            print >> sys.stderr, repr(bulk_result)
+            for obj in bulk_data:
+                print >> bulkf, json.dumps(obj)
         print >> sys.stderr, "Progress: " + str(progress) + ", Processed: " + str(processed)
         
            
