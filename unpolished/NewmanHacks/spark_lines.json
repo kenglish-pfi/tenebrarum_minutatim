@@ -1,0 +1,1205 @@
+{
+  "took" : 1316,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 109560,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "sparkline" : {
+      "doc_count_error_upper_bound" : 0,
+      "sum_other_doc_count" : 0,
+      "buckets" : [ {
+        "key" : "rickyromo@msn.com",
+        "doc_count" : 36,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 5
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 9
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 14
+          } ]
+        }
+      }, {
+        "key" : "carol.beck@myflorida.com",
+        "doc_count" : 37,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-10T00:00:00.000Z",
+            "key" : 1110412800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 17
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 8
+          } ]
+        }
+      }, {
+        "key" : "globue@rocketmail.com",
+        "doc_count" : 38,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-03T00:00:00.000Z",
+            "key" : 1109808000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-15T00:00:00.000Z",
+            "key" : 1110844800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-17T00:00:00.000Z",
+            "key" : 1111017600000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 11
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 10
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 3
+          } ]
+        }
+      }, {
+        "key" : "cherijah1993@aol.com",
+        "doc_count" : 41,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 10
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 20
+          } ]
+        }
+      }, {
+        "key" : "renegade32438@yahoo.com",
+        "doc_count" : 41,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 24
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 12
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 1
+          } ]
+        }
+      }, {
+        "key" : "ccfl@sc-online.net",
+        "doc_count" : 42,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 5
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "darlin74@aol.com",
+        "doc_count" : 42,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-02T00:00:00.000Z",
+            "key" : 1109721600000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-07T00:00:00.000Z",
+            "key" : 1110153600000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-08T00:00:00.000Z",
+            "key" : 1110240000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 15
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "rocknnock@charter.net",
+        "doc_count" : 43,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 29
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 7
+          } ]
+        }
+      }, {
+        "key" : "gprat304@chorus.net",
+        "doc_count" : 44,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 9
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 9
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 10
+          } ]
+        }
+      }, {
+        "key" : "grkorthonike04@aol.com",
+        "doc_count" : 48,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 29
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 19
+          } ]
+        }
+      }, {
+        "key" : "booger@iland.net",
+        "doc_count" : 49,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 12
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 13
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 5
+          } ]
+        }
+      }, {
+        "key" : "paultimmerman@webtv.net",
+        "doc_count" : 55,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-02-24T00:00:00.000Z",
+            "key" : 1109203200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-03T00:00:00.000Z",
+            "key" : 1109808000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-04T00:00:00.000Z",
+            "key" : 1109894400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-05T00:00:00.000Z",
+            "key" : 1109980800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-06T00:00:00.000Z",
+            "key" : 1110067200000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-08T00:00:00.000Z",
+            "key" : 1110240000000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-09T00:00:00.000Z",
+            "key" : 1110326400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-10T00:00:00.000Z",
+            "key" : 1110412800000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-11T00:00:00.000Z",
+            "key" : 1110499200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-15T00:00:00.000Z",
+            "key" : 1110844800000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-17T00:00:00.000Z",
+            "key" : 1111017600000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 2
+          } ]
+        }
+      }, {
+        "key" : "martie@mpsolution.com",
+        "doc_count" : 56,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 49
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 7
+          } ]
+        }
+      }, {
+        "key" : "mebs98@aol.com",
+        "doc_count" : 58,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-07T00:00:00.000Z",
+            "key" : 1110153600000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-09T00:00:00.000Z",
+            "key" : 1110326400000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-12T00:00:00.000Z",
+            "key" : 1110585600000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-15T00:00:00.000Z",
+            "key" : 1110844800000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 9
+          }, {
+            "key_as_string" : "2005-03-17T00:00:00.000Z",
+            "key" : 1111017600000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 1
+          } ]
+        }
+      }, {
+        "key" : "pc93@bellsouth.net",
+        "doc_count" : 58,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-02T00:00:00.000Z",
+            "key" : 1109721600000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-03T00:00:00.000Z",
+            "key" : 1109808000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-04T00:00:00.000Z",
+            "key" : 1109894400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-05T00:00:00.000Z",
+            "key" : 1109980800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-07T00:00:00.000Z",
+            "key" : 1110153600000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-09T00:00:00.000Z",
+            "key" : 1110326400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-11T00:00:00.000Z",
+            "key" : 1110499200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 9
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 13
+          } ]
+        }
+      }, {
+        "key" : "phildragoo@comcast.net",
+        "doc_count" : 58,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-03T00:00:00.000Z",
+            "key" : 1109808000000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-04T00:00:00.000Z",
+            "key" : 1109894400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-05T00:00:00.000Z",
+            "key" : 1109980800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-06T00:00:00.000Z",
+            "key" : 1110067200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-07T00:00:00.000Z",
+            "key" : 1110153600000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-11T00:00:00.000Z",
+            "key" : 1110499200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-13T00:00:00.000Z",
+            "key" : 1110672000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-15T00:00:00.000Z",
+            "key" : 1110844800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-17T00:00:00.000Z",
+            "key" : 1111017600000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 14
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 12
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 5
+          } ]
+        }
+      }, {
+        "key" : "sanctafamilia@pngusa.net",
+        "doc_count" : 60,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-07T00:00:00.000Z",
+            "key" : 1110153600000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-08T00:00:00.000Z",
+            "key" : 1110240000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-09T00:00:00.000Z",
+            "key" : 1110326400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-10T00:00:00.000Z",
+            "key" : 1110412800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-11T00:00:00.000Z",
+            "key" : 1110499200000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-12T00:00:00.000Z",
+            "key" : 1110585600000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 9
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 5
+          } ]
+        }
+      }, {
+        "key" : "victor@dellarossa.net",
+        "doc_count" : 60,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-10T00:00:00.000Z",
+            "key" : 1110412800000,
+            "doc_count" : 11
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 12
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 13
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 13
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 11
+          } ]
+        }
+      }, {
+        "key" : "jimvick677@wmconnect.com",
+        "doc_count" : 63,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 5
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 9
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 18
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 12
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 5
+          } ]
+        }
+      }, {
+        "key" : "jkracht@bellsouth.net",
+        "doc_count" : 63,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 49
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 7
+          } ]
+        }
+      }, {
+        "key" : "maryfromfla@aol.com",
+        "doc_count" : 68,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-03T00:00:00.000Z",
+            "key" : 1109808000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-04T00:00:00.000Z",
+            "key" : 1109894400000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-05T00:00:00.000Z",
+            "key" : 1109980800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-07T00:00:00.000Z",
+            "key" : 1110153600000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-08T00:00:00.000Z",
+            "key" : 1110240000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-11T00:00:00.000Z",
+            "key" : 1110499200000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-15T00:00:00.000Z",
+            "key" : 1110844800000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-17T00:00:00.000Z",
+            "key" : 1111017600000,
+            "doc_count" : 5
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 11
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 13
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "rocknnock@yahoo.com",
+        "doc_count" : 70,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 70
+          } ]
+        }
+      }, {
+        "key" : "judy@sellersexpositions.com",
+        "doc_count" : 87,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-02-18T00:00:00.000Z",
+            "key" : 1108684800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-03T00:00:00.000Z",
+            "key" : 1109808000000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-04T00:00:00.000Z",
+            "key" : 1109894400000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-07T00:00:00.000Z",
+            "key" : 1110153600000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-08T00:00:00.000Z",
+            "key" : 1110240000000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-09T00:00:00.000Z",
+            "key" : 1110326400000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-10T00:00:00.000Z",
+            "key" : 1110412800000,
+            "doc_count" : 12
+          }, {
+            "key_as_string" : "2005-03-11T00:00:00.000Z",
+            "key" : 1110499200000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-15T00:00:00.000Z",
+            "key" : 1110844800000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-17T00:00:00.000Z",
+            "key" : 1111017600000,
+            "doc_count" : 8
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 14
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 5
+          } ]
+        }
+      }, {
+        "key" : "rennie1234@cox.net",
+        "doc_count" : 91,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-03T00:00:00.000Z",
+            "key" : 1109808000000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-04T00:00:00.000Z",
+            "key" : 1109894400000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-05T00:00:00.000Z",
+            "key" : 1109980800000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-06T00:00:00.000Z",
+            "key" : 1110067200000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-07T00:00:00.000Z",
+            "key" : 1110153600000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-08T00:00:00.000Z",
+            "key" : 1110240000000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-09T00:00:00.000Z",
+            "key" : 1110326400000,
+            "doc_count" : 5
+          }, {
+            "key_as_string" : "2005-03-10T00:00:00.000Z",
+            "key" : 1110412800000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-11T00:00:00.000Z",
+            "key" : 1110499200000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-12T00:00:00.000Z",
+            "key" : 1110585600000,
+            "doc_count" : 5
+          }, {
+            "key_as_string" : "2005-03-13T00:00:00.000Z",
+            "key" : 1110672000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-15T00:00:00.000Z",
+            "key" : 1110844800000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-17T00:00:00.000Z",
+            "key" : 1111017600000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 4
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 5
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 7
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 9
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 10
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "rparks2@nycap.rr.com",
+        "doc_count" : 96,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 23
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 73
+          } ]
+        }
+      }, {
+        "key" : "bobbart22000@yahoo.com",
+        "doc_count" : 144,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 101
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 42
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 1
+          } ]
+        }
+      }, {
+        "key" : "prozne1@aol.com",
+        "doc_count" : 198,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-03T00:00:00.000Z",
+            "key" : 1109808000000,
+            "doc_count" : 2
+          }, {
+            "key_as_string" : "2005-03-04T00:00:00.000Z",
+            "key" : 1109894400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-14T00:00:00.000Z",
+            "key" : 1110758400000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-16T00:00:00.000Z",
+            "key" : 1110931200000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-17T00:00:00.000Z",
+            "key" : 1111017600000,
+            "doc_count" : 5
+          }, {
+            "key_as_string" : "2005-03-18T00:00:00.000Z",
+            "key" : 1111104000000,
+            "doc_count" : 6
+          }, {
+            "key_as_string" : "2005-03-19T00:00:00.000Z",
+            "key" : 1111190400000,
+            "doc_count" : 3
+          }, {
+            "key_as_string" : "2005-03-20T00:00:00.000Z",
+            "key" : 1111276800000,
+            "doc_count" : 25
+          }, {
+            "key_as_string" : "2005-03-21T00:00:00.000Z",
+            "key" : 1111363200000,
+            "doc_count" : 23
+          }, {
+            "key_as_string" : "2005-03-22T00:00:00.000Z",
+            "key" : 1111449600000,
+            "doc_count" : 17
+          }, {
+            "key_as_string" : "2005-03-23T00:00:00.000Z",
+            "key" : 1111536000000,
+            "doc_count" : 22
+          }, {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 59
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 27
+          }, {
+            "key_as_string" : "2005-03-26T00:00:00.000Z",
+            "key" : 1111795200000,
+            "doc_count" : 4
+          } ]
+        }
+      }, {
+        "key" : "pklowefamily@yahoo.com",
+        "doc_count" : 205,
+        "dates" : {
+          "buckets" : [ {
+            "key_as_string" : "2005-03-24T00:00:00.000Z",
+            "key" : 1111622400000,
+            "doc_count" : 1
+          }, {
+            "key_as_string" : "2005-03-25T00:00:00.000Z",
+            "key" : 1111708800000,
+            "doc_count" : 204
+          } ]
+        }
+      } ]
+    }
+  }
+}

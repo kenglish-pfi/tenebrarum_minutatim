@@ -36,7 +36,7 @@ def print_results(doc_type, query_response):
             print u'\t'.join([ doc_type, agg, u"", u"", unicode(query_response[u'aggregations'][agg][u'doc_count']) ])
         elif u'value' in query_response[u'aggregations'][agg]:
             value = format_value(agg, query_response[u'aggregations'][agg][u'value'])
-            print u'\t'.join([ doc_type, agg, u"", u"", value ])
+            print u'\t'.join([ doc_type, agg, u"", u"", unicode(value) ])
         elif u'buckets' in query_response[u'aggregations'][agg]:
             for dict in query_response[u'aggregations'][agg][u'buckets']:
                 if u'key_as_string' in dict:
