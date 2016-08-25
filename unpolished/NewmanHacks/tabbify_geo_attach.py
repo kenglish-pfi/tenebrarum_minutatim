@@ -13,7 +13,7 @@ def main():
         for attach in src["attachments"]:
             if "exif" in attach:
                 C = [ src["senders"], src["datetime"], attach["guid"], attach["filename"], 
-                    attach["exif"]["gps"]["latref"], attach["exif"]["gps"]["lonref"] ]
+                    attach["exif"]["gps"]["coord"]["lat"], attach["exif"]["gps"]["coord"]["lon"] ]
             else:
                 C = [ src["senders"], src["datetime"], attach["guid"], attach["filename"], 
                     "", "" ]

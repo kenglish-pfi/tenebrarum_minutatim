@@ -14,8 +14,8 @@ curl -XPOST "http://localhost:9200/"$IDX"/emails/_search?pretty" -d '{
             "datetime",
             "attachments.guid",
             "attachments.filename",
-            "attachments.exif.gps.latref",
-            "attachments.exif.gps.lonref"
+            "attachments.exif.gps.coord.lat",
+            "attachments.exif.gps.coord.lon"
         ]
     }
 }' | python tabbify_geo_attach.py 
