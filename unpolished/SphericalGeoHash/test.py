@@ -47,19 +47,25 @@ def reverseDistribution():
 
 # Identify non-peers that are closer than peers:
 def closeNonPeers():
-    check_d = 0.99 * distance(vector('100'), vector('101'))
+    check_d = 0.99 * algorithm.distance(algorithm.vector('100'), algorithm.vector('101'))
     hh = {}
     letters = ['0', '1', '2', '3', '4', '5', '6']
     for a0 in letters[1:]:
         for b0 in letters:
             for a1 in letters[1:]:
+                if a1 < a0:
+                    continue
                 for b1 in letters:
+                    if a1+b1 < a0+b0:
+                        continue
                     if a0+b0 != a1+b1:
                         for c0 in letters:
                             for c1 in letters:
-                                    d = distance(vector(a0+b0+c0), vector(a1+b1+c1))
-                                    if  d < check_d:
-                                        print '\t'.join([ a0+b0+c0, a1+b1+c1, str(d) ])
+                                if a1+b1+c1 < a0+b0+c0:
+                                    continue
+                                d = algorithm.distance(algorithm.vector(a0+b0+c0), algorithm.vector(a1+b1+c1))
+                                if  d < check_d:
+                                    print '\t'.join([ a0+b0+c0, a1+b1+c1, str(d) ])
                 
                 
 # Check consistency of 'peer' distances at level 3:
@@ -77,3 +83,4 @@ def peerDistances():
 #    geohash(82.9727289148       , -102.972692119, 8)        => 30041310
 #    geohash(82.9727289148 + 0.01, -102.972692119 - 0.01, 8) => 30004030
 # 
+closeNonPeers()
