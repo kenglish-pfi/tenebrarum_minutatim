@@ -18,4 +18,4 @@ curl -XPOST "http://localhost:9200/"$IDX"/emails/_search?pretty" -d '{
             "attachments.exif.gps.coord.lon"
         ]
     }
-}' | python locatedImagesReport.py $IDX > attach_geos_report.html
+}' | python locatedImagesReport.py $IDX > attach_geos_report__"$IDX".html

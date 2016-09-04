@@ -18,6 +18,9 @@ def attachIndexUrl(index_name, i):
 def imageId(i):
     return u'img_' + str(i)
 
+def imageName(i):
+    return report_items[i][4]
+
 def imageDescription(i):
     return u'File ' + report_items[i][4] + u', sent by: ' + report_items[i][0] + u', on: ' + report_items[i][1]
     
@@ -26,45 +29,27 @@ def imageLocation(i):
     
 def generateReport(index_name):
     print >> sys.stdout, '''<html>
-<script>
-'''
-    for i in range(len(report_items)):
-        print >> sys.stdout, "var " +imageId(i) + '="' + imageUrl(index_name, i) + '";'
-    print >> sys.stdout, '''
-mouse_x=0;
-mouse_y=0;
-function onmm( e ) {
-    mouse_x = e.x;
-    mouse_y = e.y;
-}
-function changePicture(newSrc) {
-    imgElem = document.getElementById("theImage");
-    imgElem.style.top = mouse_y;
-    imgElem.src = newSrc;
-}
-</script>
 <body>
 <table border="1px">
 <tr>
 <td>
-<form>
 '''
     for i in range(len(report_items)):
         print >> sys.stdout, u'''
-<div id="''' + 'div_' + imageId(i) + '''" onmousemove="onmm( event )">
-<input type="radio" id="input_''' + imageId(i) + '''" name="geo_image_select" value="''' + imageId(i) + '''" onclick="(function(){changePicture(''' + imageId(i) + ''');})()"/> ''' + imageDescription(i) + '''<br />
+<div id="''' + 'div_' + imageId(i) + '''">
+    ''' + imageDescription(i) + '''<br />
     Location''' + imageLocation(i) +'''<br />
     Nearest Major City: ''' + '!!! TODO !!!' + '''<br />
     <a href="''' + emailIndexUrl(index_name, i) + '''">Email record</a><br />
     <a href="''' + attachIndexUrl(index_name, i) + '''">Attachment record</a><br />
 </div>
-'''
-    print >> sys.stdout, '''</form>
 </td>
 <td>
-<img id="theImage" src="blank.jpg" alt="blank" style="width:800px;height:600px;position:absolute">
+<img id="''' + 'img_' + imageId(i) + '''" src="''' + imageUrl(index_name, i) + '''" alt="''' + imageName(i) + '''" style="width:200px;height:150px">
 </td>
 </tr>
+'''
+    print >> sys.stdout, '''
 <table>
 </body>
 </html>

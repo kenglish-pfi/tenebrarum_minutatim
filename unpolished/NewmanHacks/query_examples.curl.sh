@@ -319,3 +319,52 @@ curl -XPOST "http://localhost:9200/shiavo/emails/_search?pretty" -d '{
   }
 }' > shiavo_from_data_attach.json
 
+
+
+curl -XPOST 'http://localhost:9200/shiavo/email_address/_search?pretty' -d'{"size": 0, 
+    "aggs" : { 
+        "first_received__date_histogram" : {
+            "terms" : { 
+                "field" : "community_id",  
+                "size" : 2000,
+                "min_doc_count": 2
+            } ,
+            "aggs" : {
+                "community_docs_per_day" : {
+                    "date_histogram" : {
+                        "field" : "first_received",
+                        "interval" : "month",
+                        "min_doc_count" : 1
+                    }
+                }
+            }
+        }
+}   }' > new_date_histo.json
+
+curl -XPOST 'http://localhost:9200/shiavo/email_address/_search?pretty' -d'{"size": 0, 
+    "aggs" : { 
+        "first_received__date_histogram" : {
+            "terms" : { 
+                "field" : "community_id",  
+                "size" : 2000,
+                "min_doc_count": 2
+            } ,
+            "aggs" : {
+                "community_docs_per_day" : {
+                    "date_histogram" : {
+                        "field" : "first_received",
+                        "interval" : "month",
+                        "min_doc_count" : 1
+                    }
+                }
+            }
+        }
+}   }' > new_date_histo.json
+
+curl -XPOST "http://localhost:9200/shiavo/emails/_search?pretty" -d '{ 
+    "size": 10, 
+    "filter" : { 
+        "exists" : { "field" : "attachments.filename"  } 
+    },
+    "fields" : [ "senders", "tos", "ccs", "bccs"]
+}' > shiavo_from_data_attach.json
