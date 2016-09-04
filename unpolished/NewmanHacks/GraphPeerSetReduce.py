@@ -1,3 +1,13 @@
+# GraphPeerSetReduce.py
+#
+# Copyright Kevin English
+#
+# Reduce the node count of a graph by placing nodes with common peers into sets
+#
+# TODOs:
+#    - Explore recursion of this algorithm ... is there meaning to be found when this algorithm no longer finds a reduction?
+#    - Reduce memory requirement ... currently ~ 4X incoming graph size
+#
 import sys, codecs
 sys.stdin=codecs.getreader('UTF-8')(sys.stdin)
 sys.stdout=codecs.getwriter('UTF-8')(sys.stdout)
@@ -9,7 +19,7 @@ import json
 pairs = []  # The original directed graph:  source -> destination
 peers = {}  # Keeps track of all of the nodes a given node talks to
 sets = {}   # Keeps track of all of the nodes that talk to a specific small set of nodes
-rset = {}   # Reverse lookup of above
+rset = {}   # Reverse lookup of sets
 
 # Add a given pair to the pairs and peers lists
 def interPair(addr1, addr2):
@@ -66,21 +76,26 @@ for pair in pairs:
     newpairs[newpair] = newpairs[newpair] + 1
         
 
-print '{'
-print '    "sets" : {'
+# Output in JSON format since we have 2 lists
+print u'{'
+
+# The sets
+print u'    "sets" : {'
 for setname in sets:
     if len(sets[setname]) > 1:
-        print '"' + setname + '" : [' + ','.join(sets[setname]) + ']'
-print '    }'
+        print u'"' + setname + u'" : [' + ','.join(sets[setname]) + u']'
+print u'    },'
 
-print '{'
-print '    "edges" : {'
+# The edges using the sets
+print u'    "edges" : {'
 for pair in newpairs:
-    print repr(pair) + ' : ' + str(newpairs[pair])
-print '    }'
-print '}'
+    print u'["' + pair[0] + u'", "' + pair[1] + '"] : ' + str(newpairs[pair]) + ','
+print u'    }'
 
-        
+print u'}'
+
+for pair in newpairs:
+    print '\t'.join([ pair[0], pair[1] ])
     
         
 
