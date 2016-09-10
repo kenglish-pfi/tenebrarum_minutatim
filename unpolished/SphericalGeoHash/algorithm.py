@@ -4,6 +4,14 @@ def A(a):
     return numpy.array(a)
 
 CARDINAL_BASIS = [ A([1,0,0]), A([0,1,0]), A([0,0,1]), A([-1,0,0]), A([0,-1,0]), A([0,0,-1]) ]
+angleFunctions = [
+    lambda theta: [math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0],
+    lambda theta: [math.sin(theta)/2.0, math.sqrt(3)/2.0, math.cos(theta)/2.0],
+    lambda theta: [math.cos(theta)/2.0, math.sin(theta)/2.0, math.sqrt(3)/2.0],
+    lambda theta: [-math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0],
+    lambda theta: [math.sin(theta)/2.0, -math.sqrt(3)/2.0, math.cos(theta)/2.0],
+    lambda theta: [math.cos(theta)/2.0, math.sin(theta)/2.0, -math.sqrt(3)/2.0]
+]
 
 def decomp_vector_from_angle(theta):
     X = numpy.matrix([math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0])
@@ -14,29 +22,32 @@ def decomp_vector_from_angle(theta):
 
 # Six evenly spaced angles
 DECOMPOSITION_ANGLES = [0.0, math.pi/3.0, 2.0*math.pi/3.0, math.pi, 4.0*math.pi/3.0, 5.0*math.pi/3.0]
-# Six evenly spaced vectors about the x-axis
-decomposition_vectors_about_x_axis = map(decomp_vector_from_angle, DECOMPOSITION_ANGLES)
+# Six evenly spaced vectors about each cardinal unit vector
+DECOMPOSITION_VECTORS = []
+for i in range(len(CARDINAL_BASIS)):
+    DECOMPOSITION_VECTORS.append( map(angleFunctions[i], DECOMPOSITION_ANGLES))
+
 
 def level_to_radians(level):
     return math.pi / math.pow(2.0, level + 2)
-        
- 
+         
 def skew_symetric_cross(v):
     return numpy.matrix( [ [0, -v[2], v[1]] , [v[2], 0, -v[0]] , [-v[1], v[0], 0] ])
 
 # http://math.stackexchange.com/questions/180418/calculate-rotation-matrix-to-align-vector-a-to-vector-b-in-3d
-def rot_x_matrix(current_vector):
-    V = numpy.cross(current_vector, CARDINAL_BASIS[0])
+def rot_x_matrix(cardinalIndex, current_vector):
+    V = numpy.cross(current_vector, CARDINAL_BASIS[cardinalIndex])
+    # print "V=" + repr(V)
     s = numpy.linalg.norm(V)
-    c = numpy.inner(current_vector, CARDINAL_BASIS[0])
-    if s < 0.00000000000000000001:
-        # These responses assume CARDINAL_BASIS[0] == [ 1.0,  0.0,  0.0]
-        if c < 0:
-            return numpy.matrix([[ -1.0,  0.0,  0.0], [ 0.0,  1.0,  0.0], [ 0.0,  0.0,  1.0]])
-        else:
-            return numpy.matrix([[ 1.0,  0.0,  0.0], [ 0.0,  1.0,  0.0], [ 0.0,  0.0,  1.0]])
+    # print "s=" + repr(s)
+    c = numpy.inner(current_vector, CARDINAL_BASIS[cardinalIndex])
+    # print "c=" + repr(c)
+    if -0.00000000000000000001 < s and s < 0.00000000000000000001:
+        # The cross product is very close to a zero matrix, we return an identity matrix 
+        return numpy.matrix([[ 1.0,  0.0,  0.0], [ 0.0,  1.0,  0.0], [ 0.0,  0.0,  1.0]])
     Vx = skew_symetric_cross(V)
     R = Vx + numpy.identity(3) + (numpy.dot(Vx, Vx) * ((1 - c) / (s * s)))
+    # print "R=" + repr(R)
     return R
 
 # Generate one of six evenly spaced vectors oriented in a circle on the unit sphere about current_vector    
@@ -47,7 +58,8 @@ def rot_x_matrix(current_vector):
 #     The approach of iteratively sub-dividing the result vector towards the current_vector
 #     gives the correct result.  I am sure there is a more direct approach which would again
 #     be produced by rotating the result vector towards the current_vector in one step.
-def decomposition_vector(current_vector, level, letter):   
+def decomposition_vector(current_vector, level, hash):   
+    letter = hash[level:level+1]
     idx = ord(letter) - ord('0')
     
     if idx == 0:
@@ -55,10 +67,12 @@ def decomposition_vector(current_vector, level, letter):
             return CARDINAL_BASIS[idx-1]
         else:
             return current_vector
-    W = decomposition_vectors_about_x_axis[idx-1]
+    
+    cardinalIndex = ord(hash[0:1]) - ord('1')
+    W = DECOMPOSITION_VECTORS[cardinalIndex][idx-1]
     
     # Get the rotation matrix
-    R = rot_x_matrix(current_vector)
+    R = rot_x_matrix(cardinalIndex, current_vector)
     X = (W * R).A[0]  # 3x3 Matrix * 1x3 Array ==> 1x3 Matrix ... grab the one and only 1-D vector from the 1-D matrix
     #  This next line shouldn't be necessary, but seems to be
     X = X / numpy.linalg.norm(X)
@@ -82,12 +96,13 @@ def distance(Vect, Wect):
 
 # Converts a single character in a spherical_geohash string to an angle.
 # Called recursively to evaluate a spherical_geohash string
-def nibble2vect(level, letter, current_vector=numpy.array([0.0,0.0,0.0])):
+def nibble2vect(level, hash, current_vector=numpy.array([0.0,0.0,0.0])):
+    letter = hash[level:level+1]
     idx = ord(letter) - ord('0')
     if level == 0:
         vect = CARDINAL_BASIS[idx-1]
     else:
-        vect = decomposition_vector(current_vector, level, letter)
+        vect = decomposition_vector(current_vector, level, hash)
     return vect
 
 # Heart of this geo-hashing code.  Iteratively finds the decomposed vectors that best 
@@ -110,12 +125,13 @@ def hash(xyz, level, search_level=0, seed_hashes = []):
         if step > 0:
             letter_start = 0
             
-        def possible(letter):
-            U = nibble2vect(step, letter, current_vector)  # use same function for forward and reverse encoding for consistent results
+        possibles = []
+        for letter in letters[letter_start:]:
+            test_hash = hashes[0] + letter
+            U = nibble2vect(step, test_hash, current_vector)  # use same function for forward and reverse encoding for consistent results
             dist = distance(objective, U)
-            return (dist, letter, U)
-            
-        possibles = map(possible, letters[letter_start:])
+            possibles.append(dist, letter, U)
+        
         possibles.sort()
         
         # check to see if search_level criteria are matched by other options
@@ -123,22 +139,24 @@ def hash(xyz, level, search_level=0, seed_hashes = []):
             for tup in possibles[1:]:
                 if tup[0] < search_dist + possibles[0][0]:
                     if step < search_level -1:
-                        hashes = hashes + hash(xyz, search_level, search_level, [hashes[0] + tup[1]])
+                        hashes = hashes + hash(xyz, search_level, search_level, [tup[1]])
                     else:
-                        hashes.append(hashes[0] + tup[1])
+                        hashes.append(tup[1])
             
         # we will continue to drill into the best (minimal) path
-        (min_dist, next_hash_letter, current_vector) = possibles[0]
-        hashes[0] = hashes[0] + next_hash_letter
+        (min_dist, next_hash, current_vector) = possibles[0]
+        hashes[0] = next_hash
         
     return hashes
 
     
 def vector(hash):
+    # print "hash=" + hash
     current_vector=numpy.array([0.0,0.0,0.0])
     for i in range(len(hash)):
-        letter = hash[i:i+1]
-        current_vector = nibble2vect(i, letter, current_vector)
+        test_hash = hash[0:i+1]
+        current_vector = nibble2vect(i, test_hash, current_vector)
+        # print "... " + str(i) + ": " + test_hash + repr(current_vector)
     return current_vector
 
 def xyz2angles(xyz):

@@ -47,7 +47,7 @@ def reverseDistribution():
 
 # Identify non-peers that are closer than peers:
 def closeNonPeers():
-    check_d = 0.99 * algorithm.distance(algorithm.vector('100'), algorithm.vector('101'))
+    check_d = 1.01 * algorithm.distance(algorithm.vector('100'), algorithm.vector('101'))
     hh = {}
     letters = ['0', '1', '2', '3', '4', '5', '6']
     for a0 in letters[1:]:
