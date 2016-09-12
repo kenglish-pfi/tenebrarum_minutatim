@@ -4,21 +4,22 @@ def A(a):
     return numpy.array(a)
 
 CARDINAL_BASIS = [ A([1,0,0]), A([0,1,0]), A([0,0,1]), A([-1,0,0]), A([0,-1,0]), A([0,0,-1]) ]
+# angleFunctions = [
+#     lambda theta: A([math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0]),
+#     lambda theta: A([math.sin(theta)/2.0, math.sqrt(3)/2.0, math.cos(theta)/2.0]),
+#     lambda theta: A([math.cos(theta)/2.0, math.sin(theta)/2.0, math.sqrt(3)/2.0]),
+#     lambda theta: A([-math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0]),
+#     lambda theta: A([math.sin(theta)/2.0, -math.sqrt(3)/2.0, math.cos(theta)/2.0]),
+#     lambda theta: A([math.cos(theta)/2.0, math.sin(theta)/2.0, -math.sqrt(3)/2.0])
+# ]
 angleFunctions = [
-    lambda theta: [math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0],
-    lambda theta: [math.sin(theta)/2.0, math.sqrt(3)/2.0, math.cos(theta)/2.0],
-    lambda theta: [math.cos(theta)/2.0, math.sin(theta)/2.0, math.sqrt(3)/2.0],
-    lambda theta: [-math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0],
-    lambda theta: [math.sin(theta)/2.0, -math.sqrt(3)/2.0, math.cos(theta)/2.0],
-    lambda theta: [math.cos(theta)/2.0, math.sin(theta)/2.0, -math.sqrt(3)/2.0]
+    lambda theta: A([1.0/math.sqrt(2.0), math.cos(theta)/math.sqrt(2.0), math.sin(theta)/math.sqrt(2.0)]),
+    lambda theta: A([math.sin(theta)/math.sqrt(2.0), 1.0/math.sqrt(2.0), math.cos(theta)/math.sqrt(2.0)]),
+    lambda theta: A([math.cos(theta)/math.sqrt(2.0), math.sin(theta)/math.sqrt(2.0), 1.0/math.sqrt(2.0)]),
+    lambda theta: A([-1.0/math.sqrt(2.0), math.cos(theta)/math.sqrt(2.0), math.sin(theta)/math.sqrt(2.0)]),
+    lambda theta: A([math.sin(theta)/math.sqrt(2.0), -1.0/math.sqrt(2.0), math.cos(theta)/math.sqrt(2.0)]),
+    lambda theta: A([math.cos(theta)/math.sqrt(2.0), math.sin(theta)/math.sqrt(2.0), -1.0/math.sqrt(2.0)])
 ]
-
-def decomp_vector_from_angle(theta):
-    X = numpy.matrix([math.sqrt(3)/2.0, math.cos(theta)/2.0, math.sin(theta)/2.0])
-    # nudged toward X-axis, choices too ambiguous otherwise
-    # X = X + numpy.matrix([0.000000001, -0.0000000005, -0.0000000005])
-    # X = X / numpy.linalg.norm(X)
-    return X
 
 # Six evenly spaced angles
 DECOMPOSITION_ANGLES = [0.0, math.pi/3.0, 2.0*math.pi/3.0, math.pi, 4.0*math.pi/3.0, 5.0*math.pi/3.0]
@@ -130,7 +131,7 @@ def hash(xyz, level, search_level=0, seed_hashes = []):
             test_hash = hashes[0] + letter
             U = nibble2vect(step, test_hash, current_vector)  # use same function for forward and reverse encoding for consistent results
             dist = distance(objective, U)
-            possibles.append(dist, letter, U)
+            possibles.append( (dist, test_hash, U ) )
         
         possibles.sort()
         
@@ -145,6 +146,8 @@ def hash(xyz, level, search_level=0, seed_hashes = []):
             
         # we will continue to drill into the best (minimal) path
         (min_dist, next_hash, current_vector) = possibles[0]
+        if min_dist > math.pi:
+            print >> sys.stderr, "Impossibly large minimum distance: " + str(min_dist) + ", xyz=" + repr(xyz) + ", level=" + str(level) + ", seed_hashes=" + repr(seed_hashes)
         hashes[0] = next_hash
         
     return hashes
@@ -165,5 +168,5 @@ def xyz2angles(xyz):
     return [lat_radians, lon_radians]
 
 def angles2xyz(latlon_radians):
-    xyz = [math.cos(latlon[0]) * math.cos(latlon[1]), math.cos(latlon[0]) * math.sin(latlon[1]), math.sin(latlon[0])]
+    xyz = [math.cos(latlon_radians[0]) * math.cos(latlon_radians[1]), math.cos(latlon_radians[0]) * math.sin(latlon_radians[1]), math.sin(latlon_radians[0])]
     return xyz
