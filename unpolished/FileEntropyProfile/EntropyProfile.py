@@ -16,7 +16,7 @@ def arrayNibbleEntropy(A):
         if freq > 0:
             # print str(freq) + '=>' + str(math.log(freq, 16))
             ent = ent + freq * math.log(freq, 16)
-    return ent
+    return ent - 640
 
 
 if __name__ == "__main__":
