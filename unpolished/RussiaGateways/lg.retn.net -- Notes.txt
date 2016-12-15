@@ -1,0 +1,203 @@
+This has to be a MPLS network ... NOTE instant hop to London
+Wonder who retn.net buy service from?
+
+
+HOST: RT.MSQ.BY                   Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1. ae1-9.RT.TC2.LON.UK.retn.net  0.0%    10   38.1  42.8  38.0  61.0   7.6
+  2. ge2-22-0-cr0.tch.uk.as6908.n  0.0%    10   34.1  34.3  34.1  35.8   0.5
+  3. ae0-core0.tch67.uk.as6908.ne  0.0%    10   38.3  39.3  38.2  48.7   3.3
+  4. ae3-core0.gsld2.uk.as6908.ne  0.0%    10   41.5  43.9  38.3  68.0   9.3
+  5. canonical-gw.datahop.net      0.0%    10   34.9  39.6  34.9  81.3  14.7
+  6. danava.canonical.com          0.0%    10   35.2  40.4  35.0  65.0  10.5
+
+
+This is not DataHop.net (#2 AS6908 above) London Pop must be co-located with DataHop.net:
+http://as6908.net/lg/  is DataHop.net, "Please note that Datahop has a strong preference for private peering"
+http://www.as6908.net/index.php?page=pops
+
+BGP Backwards from AS6908 to 87.245.224.98
+
+Router: Datahop (AS6908) 
+Command: show ip bgp 87.245.224.98 
+
+BGP routing table entry for 87.245.192.0/18
+Paths: (2 available, best #2, table Default-IP-Routing-Table)
+  Not advertised to any peer
+  6908 9002
+    62.149.48.1 from 62.149.48.1 (62.149.48.1)
+      Origin IGP, localpref 100, valid, external
+      
+      Last update: Wed Sep  7 20:22:18 2016
+
+  6908 9002
+    78.41.152.1 from 78.41.152.1 (78.41.152.1)
+      Origin IGP, localpref 100, valid, external, best
+      
+      Last update: Wed Sep  7 20:21:43 2016
+
+lg.as6908.net> 
+
+
+
+
+Looking Glass Nodes of lg.retn.net:
+
+  <OPTION VALUE="af">AT (Vienna, IRX)</OPTION>
+  <OPTION VALUE="b6">BE (Brussels, IRX)</OPTION>
+  <OPTION VALUE="bb">BG (Sofia, TLP)</OPTION>
+  <OPTION VALUE="62">BY (Minsk, NCT)</OPTION>          RT.MSQ.BY = lo0.RT.NCT.MSQ.BY.retn.net = 87.245.224.98
+  <OPTION VALUE="a8">CH (Zurich, IRX)</OPTION>
+  <OPTION VALUE="ec">CN (Hong Kong, EQX)</OPTION>
+  <OPTION VALUE="eb">CN (Hong Kong, IAD)</OPTION>
+  <OPTION VALUE="a4">CZ (Brno, MDC)</OPTION>
+  <OPTION VALUE="aa">CZ (Prague, STL)</OPTION>
+  <OPTION VALUE="a6">DE (Berlin, SB)</OPTION>
+  <OPTION VALUE="a2">DE (Frankfurt, EQX)</OPTION>
+  <OPTION VALUE="a1">DE (Frankfurt, IRX)</OPTION>
+  <OPTION VALUE="a5">DE (Hamburg, GCN)</OPTION>
+  <OPTION VALUE="b1">DK (Copenhagen, GCN)</OPTION>
+  <OPTION VALUE="98">EE (Tallinn, ELN)</OPTION>
+  <OPTION VALUE="b7">ES (Madrid, MEX)</OPTION>
+  <OPTION VALUE="97">FI (Helsinki, RAD)</OPTION>
+  <OPTION VALUE="96">FI (Helsinki, TNR)</OPTION>
+  <OPTION VALUE="b9">FR (Paris, THV)</OPTION>
+  <OPTION VALUE="ad">HU (Budapest, DPX)</OPTION>
+  <OPTION VALUE="a9">IT (Milan, IFC)</OPTION>
+  <OPTION VALUE="e6">JP (Tokyo, EQX)</OPTION>
+  <OPTION VALUE="f5">KZ (Almaty, TTC)</OPTION>
+  <OPTION VALUE="f3">KZ (Astana, TTC)</OPTION>
+  <OPTION VALUE="f2">KZ (Baikonur, RTC)</OPTION>
+  <OPTION VALUE="f1">KZ (Dostyk, TTC)</OPTION>
+  <OPTION VALUE="9c">LT (Kaunas, RTC)</OPTION>
+  <OPTION VALUE="9d">LT (Klaipeda, BTC)</OPTION>
+  <OPTION VALUE="9f">LT (Siauliai, OMT)</OPTION>
+  <OPTION VALUE="9e">LT (Vilnius, TIC)</OPTION>
+  <OPTION VALUE="99">LV (Riga, RTC)</OPTION>
+  <OPTION VALUE="b4">NL (Amsterdam, TC2)</OPTION>
+  <OPTION VALUE="b5">NL (Dronten, SRV)</OPTION>
+  <OPTION VALUE="b3">NL (Meppel, SRV)</OPTION>
+  <OPTION VALUE="ac">PL (Katowice, QTL)</OPTION>
+  <OPTION VALUE="b0">PL (Krakov, CND)</OPTION>
+  <OPTION VALUE="ab">PL (Poznan, BND)</OPTION>
+  <OPTION VALUE="a7">PL (Warsaw, LIM)</OPTION>
+  <OPTION VALUE="bc">RS (Belgrade, TNR)</OPTION>
+  <OPTION VALUE="ba">RO (Bucharest, NXD)</OPTION>
+  <OPTION VALUE="12">RU (Belgorod, CTC)</OPTION>
+  <OPTION VALUE="1d">RU (Cheboksary, ETW)</OPTION>
+  <OPTION VALUE="19">RU (Chelyabinsk, HPN)</OPTION>
+  <OPTION VALUE="1e">RU (Ekaterinburg, UDC)</OPTION>
+  <OPTION VALUE="1a">RU (Goritcy, EPS)</OPTION>
+  <OPTION VALUE="1c">RU (Gubkin, AT5)</OPTION>
+  <OPTION VALUE="23">RU (Irkutsk, VSV)</OPTION>
+  <OPTION VALUE="11">RU (Kamensk-Shaht., KVT)</OPTION>
+  <OPTION VALUE="16">RU (Kazan, ITP)</OPTION>
+  <OPTION VALUE="27">RU (Khabarovsk, TRC)</OPTION>
+  <OPTION VALUE="24">RU (Krasnodar, ATC)</OPTION>
+  <OPTION VALUE="15">RU (Krasnoyarsk, ITT)</OPTION>
+  <OPTION VALUE="29">RU (Kurgan, RTC)</OPTION>
+  <OPTION VALUE="2b">RU (Kursk, VSD)</OPTION>
+  <OPTION VALUE="c">RU (Lipetsk, RTC)</OPTION>
+  <OPTION VALUE="1">RU (Moscow, M9)</OPTION>
+  <OPTION VALUE="2">RU (Moscow, M9P)</OPTION>
+  <OPTION VALUE="3">RU (Moscow, M9R)</OPTION>
+  <OPTION SELECTED VALUE="5">RU (Moscow, MR)</OPTION>
+  <OPTION VALUE="e">RU (N.Novgorod, RTC)</OPTION>
+  <OPTION VALUE="2d">RU (Nab.Chelny, TTT)</OPTION>
+  <OPTION VALUE="14">RU (Novosibirsk, CIF)</OPTION>
+  <OPTION VALUE="20">RU (Omsk, KNX)</OPTION>
+  <OPTION VALUE="2c">RU (Orel, VSD)</OPTION>
+  <OPTION VALUE="1f">RU (Perm, TIM)</OPTION>
+  <OPTION VALUE="13">RU (Rostov-na-Donu, TMT)</OPTION>
+  <OPTION VALUE="18">RU (Ryazan, STC)</OPTION>
+  <OPTION VALUE="25">RU (Samara, SMT)</OPTION>
+  <OPTION VALUE="f">RU (Saratov, INT)</OPTION>
+  <OPTION VALUE="6">RU (St-Petersburg, BM)</OPTION>
+  <OPTION VALUE="8">RU (St-Petersburg, KM)</OPTION>
+  <OPTION VALUE="7">RU (St-Petersburg, OV)</OPTION>
+  <OPTION VALUE="4">RU (St-Petersburg, SL)</OPTION>
+  <OPTION VALUE="22">RU (Surgut, NFB)</OPTION>
+  <OPTION VALUE="10">RU (Tula, KVT)</OPTION>
+  <OPTION VALUE="21">RU (Tyumen, NMS)</OPTION>
+  <OPTION VALUE="17">RU (Ufa, UFN)</OPTION>
+  <OPTION VALUE="b">RU (V.Novgorod, RAY)</OPTION>
+  <OPTION VALUE="a">RU (Vladimir, KSZ)</OPTION>
+  <OPTION VALUE="28">RU (Vladivostok, TRC)</OPTION>
+  <OPTION VALUE="1b">RU (Volgograd, ERT)</OPTION>
+  <OPTION VALUE="d">RU (Voronezh, ES)</OPTION>
+  <OPTION VALUE="9a">SE (Stockholm, IRX)</OPTION>
+  <OPTION VALUE="9b">SE (Stockholm, TC1)</OPTION>
+  <OPTION VALUE="ae">SK (Bratislava, STL)</OPTION>
+  <OPTION VALUE="82">UA (Dnepropetrovsk, DSF)</OPTION>
+  <OPTION VALUE="6f">UA (Kharkov, BH)</OPTION>
+  <OPTION VALUE="65">UA (Kyiv, NTL/0)</OPTION>
+  <OPTION VALUE="66">UA (Kyiv, NTL/1)</OPTION>
+  <OPTION VALUE="64">UA (Lviv, UAR)</OPTION>
+  <OPTION VALUE="7b">UA (Nikolaev, ATR)</OPTION>
+  <OPTION VALUE="7d">UA (Odessa, HST)</OPTION>
+  <OPTION VALUE="69">UA (Uzhgorod, ATR)</OPTION>
+  <OPTION VALUE="78">UA (Zaporozhye, ATR)</OPTION>
+  <OPTION VALUE="be">UK (London, TC2)</OPTION>
+  <OPTION VALUE="c9">US (New York, TLX)</OPTION>
+
+BGP from lg.retn.net @ Minsk to London:  Looks like Xe is provider of MPLS
+
+inet.0: 612617 destinations, 1224532 routes (612617 active, 0 holddown, 0 hidden)
+62.149.48.0/20 (2 entries, 1 announced)
+        *BGP    Preference: 170/-101
+                Next hop type: Indirect
+                Address: 0x15e9e06c
+                Next-hop reference count: 126669
+                Source: 87.245.224.1
+                Next hop type: Router, Next hop index: 1049188
+                Next hop: 87.245.234.38 via xe-0/1/0.4 weight 0x1, selected
+                Label operation: Push 349280
+                Label TTL action: no-prop-ttl
+                Session Id: 0x3f4ce
+                Next hop: 87.245.234.33 via xe-0/0/0.3 weight 0xf000
+                Label operation: Push 450625
+                Label TTL action: no-prop-ttl
+                Session Id: 0x3eccb
+                Protocol next hop: 87.245.224.190
+                Indirect next hop: 13885620 1049568 INH Session ID: 0x1a59
+                State: <Active Int Ext>
+                Local AS:  9002 Peer AS:  9002
+                Age: 6w1d 1:18:35 	Metric: 90 	Metric2: 38 
+                Validation State: unverified 
+                Task: BGP_9002.87.245.224.1+179
+                Announcement bits (3): 0-KRT 10-Resolve tree 3 11-Resolve tree 4 
+                AS path: 6908 I (Originator)
+                Cluster list:  87.245.224.99
+                Originator ID: 87.245.225.190
+                Communities: 9002:64515 9002:64679
+                Accepted Multipath
+                Localpref: 100
+                Router ID: 87.245.225.1
+         BGP    Preference: 170/-101
+                Next hop type: Indirect
+                Address: 0x15e9e06c
+                Next-hop reference count: 126669
+                Source: 87.245.224.167
+                Next hop type: Router, Next hop index: 1049188
+                Next hop: 87.245.234.38 via xe-0/1/0.4 weight 0x1, selected
+                Label operation: Push 349280
+                Label TTL action: no-prop-ttl
+                Session Id: 0x3f4ce
+                Next hop: 87.245.234.33 via xe-0/0/0.3 weight 0xf000
+                Label operation: Push 450625
+                Label TTL action: no-prop-ttl
+                Session Id: 0x3eccb
+                Protocol next hop: 87.245.224.190
+                Indirect next hop: 13885620 1049568 INH Session ID: 0x1a59
+                State: <Int Ext>
+                Inactive reason: Update source
+                Local AS:  9002 Peer AS:  9002
+                Age: 6w1d 1:20:02 	Metric: 90 	Metric2: 38 
+                Validation State: unverified 
+                Task: BGP_9002.87.245.224.167+64288
+                AS path: 6908 I (Originator)
+                Cluster list:  87.245.224.99
+                Originator ID: 87.245.225.190
+                Communities: 9002:64515 9002:64679
+                Accepted MultipathContrib
+                Localpref: 100
+                Router ID: 87.245.225.167
