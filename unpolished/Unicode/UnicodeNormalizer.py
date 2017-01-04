@@ -1,8 +1,17 @@
 import GenerateNormTable
+import os, sys, codecs, json, os.path
 
 class UnicodeNormalizer:    
+
     def __init__(self):
-        self.norm_table = GenerateNormTable.GenerateCombinedTable()
+        self.UNICODE_NORMALIZER_DATAFILE = "UnicodeNormalizerData.json"
+        
+        if os.path.isfile(self.UNICODE_NORMALIZER_DATAFILE):
+            with codecs.open(self.UNICODE_NORMALIZER_DATAFILE, "r", "utf-8") as f:
+                self.norm_table = json.load(f)
+        else:
+            self.norm_table = GenerateNormTable.GenerateCombinedTable()
+    #
         
     def normalizeCharacter(self, unicodeCharacter):
         if unicodeCharacter in self.norm_table:
@@ -13,7 +22,19 @@ class UnicodeNormalizer:
     def normalizeText(self, unicodeText):
         return u"".join(map(self.normalizeCharacter, unicodeText))
     #
-
+    
+    def writeDataFile(self):
+        with codecs.open(self.UNICODE_NORMALIZER_DATAFILE, "w", "utf-8") as f:
+            json.dump(self.norm_table, f, indent=4)
+        return os.stat(self.UNICODE_NORMALIZER_DATAFILE).st_size
+    #
+    
+    def deleteDataFile(self):
+        if os.path.isfile(self.UNICODE_NORMALIZER_DATAFILE):
+            os.remove(self.UNICODE_NORMALIZER_DATAFILE)
+        return not os.path.isfile(self.UNICODE_NORMALIZER_DATAFILE)
+    #
+    
 if __name__ == "__main__":
 
     import sys
