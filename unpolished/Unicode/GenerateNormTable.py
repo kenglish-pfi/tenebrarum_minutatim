@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import sys, codecs, json
+import sys, codecs, json, copy, string
+import unicodedata
 from pyuca import Collator
 sys.stdout=codecs.getwriter('UTF-8')(sys.stdout)
 sys.stderr=codecs.getwriter('UTF-8')(sys.stderr)
@@ -185,13 +186,165 @@ def GenerateCollationEquivalenceTable(unicodecharlist):
     
     return codepointMap
 
+def GenerateNumeralEquivalenceTable(unicodecharlist):
+    codepointMap = {}
+    C = Collator()
+    baseNumerals = [u'0', u'1', u'2', u'3', u'4', u'5', u'6', u'7', u'8', u'9']
+    baseKeys = {}
+    for codepoint in baseNumerals:
+        numval = unicodedata.numeric(codepoint)
+        baseKeys[numval] = codepoint
+        
+    for codepoint in unicodecharlist:
+        if unicodedata.category(codepoint) in ["No", "Nl"]:
+            numval = unicodedata.numeric(codepoint)
+            if numval in baseKeys:
+                if codepoint != baseKeys[numval]:
+                    codepointMap[codepoint] = baseKeys[numval]
+            
+    return codepointMap
+
+# Format of UnicodeData.txt given at:  ftp://ftp.unicode.org/Public/3.0-Update/UnicodeData-3.0.0.html
+# Subject to change, pulled on 2017-01-03
+def GenerateUnicodeDataTable():
+    codepointMap = {}
+    with codecs.open("UnicodeData.txt", "r", "utf-8") as f:
+        for line in f:
+            if line[0] == u'#':
+                continue
+            line = line.rstrip()
+            fields = line.split(u';')
+            if len(fields) == 15:
+                ( Code_value,
+                    Character_name,
+                    General_Category,
+                    Canonical_Combining_Classes,
+                    Bidirectional_Category,
+                    Character_Decomposition_Mapping,
+                    Decimal_digit_value,
+                    Digit_value,
+                    Numeric_value,
+                    Mirrored,
+                    Unicode1Name,
+                    Comment_field,
+                    Uppercase_Mapping,
+                    Lowercase_Mapping,
+                    Titlecase_Mapping ) = fields
+                if len(Lowercase_Mapping) > 0:
+                    codepointMap[unichr(int(Code_value, 16))] = unichr(int(Lowercase_Mapping, 16))
+    return codepointMap
+
+def GenerateUnicodeDataTable():
+    codepointMap = {}
+    with codecs.open("UnicodeData.txt", "r", "utf-8") as f:
+        for line in f:
+            if line[0] == '#':
+                continue
+            line = line.rstrip()
+            fields = line.split(';')
+            if len(fields) == 15:
+                ( Code_value,
+                    Character_name,
+                    General_Category,
+                    Canonical_Combining_Classes,
+                    Bidirectional_Category,
+                    Character_Decomposition_Mapping,
+                    Decimal_digit_value,
+                    Digit_value,
+                    Numeric_value,
+                    Mirrored,
+                    Unicode1Name,
+                    Comment_field,
+                    Uppercase_Mapping,
+                    Lowercase_Mapping,
+                    Titlecase_Mapping ) = fields
+                if len(Lowercase_Mapping) > 0:
+                    codepointMap[unichr(int(Code_value, 16))] = unichr(int(Lowercase_Mapping, 16))
+    return codepointMap
+    
+def GenerateCaseFoldingTable():
+    codepointMap = {}
+    with codecs.open("CaseFolding.txt", "r", "utf-8") as f:
+        for line in f:
+            if line[0] == u'#':
+                continue
+            line = line.rstrip()
+            fields = line.split(u';')
+            if len(fields) == 4:
+                ( Code, Status, Mapping, Comment) = fields
+                code_letter = unichr(int(Code.strip(), 16))
+                mapping_letters = u""
+                for map_code in Mapping.strip().split(u' '):
+                    if len(map_code) > 0:
+                        mapping_letters = mapping_letters + unichr(int(map_code, 16))
+                codepointMap[code_letter] = mapping_letters
+    return codepointMap
+
+def GenerateCombinedTable(trace = False):
+    codepointMap = {}
+    
+    # Start with Numeral Equivalence table:
+    numeralEquivalenceTable = GenerateNumeralEquivalenceTable(CreateUnicodeCharList())
+    codepointMap = copy.copy(numeralEquivalenceTable)
+    
+    # Identify agreements/disagreements with Collation Equivalence Table:
+    collationEquivalenceTable = GenerateCollationEquivalenceTable(CreateUnicodeCharList())
+    for codepoint in collationEquivalenceTable:
+        if codepoint in codepointMap:
+            if trace:
+                if collationEquivalenceTable[codepoint] == codepointMap[codepoint]:
+                    print >> sys.stderr, repr(codepoint) + u"\tY\tCE\t" + repr(codepointMap[codepoint])
+                else:
+                    print >> sys.stderr, repr(codepoint) + u"\tn\tCE\t" + repr(codepointMap[codepoint]) + u"\t" + repr(collationEquivalenceTable[codepoint])
+        else:
+            codepointMap[codepoint] = collationEquivalenceTable[codepoint]
+    
+    # Identify agreements/disagreements with Unicode Data Table:
+    unicodeDataTable = GenerateUnicodeDataTable()    
+    for codepoint in unicodeDataTable:
+        if codepoint in codepointMap:
+            if trace:
+                if unicodeDataTable[codepoint] == codepointMap[codepoint]:
+                    print >> sys.stderr, repr(codepoint) + u"\tY\tDT\t" + repr(codepointMap[codepoint]) 
+                else:
+                    print >> sys.stderr, repr(codepoint) + u"\tn\tDT\t" + repr(codepointMap[codepoint]) + u"\t" + repr(unicodeDataTable[codepoint])
+        else:
+            codepointMap[codepoint] = unicodeDataTable[codepoint]
+    
+    # Merge Case Folding Table by key
+    caseFoldingTable = GenerateCaseFoldingTable()
+    for codepoint in caseFoldingTable:
+        if codepoint in codepointMap:
+            if trace:
+                if caseFoldingTable[codepoint] == codepointMap[codepoint]:
+                    print >> sys.stderr, repr(codepoint) + u"\tY\tCF\t" + repr(codepointMap[codepoint]) 
+                else:
+                    print >> sys.stderr, repr(codepoint) + u"\tn\tCF\t" + repr(codepointMap[codepoint]) + u"\t" + repr(caseFoldingTable[codepoint])
+        else:
+            codepointMap[codepoint] = caseFoldingTable[codepoint]
+            
+    # Apply Case Folding Table to RHS
+    for codepoint in codepointMap:
+        mapstr0 = codepointMap[codepoint]
+        mapstr = mapstr0
+        for c in mapstr:
+            if c in caseFoldingTable:
+                if len(caseFoldingTable[c]) > 1:
+                    mapstr = string.replace(mapstr, c, caseFoldingTable[c])
+                    codepointMap[codepoint] = mapstr
+                    if trace:
+                        print >> sys.stderr, repr(codepoint) + u"\tRH\t" + repr(mapstr0) + u"\t" + repr(mapstr)
+    
+    return codepointMap
+    
 # Pretty print the table when invoked from the command line.
 if __name__ == "__main__":    
-    mapped = GenerateCollationEquivalenceTable(CreateUnicodeCharList())
+    mapped = GenerateCombinedTable(True)
     print "{"
     leader = "    "
     for codepoint in mapped:
             print leader + repr(codepoint) + " : " + repr(mapped[codepoint])
             leader = "    ,"
     print "}"
+    
 # fi __main__
