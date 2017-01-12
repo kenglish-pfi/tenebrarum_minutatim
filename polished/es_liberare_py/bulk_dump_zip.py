@@ -26,7 +26,7 @@ scrollid = response[u'_scroll_id']
 if len(response["hits"]["hits"]) != 0:
     # launch next reader process immediately ...
     print >> sys.stderr, "Received " + str(len(response["hits"]["hits"])) + "hits, launching process for scroll_id=" + response[u'_scroll_id']
-    subprocess.Popen(["python", "bulk_dump.py", sys.argv[1], sys.argv[2], sys.argv[3], str(p_partnum+1), response[u'_scroll_id']])
+    subprocess.Popen(["python", "bulk_dump_zip.py", sys.argv[1], sys.argv[2], sys.argv[3], str(p_partnum+1), response[u'_scroll_id']])
     f = gzip.open("bulk--" + p_server + "--" + p_index + "--" + p_doctype + "--" + format(p_partnum, '06') + ".dat.json.gz", "wb")
     for item in response["hits"]["hits"]:
         op_dict = {
