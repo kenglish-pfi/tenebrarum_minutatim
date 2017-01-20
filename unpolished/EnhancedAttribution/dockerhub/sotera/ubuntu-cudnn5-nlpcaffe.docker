@@ -1,0 +1,16 @@
+FROM sotera/ubuntu-cudnn5-caffeprep:1.0
+
+RUN pip install lmdb
+
+RUN useradd -ms /bin/bash caffe-user && echo "caffe-user:caffe-user" | chpasswd && adduser caffe-user sudo
+RUN chown -R caffe-user:caffe-user /usr/local
+
+# Clone Caffe repo and move into it
+RUN cd /home/caffe-user && git clone https://github.com/Russell91/nlpcaffe.git 
+RUN cd /home/caffe-user/nlpcaffe && make -j8 && make pycaffe && make distribute
+
+RUN cd /home/caffe-user/nlpcaffe && ./data/language_model/get_lm.sh
+RUN cd /home/caffe-user/nlpcaffe && python ./examples/language_model/create_lm.py --make_data
+RUN cd /home/caffe-user/nlpcaffe && ./examples/language_model/train_lm.sh
+
+CMD ["/bin/bash"]
