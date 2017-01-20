@@ -7,6 +7,10 @@ RUN chown -R caffe-user:caffe-user /usr/local
 
 # Clone Caffe repo and move into it
 RUN cd /home/caffe-user && git clone https://github.com/Russell91/nlpcaffe.git 
+
+# just pull a preconfigured Makefile.config from our repo...cheating a little here
+RUN cd /home/caffe-user/nlpcaffe && wget --quiet https://raw.githubusercontent.com/Sotera/watchman/cudnn5/firmament/caffe/Makefile.config
+
 RUN cd /home/caffe-user/nlpcaffe && make -j8 && make pycaffe && make distribute
 
 RUN cd /home/caffe-user/nlpcaffe && ./data/language_model/get_lm.sh
