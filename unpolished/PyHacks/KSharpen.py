@@ -1,3 +1,11 @@
+# An image sharpening algorithm that functions by making 
+# use of un-used intensities at the beginning and/or end of
+# the histogram.
+#
+# For many images this technique provides superior
+# results compared to other image sharpening 
+# algorithms.
+
 import sys, numpy
 import matplotlib.image as img
 import matplotlib.pyplot as plt
@@ -22,6 +30,7 @@ def BroadenHisto(matrix2D):
     shape = matrix2D.shape
     H = hist256(matrix2D)
 
+    # count leading (Na) and trailing (Nz) zeros
     Na = 0
     for i in range(256):
         if H[i] == 0:
