@@ -73,10 +73,12 @@ LABEL com.nvidia.cuda.version="7.5"
 #        cuda-cudart-$CUDA_PKG_VERSION && \
 #    ln -s cuda-$CUDA_VERSION /usr/local/cuda && \
 #    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get -qq update -y
+RUN apt-get -qq install -y --no-install-recommends curl
 RUN curl -fsSL http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb -O
 RUN dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb 
-RUN apt-get update
-RUN apt-get install cuda
+RUN apt-get -qq install cuda -y
 
 RUN echo "/usr/local/cuda/lib" >> /etc/ld.so.conf.d/cuda.conf && \
     echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/cuda.conf && \
@@ -93,10 +95,6 @@ ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs:${LIBRARY_PATH}
 
 # https://raw.githubusercontent.com/NVIDIA/nvidia-docker/master/ubuntu-14.04/cuda/8.0/devel/cudnn5/Dockerfile
 # FROM cuda:8.0-devel
-
-RUN apt-get update && apt-get install -y \
-        curl && \
-    rm -rf /var/lib/apt/lists/*
 
 # The hard part is knowing the path to the cudnn tar file.  
  
