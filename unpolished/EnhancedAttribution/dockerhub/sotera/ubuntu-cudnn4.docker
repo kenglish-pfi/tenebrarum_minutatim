@@ -73,7 +73,8 @@ LABEL com.nvidia.cuda.version="7.5"
 #        cuda-cudart-$CUDA_PKG_VERSION && \
 #    ln -s cuda-$CUDA_VERSION /usr/local/cuda && \
 #    rm -rf /var/lib/apt/lists/*
-    
+
+RUN wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb    
 RUN dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb 
 RUN apt-get update
 RUN apt-get install cuda
