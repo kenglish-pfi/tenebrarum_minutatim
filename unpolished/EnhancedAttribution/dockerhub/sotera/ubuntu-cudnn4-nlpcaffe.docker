@@ -5,6 +5,15 @@ RUN pip install lmdb
 RUN useradd -ms /bin/bash caffe-user && echo "caffe-user:caffe-user" | chpasswd && adduser caffe-user sudo
 RUN chown -R caffe-user:caffe-user /usr/local
 
+ENV CAFFE_VERSION 0.14
+LABEL com.nvidia.caffe.version="0.14"
+
+ENV CAFFE_PKG_VERSION 0.14.5-2+cuda7.5
+RUN apt-get update && apt-get install -y --no-install-recommends \
+            caffe-nv=$CAFFE_PKG_VERSION \
+            caffe-nv-tools=$CAFFE_PKG_VERSION
+
+
 # Clone Caffe repo and move into it
 RUN cd /home/caffe-user && git clone https://github.com/Russell91/nlpcaffe.git 
 
