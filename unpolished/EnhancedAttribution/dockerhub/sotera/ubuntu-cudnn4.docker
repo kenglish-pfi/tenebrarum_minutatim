@@ -76,16 +76,20 @@ LABEL com.nvidia.cuda.version="7.5"
 
 RUN apt-get -qq update -y
 RUN apt-get -qq install -y --no-install-recommends curl
-RUN curl -fsSL http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb -O
-RUN dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb 
-RUN apt-get -qq install cuda -y
+
+#RUN curl -fsSL http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb -O
+#RUN dpkg -i cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb 
+#RUN apt-get -qq install cuda -y
+
+RUN curl -fsSL http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run -O
+RUN chmod +x cuda_7.5.18_linux.run
+RUN ./cuda_7.5.18_linux.run --extract=$HOME
+RUN ./cuda-linux64-rel-7.5.18-19867135.run
+RUN stat /usr/local/cuda/lib64
 
 RUN echo "/usr/local/cuda/lib" >> /etc/ld.so.conf.d/cuda.conf && \
     echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/cuda.conf && \
     ldconfig
-
-RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && \
-    echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
 
 ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
