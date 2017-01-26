@@ -84,7 +84,7 @@ RUN apt-get -qq install -y --no-install-recommends curl
 RUN curl -fsSL http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run -O
 RUN chmod +x cuda_7.5.18_linux.run
 RUN ./cuda_7.5.18_linux.run --extract=$HOME
-RUN ./cuda-linux64-rel-7.5.18-19867135.run
+RUN $HOME/cuda-linux64-rel-7.5.18-19867135.run
 RUN stat /usr/local/cuda/lib64
 
 RUN echo "/usr/local/cuda/lib" >> /etc/ld.so.conf.d/cuda.conf && \
