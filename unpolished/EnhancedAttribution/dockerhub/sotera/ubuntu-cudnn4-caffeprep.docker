@@ -43,4 +43,8 @@ ENV PYTHONPATH /home/caffe-user/caffe/python:$PYTHONPATH
 
 RUN conda install -c https://conda.anaconda.org/memex elasticsearch-py && \
   conda install -c https://conda.anaconda.org/anaconda protobuf
+  
+RUN echo "/opt/conda/lib" >> /etc/ld.so.conf.d/protobuf.conf
+RUN ldconfig
+
 
