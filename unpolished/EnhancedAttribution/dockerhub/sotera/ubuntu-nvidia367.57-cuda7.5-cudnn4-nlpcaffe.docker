@@ -166,9 +166,6 @@ ENV PYTHONPATH /home/caffe-user/caffe/python:$PYTHONPATH
 RUN conda install -c https://conda.anaconda.org/memex elasticsearch-py && \
   conda install -c https://conda.anaconda.org/anaconda protobuf
   
-RUN echo "/opt/conda/lib" >> /etc/ld.so.conf.d/protobuf.conf
-RUN ldconfig
-
 RUN pip install lmdb
 
 RUN useradd -ms /bin/bash caffe-user && echo "caffe-user:caffe-user" | chpasswd && adduser caffe-user sudo
@@ -181,4 +178,7 @@ RUN cd /home/caffe-user && git clone https://github.com/Russell91/nlpcaffe.git
 RUN cd /home/caffe-user/nlpcaffe && wget --quiet https://raw.githubusercontent.com/Sotera/watchman/cudnn5/firmament/caffe/Makefile.config
 
 RUN cd /home/caffe-user/nlpcaffe && make -j8 && make pycaffe && make distribute
+
+RUN echo "/opt/conda/lib" >> /etc/ld.so.conf.d/protobuf.conf
+RUN ldconfig
 
