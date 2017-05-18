@@ -1,0 +1,1 @@
+for ((k,v) <- sys.env) printf("key: %s, value: %s\n", k, v)

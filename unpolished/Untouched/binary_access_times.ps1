@@ -1,0 +1,1 @@
+get-childitem -recurse -path *.dll,*.exe | %{ "{0:u}`t{1}" -f $_.LastAccessTime,$_.FullName } > C:\Temp\binary_access_times.log

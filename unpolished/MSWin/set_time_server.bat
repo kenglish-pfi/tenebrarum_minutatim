@@ -1,0 +1,1 @@
+w32tm /config /update /manualpeerlist:"time.windows.com" /syncfromflags:MANUAL /reliable:YES /largephaseoffset:240000
