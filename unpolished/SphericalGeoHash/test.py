@@ -62,7 +62,10 @@ class ConversionTests(unittest.TestCase):
             for j in range(21):
                 a = (i-10) * math.pi / 10.0
                 b = (j-10) * math.pi / 10.0
-                d0 = abs(i - j)* math.pi / 10.0
+                dij = abs(i - j)
+                if dij > 10:
+                    dij = 20 - dij
+                d0 = dij * math.pi / 10.0
                 d = angleDifference(a, b)
                 if abs(d - d0) >= 0.000001:
                     print repr( (i, j) ) + " => " + str(d0) + "; " + repr( (a, b) ) + " => " + str(d)
@@ -103,7 +106,74 @@ class AngleTests(unittest.TestCase):
             self.assertTrue( abs( xyz_in[0] - xyz_out[0] ) < 0.000001)
             self.assertTrue( abs( xyz_in[1] - xyz_out[1] ) < 0.000001)
             self.assertTrue( abs( xyz_in[2] - xyz_out[2] ) < 0.000001)
+
+class TriangleTests(unittest.TestCase):
+    # Verify all of these triangles are isosceles and have the same isosceles lengths.
+    def test_isoscelesEdges(self):
+        success = True
+        triangles = [ 
+            [ "11", "22", "23" ],
+            [ "14", "52", "53" ],
+            [ "41", "25", "26" ],
+            [ "44", "55", "56" ],
+            [ "31", "12", "13" ],
+            [ "61", "15", "16" ]
+        ]
+        for letter in ['1', '2', '3', '4', '5', '6']:
+            triangles.append( [ letter+'0', letter+'1', letter+'2' ] )
+            triangles.append( [ letter+'0', letter+'2', letter+'3' ] )
+            triangles.append( [ letter+'0', letter+'3', letter+'4' ] )
+            triangles.append( [ letter+'0', letter+'4', letter+'5' ] )
+            triangles.append( [ letter+'0', letter+'5', letter+'6' ] )
+        
+        edgeDistances = []
+        for triangle in triangles:
+            V1 = algorithm.vector(triangle[0])
+            V2 = algorithm.vector(triangle[1])
+            V3 = algorithm.vector(triangle[2])
+            D1 = algorithm.distance(V1, V2)
+            D2 = algorithm.distance(V1, V3)
+            edgeDistances.append(D1) 
+            edgeDistances.append(D2) 
+            
+        edgeDistances.sort()
+        err = abs(edgeDistances[0] - edgeDistances[-1])
+        if err > 0.0000000001:
+            print >>sys.stderr, "Non-equilateral triangle error: \t" + repr(triangle) + "\t" + repr(err)
+            success = False
+            
+        self.assertTrue( success )
+    #
+    
+    def test_baseEdges(self):
+        success = True
+        edges = []
+        for letter in ['1', '2', '3', '4', '5', '6']:
+            edges.append( [ letter+'1', letter+'2' ] )
+            edges.append( [ letter+'2', letter+'3' ] )
+            edges.append( [ letter+'3', letter+'4' ] )
+            edges.append( [ letter+'4', letter+'5' ] )
+            edges.append( [ letter+'5', letter+'6' ] )
+            edges.append( [ letter+'6', letter+'1' ] )
+            
+        edgeDistances = []
+        for edge in edges:
+            V1 = algorithm.vector(edge[0])
+            V2 = algorithm.vector(edge[1])
+            D  = algorithm.distance(V1, V2)
+            edgeDistances.append(D)
+            
+        edgeDistances.sort()
+        err = abs(edgeDistances[0] - edgeDistances[-1])
+        if err > 0.0000000001:
+            print >>sys.stderr, "Non-equilateral triangle error: \t" + repr(triangle) + "\t" + repr(err)
+            success = False
+            
+        self.assertTrue( success )
+    #
                 
+        
+            
 #
 #  Additional functions for exploring the result space, collecting stats about 
 #  the functions, etc ... NOT Unit Tests
@@ -163,6 +233,8 @@ def bucketDistributionTest():
         print '\t'.join([ bucket, str(buckets[bucket]) ])
 #
 
+                
+
 def reverseDistribution():
     letters = ['0', '1', '2', '3', '4', '5', '6']
     for a in letters[1:]:
@@ -200,7 +272,7 @@ def peerDistances():
         for b in letters:
             for c in letters:
                 print '\t'.join([ a+b+'0', a+b+c, repr(distance(vector(a+b+'0'), vector(a+b+c))) ])
-                
+
         
 # Close vectors to test with for multiple return case:
 #

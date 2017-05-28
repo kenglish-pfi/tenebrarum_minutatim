@@ -1,5 +1,7 @@
 import sys, math, numpy
 
+FUDGE = 0.40690641612506379
+
 def A(a):
     return numpy.array(a)
 
@@ -63,20 +65,32 @@ def decomposition_vector(current_vector, level, hash):
     letter = hash[level:level+1]
     idx = ord(letter) - ord('0')
     
+    if level == 0 and idx == 0:
+        print >> sys.stderr, "Illegal first hash character: '0'"
+        return numpy.array( [ 0.0, 0.0, 0.0 ] )
+    
+    if level == 0:
+        return CARDINAL_BASIS[idx-1]
+        
     if idx == 0:
-        if level == 0:
-            return CARDINAL_BASIS[idx-1]
-        else:
-            return current_vector
+        return current_vector
     
     cardinalIndex = ord(hash[0:1]) - ord('1')
     W = DECOMPOSITION_VECTORS[cardinalIndex][idx-1]
+    
     
     # Get the rotation matrix
     R = rot_x_matrix(cardinalIndex, current_vector)
     X = (W * R).A[0]  # 3x3 Matrix * 1x3 Array ==> 1x3 Matrix ... grab the one and only 1-D vector from the 1-D matrix
     #  This next line shouldn't be necessary, but seems to be
     X = X / numpy.linalg.norm(X)
+    
+    # Suck the initial vectors in as much as possible.  
+    #  Goal was to make vectors "11", "22", "23" an equilateral triangle ... can only get 90% of the way there ... WHY?
+    if level == 1:
+        X = X + (FUDGE * CARDINAL_BASIS[cardinalIndex])
+        X = X / numpy.linalg.norm(X)
+
     if level > 1:
         for i in range(level-1):
             X = current_vector + X
@@ -170,3 +184,59 @@ def xyz2angles(xyz):
 def angles2xyz(latlon_radians):
     xyz = [math.cos(latlon_radians[0]) * math.cos(latlon_radians[1]), math.cos(latlon_radians[0]) * math.sin(latlon_radians[1]), math.sin(latlon_radians[0])]
     return xyz
+
+# It turns out that you cannot have both of the following sets of triangles be equilaterall triangles:
+#    1) triangles that are formed around the 6 cardinal points (e.g. { [ "10", "11", "12" ], [ "10", "12", "13" ] ... } )
+#    2) triangles that are formed from edge points about the cardinal points  (e.g. { [ "11", "22", "23" ], [ "14", "52", "53" ] ... } )
+#
+# I decided to make the following sets of edges the same length:
+#    1) edges from cardinal points to their surrounding points
+#       and
+#       edges from the single point surrounding one cardinal point to the two points associated with the other cardinal point
+#    2) all edges around a cardinal point
+def findFudge():
+    global FUDGE
+    F_A = 0.9
+    F_Z = 0.1
+    for i in range(48):
+        FUDGE = F_A
+        V10 = vector("10")
+        V11 = vector("11")
+        V12 = vector("12")
+        V22 = vector("22")
+        V23 = vector("23")
+        
+        D22_23 = distance(V22, V23)
+        D11_22 = distance(V11, V22)
+        D11_23 = distance(V11, V23)
+        
+        D10_11 = distance(V10, V11)
+        D10_12 = distance(V10, V12)
+        D11_12 = distance(V11, V12)
+        
+        # D22_23 - D11_22 one of two edges between one point associated with cardinal 
+        error_A = abs(D11_22 - D10_11) 
+        
+        FUDGE = F_Z
+        V11 = vector("11")
+        V22 = vector("22")
+        V23 = vector("23")
+        D22_23 = distance(V22, V23)
+        D11_22 = distance(V11, V22)
+        D11_23 = distance(V11, V23)
+        
+        D10_11 = distance(V10, V11)
+        D10_12 = distance(V10, V12)
+        D11_12 = distance(V11, V12)
+        
+        error_Z = abs(D11_22 - D10_11) 
+        
+        EST = ( (F_A * error_Z) + (F_Z * error_A) ) / ( error_A + error_Z)
+        F_A = (F_A + EST) / 2.0
+        F_Z = (F_Z + EST) / 2.0
+    
+    print '\t'.join( [ repr(EST), repr(error_A), repr(error_Z), repr(F_A), repr(F_Z) ] )
+#    
+    
+if __name__ == '__main__':
+    findFudge()
