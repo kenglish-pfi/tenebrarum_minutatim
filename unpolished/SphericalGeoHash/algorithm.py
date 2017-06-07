@@ -202,32 +202,21 @@ def findFudge():
         FUDGE = F_A
         V10 = vector("10")
         V11 = vector("11")
-        V12 = vector("12")
         V22 = vector("22")
-        V23 = vector("23")
         
-        D22_23 = distance(V22, V23)
-        D11_22 = distance(V11, V22)
-        D11_23 = distance(V11, V23)
-        
+        D11_22 = distance(V11, V22)        
         D10_11 = distance(V10, V11)
-        D10_12 = distance(V10, V12)
-        D11_12 = distance(V11, V12)
         
         # D22_23 - D11_22 one of two edges between one point associated with cardinal 
         error_A = abs(D11_22 - D10_11) 
         
         FUDGE = F_Z
+        V10 = vector("10")
         V11 = vector("11")
         V22 = vector("22")
-        V23 = vector("23")
-        D22_23 = distance(V22, V23)
-        D11_22 = distance(V11, V22)
-        D11_23 = distance(V11, V23)
         
+        D11_22 = distance(V11, V22)        
         D10_11 = distance(V10, V11)
-        D10_12 = distance(V10, V12)
-        D11_12 = distance(V11, V12)
         
         error_Z = abs(D11_22 - D10_11) 
         
@@ -237,6 +226,16 @@ def findFudge():
     
     print '\t'.join( [ repr(EST), repr(error_A), repr(error_Z), repr(F_A), repr(F_Z) ] )
 #    
-    
+
+def level1PointsForExcel():
+    group = 1
+    for a in ['1', '2', '3', '4', '5', '6']:
+        for b in ['0', '1', '2', '3', '4', '5', '6']:
+            V = vector(a+b)
+            LL = xyz2angles(V)
+            print '\t'.join([ repr(LL[1]*180.0/math.pi), repr(LL[0]*180.0/math.pi), str(group) ])
+        group = group + 1
+#
+
 if __name__ == '__main__':
-    findFudge()
+    level1PointsForExcel()
