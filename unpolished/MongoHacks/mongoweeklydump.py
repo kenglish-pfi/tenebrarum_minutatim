@@ -1,3 +1,5 @@
+# mongoweeklydump.py
+#
 import sys, os, datetime
 from pymongo import MongoClient
 

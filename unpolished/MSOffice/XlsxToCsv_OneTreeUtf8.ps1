@@ -13,8 +13,9 @@
 #   Create directory if not exists
 #   http://stackoverflow.com/questions/16906170/create-directory-if-it-does-not-exist
 
+Add-Type -AssemblyName Microsoft.Office.Interop.Excel
 
-Get-ChildItem -Filter *.xlsx -Recurse xlsx | ForEach{
+Get-ChildItem -Filter *.xlsx -Recurse | ForEach{
     # Pass the relative paths to the next block
     $_.FullName.substring((pwd).Path.length+1) 
 } | ForEach{
