@@ -1,0 +1,837 @@
+	dir	ns	predicate	expanded	description
+0	ddos	ddos	type	Type	Types and techniques described the way that the attack is performed to launch the Denial of Service attacks. A combination of type values can be used to explain combined techniques and methods.
+1	coa	coa	discover	Search historical data for an indicator.	
+2	coa	coa	detect	Set up a detection rule for an indicator for future alerting.	
+3	coa	coa	deny	Prevent an event from taking place.	
+4	coa	coa	disrupt	Make an event fail when it is taking place.	
+5	coa	coa	degrade	Slow down attacker activity; reduce attacker efficiency.	
+6	coa	coa	deceive	Pretend only that an action was successful or provide misinformation to the attacker.	
+7	coa	coa	destroy	Offensive action against the attacker.	
+8	monarc-threat	monarc-threat	compromise-of-functions	Compromise of functions	
+9	monarc-threat	monarc-threat	unauthorised-actions	Unauthorised actions	
+10	monarc-threat	monarc-threat	compromise-of-information	Compromise of information	
+11	monarc-threat	monarc-threat	loss-of-essential-services	Loss of essential services	
+12	monarc-threat	monarc-threat	technical-failures	Technical failures	
+13	monarc-threat	monarc-threat	physical-damage	Physical damage	
+14	veris	veris	confidence		
+15	veris	veris	cost_corrective_action		
+16	veris	veris	discovery_method		
+17	veris	veris	security_incident		
+18	veris	veris	targeted		
+19	veris	veris	asset:accessibility		
+20	veris	veris	asset:cloud		
+21	veris	veris	asset:country		
+22	veris	veris	asset:governance		
+23	veris	veris	asset:hosting		
+24	veris	veris	asset:management		
+25	veris	veris	asset:ownership		
+26	veris	veris	impact:iso_currency_code		
+27	veris	veris	impact:overall_rating		
+28	veris	veris	victim:country		
+29	veris	veris	victim:employee_count		
+30	veris	veris	action:environmental:variety		
+31	veris	veris	action:error:variety		
+32	veris	veris	action:error:vector		
+33	veris	veris	action:hacking:result		
+34	veris	veris	action:hacking:variety		
+35	veris	veris	action:hacking:vector		
+36	veris	veris	action:malware:result		
+37	veris	veris	action:malware:variety		
+38	veris	veris	action:malware:vector		
+39	veris	veris	action:misuse:result		
+40	veris	veris	action:misuse:variety		
+41	veris	veris	action:misuse:vector		
+42	veris	veris	action:physical:result		
+43	veris	veris	action:physical:variety		
+44	veris	veris	action:physical:vector		
+45	veris	veris	action:social:result		
+46	veris	veris	action:social:target		
+47	veris	veris	action:social:variety		
+48	veris	veris	action:social:vector		
+49	veris	veris	action:unknown:result		
+50	veris	veris	actor:external:country		
+51	veris	veris	actor:external:motive		
+52	veris	veris	actor:external:variety		
+53	veris	veris	actor:internal:job_change		
+54	veris	veris	actor:internal:motive		
+55	veris	veris	actor:internal:variety		
+56	veris	veris	actor:partner:country		
+57	veris	veris	actor:partner:motive		
+58	veris	veris	asset:assets:variety		
+59	veris	veris	attribute:availability:variety		
+60	veris	veris	attribute:confidentiality:data_disclosure		
+61	veris	veris	attribute:confidentiality:data_victim		
+62	veris	veris	attribute:confidentiality:state		
+63	veris	veris	attribute:integrity:variety		
+64	veris	veris	impact:loss:rating		
+65	veris	veris	impact:loss:variety		
+66	veris	veris	timeline:compromise:unit		
+67	veris	veris	timeline:containment:unit		
+68	veris	veris	timeline:discovery:unit		
+69	veris	veris	timeline:exfiltration:unit		
+70	veris	veris	victim:revenue:iso_currency_code		
+71	veris	veris	attribute:availability:duration:unit		
+72	veris	veris	attribute:confidentiality:data:variety		
+73	dni-ism	dni-ism	classification:all	ClassificationAll	
+74	dni-ism	dni-ism	classification:us	ClassificationUS	
+75	dni-ism	dni-ism	scicontrols	SCIControls	
+76	dni-ism	dni-ism	complies:with	CompliesWith	
+77	dni-ism	dni-ism	atomicenergymarkings	atomicEnergyMarkings	
+78	dni-ism	dni-ism	notice	Notice	
+79	dni-ism	dni-ism	nonic	NonIC	
+80	dni-ism	dni-ism	nonuscontrols	NonUSControls	
+81	dni-ism	dni-ism	dissem	Dissem	
+82	ais-marking	ais-marking	TLPMarking	TLP Marking	
+83	ais-marking	ais-marking	AISConsent	AIS Consent	
+84	ais-marking	ais-marking	CISA_Proprietary	CISA Proprietary	
+85	ais-marking	ais-marking	AISMarking	AIS Marking	
+86	cccs	cccs	event	Event type	Type of event associated to the internal reference
+87	cccs	cccs	disclosure-type	Disclosure type	Type of information being disclosed.
+88	cccs	cccs	domain-category	Domain category	The Domain Category.
+89	cccs	cccs	email-type	Email type	Type of email event.
+90	cccs	cccs	exploitation-technique	Exploitation technique	The technique used to remotely exploit a GoC system.
+91	cccs	cccs	ip-category	Ip category	The IP Category.
+92	cccs	cccs	maliciousness	Maliciousness	Level of maliciousness.
+93	cccs	cccs	malware-category	Malware category	The Malware Category.
+94	cccs	cccs	misusage-type	Misusage type	The type of misusage.
+95	cccs	cccs	mitigation-type	Mitigation type	The type of mitigation.
+96	cccs	cccs	origin	Origin	Where the request originated from.
+97	cccs	cccs	originating-organization	Originating organization	Origin of a signature.
+98	cccs	cccs	scan-type	Scan type	The type of scan event.
+99	cccs	cccs	severity	Severity	Severity of the event.
+100	cccs	cccs	threat-vector	Threat vector	Specifies how the threat actor gained or attempted to gain initial access to the target GoC host.
+101	circl	circl	incident-classification	Incident Classification	
+102	circl	circl	topic	Topic	
+103	access-method	access-method	brute-force	Brute force	Access was gained through systematic trial of credentials in bulk.
+104	access-method	access-method	password-guessing	Password guessing	Access was gained through guessing passwords through trial and error.
+105	access-method	access-method	remote-desktop-application	Remote desktop application	Access was gained through an application designed for remote access.
+106	access-method	access-method	stolen-credentials	Stolen credentials	Access was gained with stolen credentials.
+107	access-method	access-method	pass-the-hash	Pass the hash	Access was gained through use of an existing known hash.
+108	access-method	access-method	default-credentials	Default credentials	Access was gained through use of the system's default credentials.
+109	access-method	access-method	shell	Shell	Access was gained through the use of a shell.
+110	access-method	access-method	other	Other	Access was gained through another method.
+111	ioc	ioc	artifact-state	Artifact State	
+112	stix-ttp	stix-ttp	victim-targeting	Victim Targeting	
+113	iep2-policy	iep2-policy	id	POLICY ID	Provides a unique ID to identify a specific IEP policy.
+114	iep2-policy	iep2-policy	name	POLICY NAME	This statement can be used to provide a name for an IEP policy.
+115	iep2-policy	iep2-policy	description	POLICY DESCRIPTION	This statement can be used to provide more details as a background for an IEP policy.
+116	iep2-policy	iep2-policy	iep_version	IEP POLICY VERSION	States the version of the IEP framework that has been used. Must be set to 2.0.
+117	iep2-policy	iep2-policy	start_date	POLICY START DATE	States the UTC date that the IEP is effective from.
+118	iep2-policy	iep2-policy	end_date	POLICY END DATE	States the UTC date that the IEP is effective until.
+119	iep2-policy	iep2-policy	encrypt_in_transit	ENCRYPT IN TRANSIT	States whether the received information has to be encrypted when it is retransmitted by the recipient.
+120	iep2-policy	iep2-policy	permitted_actions	PERMITTED ACTIONS	States the permitted actions that Recipients can take upon information received.
+121	iep2-policy	iep2-policy	affected_party_notifications	AFFECTED PARTY NOTIFICATIONS	Recipients are permitted notify affected third parties of a potential compromise or threat.
+122	iep2-policy	iep2-policy	tlp	TRAFFIC LIGHT PROTOCOL	Recipients are permitted to redistribute the information received within the redistribution scope as defined by the enumerations.
+123	iep2-policy	iep2-policy	attribution	ATTRIBUTION	Recipients could be required to attribute or anonymize the Provider when redistributing the information received.
+124	iep2-policy	iep2-policy	unmodified_resale	UNMODIFIED RESALE	States whether the recipient MAY or MUST NOT resell the information received unmodified or in a semantically equivalent format.
+125	iep2-policy	iep2-policy	external_reference	EXTERNAL REFERENCE	This statement can be used to convey a description or reference to any applicable licenses, agreements, or conditions between the producer and receiver.
+126	admiralty-scale	admiralty-scale	source-reliability	Source Reliability	
+127	admiralty-scale	admiralty-scale	information-credibility	Information Credibility	
+128	domain-abuse	domain-abuse	domain-status	Domain status	Domain status - describes the registration status of the domain name
+129	domain-abuse	domain-abuse	domain-access-method	Domain access method	Domain Access - describes how the adversary has gained access to the domain name
+130	drugs	drugs	alkaloids-and-derivatives	Alkaloids and derivatives	
+131	drugs	drugs	benzenoids	Benzenoids	
+132	drugs	drugs	homogeneous-metal-compounds	Homogeneous metal compounds	
+133	drugs	drugs	homogeneous-non-metal-compounds	Homogeneous non-metal compounds	
+134	drugs	drugs	hydrocarbons	Hydrocarbons	
+135	drugs	drugs	hydrocarbon-derivatives	Hydrocarbon derivatives	
+136	drugs	drugs	lignans,-neolignans-and-related-compounds	Lignans, neolignans and related compounds	
+137	drugs	drugs	lipids-and-lipid-like-molecules	Lipids and lipid-like molecules	
+138	drugs	drugs	mixed-metal/non-metal-compounds	Mixed metal/non-metal compounds	
+139	drugs	drugs	nucleosides,-nucleotides,-and-analogues	Nucleosides, nucleotides, and analogues	
+140	drugs	drugs	organic-1,3-dipolar-compounds	Organic 1,3-dipolar compounds	
+141	drugs	drugs	organic-acids-and-derivatives	Organic acids and derivatives	
+142	drugs	drugs	organic-acids	Organic Acids	
+143	drugs	drugs	organic-nitrogen-compounds	Organic nitrogen compounds	
+144	drugs	drugs	organic-oxygen-compounds	Organic oxygen compounds	
+145	drugs	drugs	organic-polymers	Organic Polymers	
+146	drugs	drugs	organic-salts	Organic salts	
+147	drugs	drugs	organohalogen-compounds	Organohalogen compounds	
+148	drugs	drugs	organoheterocyclic-compounds	Organoheterocyclic compounds	
+149	drugs	drugs	organometallic-compounds	Organometallic compounds	
+150	drugs	drugs	organophosphorus-compounds	Organophosphorus compounds	
+151	drugs	drugs	organosulfur-compounds	Organosulfur compounds	
+152	drugs	drugs	phenylpropanoids-and-polyketides	Phenylpropanoids and polyketides	
+153	ifx-vetting	ifx-vetting	vetted	state of the vetted intelligence	
+154	ifx-vetting	ifx-vetting	score	A numerical score added by a scoring algorithm of choice. The score can either be considered by an analyst or in combination with other tags be used for automatic processing of the data.	
+155	estimative-language	estimative-language	likelihood-probability	Likelihood or probability	Properly expresses and explains uncertainties associated with major analytic judgments: Analytic products should indicate and explain the basis for the uncertainties associated with major analytic judgments, specifically the likelihood of occurrence of an event or development, and the analyst's confidence in the basis for this judgment. Degrees of likelihood encompass a full spectrum from remote to nearly certain. Analysts' confidence in an assessment or judgment may be based on the logic and evidentiary base that underpin it, including the quantity and quality of source material, and their understanding of the topic. Analytic products should note causes of uncertainty (e.g., type, currency, and amount of information, knowledge gaps, and the nature of the issue) and explain how uncertainties affect analysis (e.g., to what degree and how a judgment depends on assumptions). As appropriate, products should identify indicators that would alter the levels of uncertainty for major analytic judgments. Consistency in the terms used and the supporting information and logic advanced is critical to success in expressing uncertainty, regardless of whether likelihood or confidence expressions are used.
+156	estimative-language	estimative-language	confidence-in-analytic-judgment	Confidence in analytic judgment	Confidence in a judgment is based on three factors:   number of key assumptions required, the credibility and diversity of sourcing in the knowledge base, and the strength of argumentation. Each factor should be assessed independently and then in concert with the other factors to determine the confidence level. Multiple judgments in a product may contain varying levels of confidence. Confidence levels are stated as Low, Moderate, and High.
+157	vmray	vmray	verdict	VMRay Verdict	
+158	vmray	vmray	vti_analysis_score	VMRay Threat Identifier Analysis Score	
+159	vmray	vmray	artifact	VMRay Artifact	
+160	europol-incident	europol-incident	malware	Malware	
+161	europol-incident	europol-incident	availability	Availability	
+162	europol-incident	europol-incident	information-gathering	Gathering of information	
+163	europol-incident	europol-incident	intrusion-attempt	Intrusion attempt	
+164	europol-incident	europol-incident	intrusion	Intrusion	
+165	europol-incident	europol-incident	information-security	Information security	
+166	europol-incident	europol-incident	fraud	Fraud	
+167	europol-incident	europol-incident	abusive-content	Abusive content	
+168	europol-incident	europol-incident	other	Other	
+169	smart-airports-threats	smart-airports-threats	human-errors	Human errors	
+170	smart-airports-threats	smart-airports-threats	system-failures	System failures	
+171	smart-airports-threats	smart-airports-threats	natural-and-social-phenomena	Natural and social phenomena	
+172	smart-airports-threats	smart-airports-threats	third-party-failures	Third party failures	
+173	smart-airports-threats	smart-airports-threats	malicious-actions	Malicious actions	
+174	interactive-cyber-training-training-setup	interactive-cyber-training-training-setup	scoring	Scoring	Scoring is not only used in competition-oriented training like CTF but also to motivate participants, give feedback, track the progress. The scoring can be based, but is not limited to monitoring systems, defined objectives, or over-the-shoulder evaluation mechanisms.
+175	interactive-cyber-training-training-setup	interactive-cyber-training-training-setup	roles	Roles	Participants in a training are split in different teams, according to their skills, role and tasks.
+176	interactive-cyber-training-training-setup	interactive-cyber-training-training-setup	training-mode	Training Mode	Defines whether the training opposes singles persons, teams or groups.
+177	interactive-cyber-training-training-setup	interactive-cyber-training-training-setup	customization-level	Customization Level	Defines the level of customization of the training.
+178	runtime-packer	runtime-packer	portable-executable	Portable Executable (PE)	
+179	runtime-packer	runtime-packer	elf	ELF	
+180	runtime-packer	runtime-packer	cli-assembly	CLI assembly	
+181	binary-class	binary-class	type	Binary Type	
+182	adversary	adversary	infrastructure-status	Infrastructure Status	
+183	adversary	adversary	infrastructure-action	Infrastructure Action	
+184	adversary	adversary	infrastructure-state	Infrastructure State	
+185	adversary	adversary	infrastructure-type	Infrastructure Type	
+186	common-taxonomy	common-taxonomy	malware	Malicious software/code	Infection of one or various systems with a specific type of malware / Connection performed by/from/to (a) suspicious system(s)
+187	common-taxonomy	common-taxonomy	availability	Availability	Disruption of the processing and response capacity of systems and networks in order to render them inoperative / Premeditated action to damage a system, interrupt a process, change or delete information, etc.
+188	common-taxonomy	common-taxonomy	information-gathering	Information Gathering	Active and passive gathering of information on systems or networks / Unauthorised monitoring and reading of network traffic / Attempt to gather information on a user or a system through phishing methods.
+189	common-taxonomy	common-taxonomy	intrusion-attempt	Intrusion Attempt	Attempt to intrude by exploiting vulnerability in a system, component or network / Attempt to log in to services or authentication/access control mechanisms.
+190	common-taxonomy	common-taxonomy	intrusion	Intrusion	Actual intrusion by exploiting vulnerability in the system, component or network / Actual intrusion in a system, component or network by compromising a user or administrator account.
+191	common-taxonomy	common-taxonomy	information-security	Information Security	Unauthorised access to a particular set of information / Unauthorised change or elimination of a particular set of information.
+192	common-taxonomy	common-taxonomy	fraud	Fraud	Loss of property caused with fraudulent or dishonest intent of procuring, without right, an economic benefit for oneself or for another person.
+193	common-taxonomy	common-taxonomy	abusive-content	Abusive Content	Sending SPAM messages / Distribution and sharing of copyright protected content / Dissemination of content forbidden by law.
+194	common-taxonomy	common-taxonomy	other	Other	Incidents not classified in the existing classification.
+195	fpf	fpf	degrees-of-identifiability	Degrees of identifiability	Information containing direct and indirect identifiers.
+196	fpf	fpf	pseudonymous-data	Pseudonymous Data	Information from which direct identifiers have been eliminated or transformed, but indirect entifiers remain intact.
+197	fpf	fpf	de-identified-data	De-identified data	Direct and known indirect identifiers have been removed or manipulated to break the linkage to real world identities.
+198	fpf	fpf	anonymous-data	Anonymous data	Direct and indirect identifiers have en removed or manipulated together with mathematical and technical guarantees to prevent re-identification.
+199	honeypot-basic	honeypot-basic	interaction-level	Interaction Level	Describes whether the exposed functionality of a honeypot is limited in some way, which is usually the case for honeypots that simulate services.
+200	honeypot-basic	honeypot-basic	data-capture	Data Capture	Describes the type of data a honeypot is able to capture
+201	honeypot-basic	honeypot-basic	containment	Containment	Classifies the measures a honeypot takes to defend against malicious activity spreading from itself.
+202	honeypot-basic	honeypot-basic	distribution-appearance	Distribution Appearance	Describes whether the honeypot system appears to be confined to one system or multiple systems.
+203	honeypot-basic	honeypot-basic	communication-interface	Communication Interface	Describes the interfaces one can use to interact directly with the honeypot.
+204	honeypot-basic	honeypot-basic	role	Role in Multi-tier Architecture	Describes in what role the honeypot acts within a multi-tier architecture.
+205	tlp	tlp	red	(TLP:RED) Information exclusively and directly given to (a group of) individual recipients. Sharing outside is not legitimate.	Not for disclosure, restricted to participants only. Sources may use TLP:RED when information cannot be effectively acted upon by additional parties, and could lead to impacts on a party's privacy, reputation, or operations if misused. Recipients may not share TLP:RED information with any parties outside of the specific exchange, meeting, or conversation in which it was originally disclosed. In the context of a meeting, for example, TLP:RED information is limited to those present at the meeting. In most circumstances, TLP:RED should be exchanged verbally or in person.
+206	tlp	tlp	amber	(TLP:AMBER) Information exclusively given to an organization; sharing limited within the organization to be effectively acted upon.	Limited disclosure, restricted to participants’ organizations. Sources may use TLP:AMBER when information requires support to be effectively acted upon, yet carries risks to privacy, reputation, or operations if shared outside of the organizations involved. Recipients may only share TLP:AMBER information with members of their own organization, and with clients or customers who need to know the information to protect themselves or prevent further harm. Sources are at liberty to specify additional intended limits of the sharing: these must be adhered to.
+207	tlp	tlp	green	(TLP:GREEN) Information given to a community or a group of organizations at large. The information cannot be publicly released.	Limited disclosure, restricted to the community. Sources may use TLP:GREEN when information is useful for the awareness of all participating organizations as well as with peers within the broader community or sector. Recipients may share TLP:GREEN information with peers and partner organizations within their sector or community, but not via publicly accessible channels. Information in this category can be circulated widely within a particular community. TLP:GREEN information may not be released outside of the community.
+208	tlp	tlp	white	(TLP:WHITE) Information can be shared publicly in accordance with the law.	Disclosure is not limited.  Sources may use TLP:WHITE when information carries minimal or no foreseeable risk of misuse, in accordance with applicable rules and procedures for public release. Subject to standard copyright rules, TLP:WHITE information may be distributed without restriction.
+209	tlp	tlp	ex:chr	(TLP:EX:CHR) Information extended with a specific tag called Chatham House Rule (CHR). When this specific CHR tag is mentioned, the attribution (the source of information) must not be disclosed. This additional rule is at the discretion of the initial sender who can decide to apply or not the CHR tag.	
+210	scrippsco2-fgi	scrippsco2-fgi	-3	accepted-suspect	Suspect but accepted isotopic measurement
+211	scrippsco2-fgi	scrippsco2-fgi	0	accepted	Accepted isotopic measurement
+212	scrippsco2-fgi	scrippsco2-fgi	3	rejected	Rejected
+213	scrippsco2-fgi	scrippsco2-fgi	5	outlier	Outlier from fit
+214	scrippsco2-fgi	scrippsco2-fgi	6	rejected-old-data	Other rejected, older data
+215	scrippsco2-fgi	scrippsco2-fgi	8	extracted-not-analyzed	Flask extracted but not analyzed yet
+216	scrippsco2-fgi	scrippsco2-fgi	9	not-extracted	Flask not extracted
+217	osint	osint	source-type	Source Type	
+218	osint	osint	lifetime	Lifetime of the information as Open Source Intelligence	
+219	osint	osint	certainty	Certainty of the elements mentioned in this Open Source Intelligence	
+220	copine-scale	copine-scale	level-10	Sadistic/bestiality: (a) Pictures showing a child being tied, bound, beaten, whipped, or otherwise subjected to something that implies pain; (b) Pictures where an animal is involved in some form of sexual behavior with a child	
+221	copine-scale	copine-scale	level-9	Gross assault: Grossly obscene pictures of sexual assault, involving penetrative sex, masturbation, or oral sex involving an adult	
+222	copine-scale	copine-scale	level-8	Assault: Pictures of children being subjected to a sexual assault, involving digital touching, involving an adult	
+223	copine-scale	copine-scale	level-7	Explicit sexual activity: Involves touching, mutual and self-masturbation, oral sex, and intercourse by child, not involving an adult	
+224	copine-scale	copine-scale	level-6	Explicit erotic posing: Emphasizing genital areas where the child is posing either naked, partially clothed, or fully clothed	
+225	copine-scale	copine-scale	level-5	Erotic posing: Deliberately posed pictures of fully or partially clothed or naked children in sexualized or provocative poses	
+226	copine-scale	copine-scale	level-4	Posing: Deliberately posed pictures of children fully or partially clothed or naked (where the amount, context, and organization suggests sexual interest)	
+227	copine-scale	copine-scale	level-3	Erotica: Surreptitiously taken photographs of children in play areas or other safe environments showing either underwear or varying degrees of nakedness	
+228	copine-scale	copine-scale	level-2	Nudist: Pictures of naked or seminaked children in appropriate nudist settings, and from legitimate sources	
+229	copine-scale	copine-scale	level-1	Indicative: Nonerotic and nonsexualized pictures showing children in their underwear, swimming costumes, and so on, from either commercial sources or family albums; pictures of children playing in normal settings, in which the context or organization of pictures by the collector indicates inappropriateness	
+230	misp	misp	ui	User-interface tag influencing the MISP behavior and visual interaction.	
+231	misp	misp	api	API related tag influencing the MISP behavior of the API.	
+232	misp	misp	expansion	Expansion	Expansion tag incluencing the MISP behavior using expansion modules
+233	misp	misp	contributor	Information related to the contributor.	
+234	misp	misp	confidence-level	Confidence level	
+235	misp	misp	threat-level	Cyberthreat Effect Universal Scale - MISP's internal threat level taxonomy	
+236	misp	misp	automation-level	Automation level	
+237	misp	misp	should-not-sync	Should not sync	Event with this tag should not be synced to other MISP instances
+238	misp	misp	tool	Tool	Tool associated with the information taggged
+239	misp	misp	misp2yara	misp2yara export tool	
+240	misp	misp	event-type	Type of the event.	
+241	misp	misp	ids	IDS related tag unfluencing the MISP behavior of the IDS flag.	
+242	cyber-threat-framework	cyber-threat-framework	Preparation	Activities undertaken by a threat actor, their leadership and/or sponsor to prepare for conducting malicious cyber activities, e.g., establish governance and articulating intent, objectives, and strategy; identify potential victims and attack vectors; securing resources and develop capabilities; assess intended victim's cyber environment; and define measures for evaluating the success or failure of threat activities.	
+243	cyber-threat-framework	cyber-threat-framework	Engagement	Threat actor activities taken prior to gaining but with the intent to gain unauthorized access to the intended victim's physical or virtual computer or information system(s), network(s), and/or data stores.	
+244	cyber-threat-framework	cyber-threat-framework	Presence	Actions taken by the threat actor once unauthorized access to victim(s)' physical or virtual computer or information system has been achieved that establishes and maintains conditions or allows the threat actor to perform intended actions or operate at will against the host physical or virtual computer or information system, network and/or data stores.	
+245	cyber-threat-framework	cyber-threat-framework	Effect/Consequence	Outcomes of threat actor actions on a victim's physical or virtual computer or information system(s), network(s), and/or data stores.	
+246	threats-to-dns	threats-to-dns	dns-protocol-attacks	DNS protocol attacks	DNS protocol attacks
+247	threats-to-dns	threats-to-dns	dns-server-attacks	DNS server attacks	DNS server attacks
+248	threats-to-dns	threats-to-dns	dns-abuse-or-misuse		DNS abuse/misuse
+249	infoleak	infoleak	automatic-detection	Type of information leak detected from automatic analysis	
+250	infoleak	infoleak	analyst-detection	Type of information leak detected from a human analysis	
+251	infoleak	infoleak	confirmed	Confirmed information leak or not	
+252	infoleak	infoleak	source	Source of the information leak	
+253	infoleak	infoleak	submission	type of submission	
+254	infoleak	infoleak	output-format	Output format	
+255	infoleak	infoleak	certainty	Certainty of the information to be a leak	
+256	csirt_case_classification	csirt_case_classification	incident-category	Incident Category	
+257	csirt_case_classification	csirt_case_classification	criticality-classification	Criticality Classification	
+258	csirt_case_classification	csirt_case_classification	sensitivity-classification	Sensitivity Classification	
+259	malware_classification	malware_classification	malware-category	Malware Category	
+260	malware_classification	malware_classification	obfuscation-technique	Obfuscation Technique	
+261	malware_classification	malware_classification	payload-classification	Payload Classification	
+262	malware_classification	malware_classification	memory-classification	Memory Classification	
+263	ransomware	ransomware	type	Type	Type is used to describe the type of a ransomware and how it works.
+264	ransomware	ransomware	element	Element	Elements that composed or are linked to a ransomware and its execution.
+265	ransomware	ransomware	complexity-level	Complexity level	Level of complexity of the ransomware.
+266	ransomware	ransomware	purpose	Purpose	Purpose of the ransomware.
+267	ransomware	ransomware	target	Target	Target of the ransomware.
+268	ransomware	ransomware	infection	Infection	Infection vector used by the ransomware.
+269	ransomware	ransomware	communication	Communication	Communication method used by the ransomware;
+270	ransomware	ransomware	malicious-action	Malicious Action	Malicious action performed by the ransomware.
+271	extended-event	extended-event	competitive-analysis	Competitive analysis	
+272	extended-event	extended-event	extended-analysis	Extended analysis	
+273	extended-event	extended-event	human-readable	Human readable	This extended event makes a human readable output of a  machine or technical report.
+274	extended-event	extended-event	chunked-event	Chunked Event	This extended event is a part of a large event.
+275	extended-event	extended-event	update	Update	Original event is deprecated
+276	maec-malware-behavior	maec-malware-behavior	maec-malware-behavior	MAEC Malware behavior	
+277	gea-nz-activities	gea-nz-activities	cases-compliance	Cases Compliance	Information about an occurrence by a person or organisation that is under official investigation.
+278	gea-nz-activities	gea-nz-activities	cases-proceeding	Cases Proceeding	Information about a case held by an organisation related to interpretation of the law.
+279	gea-nz-activities	gea-nz-activities	cases-episode	Cases Episode	Information focused on individual’s interactions with an agency, organisation or enterprise, which is tacked as a sequence over a period of time.
+280	gea-nz-activities	gea-nz-activities	cases-commission-of-inquiry	Cases Commission of Inquiry	Information relating to inquiries into various issues. Commissions report findings, give advice and make recommendations.
+281	gea-nz-activities	gea-nz-activities	cases-claim	Cases Claim	Information about claims.
+282	gea-nz-activities	gea-nz-activities	cases-request	Cases Request	Information about requests that need to be tracked.
+283	gea-nz-activities	gea-nz-activities	cases-order	Cases Order	Information relating to orders and tracking of the orders.
+284	gea-nz-activities	gea-nz-activities	events-personal	Events Personal	Information around personal events like birth, starting school, getting married, etc.
+285	gea-nz-activities	gea-nz-activities	events-crisis	Events Crisis	Information about events that describe a personal crisis.
+286	gea-nz-activities	gea-nz-activities	events-social	Events Social	Information relating to planned or spontaneous occurrences of a social nature that may require a response by an organisation.
+287	gea-nz-activities	gea-nz-activities	events-business	Events Business	Information related to a type of event relating to the business of the organisation.
+288	gea-nz-activities	gea-nz-activities	events-trade	Events Trade	Information about events that hold substantial meaning for an individual but which are tracked by an organisation such as birth, deaths, health condition etc.
+289	gea-nz-activities	gea-nz-activities	events-travel	Events Travel	Information related to traveling overseas or coming into France.
+290	gea-nz-activities	gea-nz-activities	events-environmental	Events Environmental	Information held by an organisation about environmental activities such as atmospheric pressures, geological formations, rainfall etc.
+291	gea-nz-activities	gea-nz-activities	events-uncontrolled	Events Uncontrolled	Information about events that occur spontaneously, but to which the organisation is required to respond.
+292	gea-nz-activities	gea-nz-activities	events-interaction	Events Interaction	Information about activity that describes a relevant process or action undertaken by the enterprise.
+293	gea-nz-activities	gea-nz-activities	services-france-society	Services France Society	Information related to services delivered across France individuals, communities, and businesses.
+294	gea-nz-activities	gea-nz-activities	services-inviduals-&-communities	Services Inviduals & Communities	Information related to services delivered specifically to France individuals and communities.
+295	gea-nz-activities	gea-nz-activities	services-services-to-business	Services Services to Business	Information related to services delivered specifically to France businesses.
+296	gea-nz-activities	gea-nz-activities	services-civic-infrastructure	Services Civic Infrastructure	Information related to services delivering France infrastructure.
+297	gea-nz-activities	gea-nz-activities	services-government-administration	Services Government Infrastructure	Information related to delivering France government wide operations and support services.
+298	gea-nz-activities	gea-nz-activities	services-services-from-business	Services Services from Business	Information related to services delivered by businesses.
+299	enisa	enisa	physical-attack	Physical attack (deliberate/intentional).	Threats of intentional, hostile human actions.
+300	enisa	enisa	unintentional-damage	Unintentional damage / loss of information or IT assets.	Threats of unintentional human actions or errors.
+301	enisa	enisa	disaster	Disaster (natural, environmental).	Threats of damage to information assets caused by natural or environmental factors.
+302	enisa	enisa	failures-malfunction	Failures/ Malfunction.	Threat of failure/malfunction of IT supporting infrastructure (i.e.  degradation of quality, improper working parameters, jamming).  The cause of a failure is mostly an internal issue (e.g.. overload of the power grid in a building).
+303	enisa	enisa	outages	Outages.	Threat of complete lack or loss of resources necessary for IT infrastructure. The cause of an outage is mostly an external issue (i.e electricity blackout in the whole city).
+304	enisa	enisa	eavesdropping-interception-hijacking	Eavesdropping/ Interception/ Hijacking	Threats that alter communication between two parties. These attacks do not have to install additional tools/software on a victim's site.
+305	enisa	enisa	legal	Legal	Threat of financial or legal penalty or loss of trust of customers and collaborators due to legislation.
+306	enisa	enisa	nefarious-activity-abuse	Nefarious Activity/ Abuse	Threats of nefarious activities that require use of tools by the attacker. These attacks require installation of additional tools/software or performing additional steps on the victim's IT infrastructure/software.
+307	cssa	cssa	sharing-class	Sharing Class	
+308	cssa	cssa	report	Report	
+309	cssa	cssa	origin	Origin	
+310	cssa	cssa	analyse	Please analyse sample	
+311	dhs-ciip-sectors	dhs-ciip-sectors	DHS-critical-sectors	DHS critical sectors	
+312	dhs-ciip-sectors	dhs-ciip-sectors	sector	Sector	
+313	exercise	exercise	cyber-europe	Cyber Europe	ENISA manages the programme of pan-European exercises CE2018 logonamed Cyber Europe. This is a series of EU-level cyber incident and crisis management exercises for both the public and private sectors from the EU and EFTA Member States. The Cyber Europe exercises are simulations of large-scale cybersecurity incidents that escalate to become cyber crises. The exercises offer opportunities to analyse advanced technical cybersecurity incidents but also to deal with complex business continuity and crisis management situations.
+314	exercise	exercise	cyber-storm	Cyber Storm	Cyber Storm, the Department of Homeland Security’s (DHS) biennial exercise series, provides the framework for the most extensive government-sponsored cybersecurity exercise of its kind. Congress mandated the Cyber Storm exercise series to strengthen cyber preparedness in the public and private sectors. Securing cyber space is the DHS Office of Cybersecurity and Communications' top priority.
+315	exercise	exercise	locked-shields	Locked Shields	Locked Shields is the world’s largest and most advanced international technical live-fire cyber defence exercise. This annual scenario-based, real-time network defence exercise, which has been organised by the NATO Cooperative Cyber Defence Centre of Excellence since 2010, focuses on training for security experts who protect national IT systems.
+316	exercise	exercise	lukex	LÜKEX	LÜKEX ist ein Kurzwort für Länderübergreifende Krisenmanagementübung (EXercise) und die Bezeichnung für regelmäßig stattfindende Übungen in der Bundesrepublik Deutschland. Ziel von Lükex ist es, das gemeinsame Management des Bundes und der Länder in nationalen Krisen aufgrund von außergewöhnlichen Gefahren- und Schadenslagen auf strategischer Ebene zu verbessern.
+317	exercise	exercise	cyber-coalition	Cyber Coalition	Cyber Coalition tests and trains cyber defenders from across the Alliance in their ability to defend NATO and national networks. From defence against malware, through tackling hybrid challenges involving social media, to attacks on mobile devices, the exercise has a challenging, realistic scenario that helps prepare our cyber defenders for real-life cyber challenges. The training includes testing of operational and legal procedures, exchange of information and work with industry and partners.
+318	exercise	exercise	pace	PACE	NATO-EU Parallel and Coordinated Exercise. PACE focuses on four key areas, namely situational awareness, effectiveness of our instruments to counter cyber threats at EU level, speed of reaction and appropriate reactivity of our crisis response mechanisms, as well as our capacity to communicate fast and in a coordinated way.
+319	exercise	exercise	cyber-sopex	Cyber SOPEx	Cyber SOPEx (formerly known as EuroSOPEx) is the first step in a series of ENISA exercises focusing on training the participants on situational awareness, information sharing, understanding roles and responsibilities and utilising related tools, as agreed by the CSIRTs Network
+320	exercise	exercise	generic	Generic	Generic exercise which are not named.
+321	gsma-attack-category	gsma-attack-category	denial-of-service	(Distributed) Denial of Service	
+322	gsma-attack-category	gsma-attack-category	exploit-attack	Exploit attack	
+323	gsma-attack-category	gsma-attack-category	information-gathering	Information gathering	
+324	gsma-attack-category	gsma-attack-category	insider-attack	Insider attack	
+325	gsma-attack-category	gsma-attack-category	interception-attack	Interception attack	
+326	gsma-attack-category	gsma-attack-category	manipulation-attack	Manipulation attack	
+327	gsma-attack-category	gsma-attack-category	physical-attack	Physical attack	
+328	gsma-attack-category	gsma-attack-category	spoofing	Spoofing	
+329	priority-level	priority-level	emergency	Emergency	An Emergency priority incident poses an imminent threat to the provision of wide-scale critical infrastructure services, national government stability, or the lives of U.S. persons.
+330	priority-level	priority-level	severe	Severe	A Severe priority incident is likely to result in a significant impact to public health or safety, national security, economic security, foreign relations, or civil liberties.
+331	priority-level	priority-level	high	High	A High priority incident is likely to result in a demonstrable impact to public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
+332	priority-level	priority-level	medium	Medium	A Medium priority incident may affect public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
+333	priority-level	priority-level	low	Low	A Low priority incident is unlikely to affect public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
+334	priority-level	priority-level	baseline-minor	Baseline - Minor	A Baseline–Minor priority incident is an incident that is highly unlikely to affect public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence. The potential for impact, however, exists and warrants additional scrutiny.
+335	priority-level	priority-level	baseline-negligible	Baseline - Negligible	A Baseline–Negligible priority incident is an incident that is highly unlikely to affect public health or safety, national security, economic security, foreign relations, civil liberties, or public confidence.
+336	scrippsco2-fgc	scrippsco2-fgc	-3	accepted-suspect	Potentially Suspect Data Accepted
+337	scrippsco2-fgc	scrippsco2-fgc	-2	accepted-continuous-analyzer	Accepted value from continuous analyzer replacing flask data
+338	scrippsco2-fgc	scrippsco2-fgc	-1	accepted-deviated-tolerance	Acepted Value retained although individual measurements deviated by more than selected tolerance
+339	scrippsco2-fgc	scrippsco2-fgc	0	accepted	Accepted Value
+340	scrippsco2-fgc	scrippsco2-fgc	1	rejected-during-analysis	Rejected during analysis
+341	scrippsco2-fgc	scrippsco2-fgc	2	rejected-legacy-difference-night-mlo	Rejected unacceptably large flask-analyzer differences associated with night sampling (used only at MLO between Dec 1962 and Sep 1968)
+342	scrippsco2-fgc	scrippsco2-fgc	3	rejected-continuous-data	Rejected flask measurement; used continuous data instead
+343	scrippsco2-fgc	scrippsco2-fgc	4	rejected-tolerance-single-flask	Rejected Replicates do not agree to selected tolerance or single flask
+344	scrippsco2-fgc	scrippsco2-fgc	5	rejected-derivation	Rejected Daily average deviates from fit by more than 3 standard deviations
+345	scrippsco2-fgc	scrippsco2-fgc	6	rejected-legacy-poor-quality-kum-ljo	Rejected to improve local distribution of data such as too many data of generally poor quality (used only at two stations: KUM Aug 1979 - Jun 1980 and LJO Apr 1979 - Sep 1985)
+346	scrippsco2-fgc	scrippsco2-fgc	7	rejected-unsteady-ljo	Rejected Unsteady air at site (La Jolla only)
+347	scrippsco2-fgc	scrippsco2-fgc	8	rejected-manual	Rejected manually (see input/flag_flasks.csv)
+348	interactive-cyber-training-audience	interactive-cyber-training-audience	sector	Sector	The sector from which the audience comes determines the nature of the training.
+349	interactive-cyber-training-audience	interactive-cyber-training-audience	purpose	Purpose	Purpose answered the question for which reason trainings should be used.
+350	interactive-cyber-training-audience	interactive-cyber-training-audience	proficiency-level	Proficiency Level	Proficiency describes the knowledge of users and what they are able to do.
+351	interactive-cyber-training-audience	interactive-cyber-training-audience	target-audience	Target Audience	Target audience describes the audience, which is targeted by the training.
+352	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-oes	Operators of Essential Services	
+353	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-oes-energy	Operators of Essential Services - Energy Sector	
+354	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-oes-transport	Operators of Essential Services - Transport Sector	
+355	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-oes-banking	Operators of Essential Services - Banking Sector	
+356	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-oes-financial	Operators of Essential Services - Financial Market Infrastructure Sector	
+357	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-oes-health	Operators of Essential Services - Health Sector	
+358	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-oes-water	Operators of Essential Services - Drinking Water Supply and Distribution Sector	
+359	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-oes-diginfra	Operators of Essential Services - Digital Intrastructure Sector	
+360	eu-nis-sector-and-subsectors	eu-nis-sector-and-subsectors	eu-nis-dsp	Digital Service Providers	
+361	cytomic-orion	cytomic-orion	action	API action	Desired action of background jobs with the API
+362	flesch-reading-ease	flesch-reading-ease	score	Score	
+363	rsit	rsit	abusive-content	Abusive Content	Abusive Content.
+364	rsit	rsit	malicious-code	Malicious Code	Software that is intentionally included or inserted in a system for a harmful purpose. A user interaction is normally necessary to activate the code.
+365	rsit	rsit	information-gathering	Information Gathering	Information Gathering.
+366	rsit	rsit	intrusion-attempts	Intrusion Attempts	Intrusion Attempts.
+367	rsit	rsit	intrusions	Intrusions	A successful compromise of a system or application (service). This can have been caused remotely by a known or new vulnerability, but also by an unauthorised local access. Also includes being part of a botnet.
+368	rsit	rsit	availability	Availability	By this kind of an attack a system is bombarded with so many packets that the operations are delayed or the system crashes. DoS examples are ICMP and SYN floods, Teardrop attacks and mail-bombing. DDoS often is based on DoS attacks originating from botnets, but also other scenarios exist like DNS Amplification attacks. However, the availability also can be affected by local actions (destruction, disruption of power supply, etc.) – or by Act of God, spontaneous failures or human error, without malice or gross neglect being involved.
+369	rsit	rsit	information-content-security	Information Content Security	Besides a local abuse of data and systems the information security can be endangered by a successful account or application compromise. Furthermore attacks are possible that intercept and access information during transmission (wiretapping, spoofing or hijacking). Human/configuration/software error can also be the cause.
+370	rsit	rsit	fraud	Fraud	Fraud.
+371	rsit	rsit	vulnerable	Vulnerable	Open resolvers, world-readable printers, vulnerabilities apparent from scans, anti-virus signatures not up-to-date, etc.
+372	rsit	rsit	other	Other	All incidents which don't fit in one of the given categories should be put into this class. If the number of incidents in this category increases, it is an indicator that the classification scheme must be revised.
+373	rsit	rsit	test	Test	Meant for testing.
+374	iot	iot	TCom	Technical complexity	IoT projects vary tremendously in terms of their technical sophistication. Digital Catapult has developed a scale based on technology complexity (TCom) that enables us to understand the state of IoT in the UK, and to assess what is currently being researched, trialled or deployed in real-life implementations.
+375	iot	iot	SSL	System Security Level	A second characteristic of an IoT system concerns the inherent level of safety, privacy and security of that system. At one end of the spectrum, an IoT system may not gather data that is sensitive either in terms of safety or privacy, while at the other it may collect data about identifiable individuals or groups of individuals, involve financial transactions, or access to system data or have the ability to control objects that could compromise health, safety or security.
+376	iot	iot	DSL	Data Sharing Level	A third characteristic of IoT systems concerns the degree of sharing of sensitive data between the object and the system, and subsequently between the system and the system operator(s) or participants, and third parties. Systems do not always need to share data, so IoT product, platform, service and system designers must be clear about when data is shared, what is shared and why.
+377	event-assessment	event-assessment	alternative-points-of-view-process	Alternative points of view process	A list of procedures or practices which describe alternative points of view to validate or rate an analysis. The list describes techniques or methods which could reinforce the estimative language in a human analysis and/or challenge the assumptions to reduce the potential bias of the analysis introduced by the analyst(s).
+378	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	primary-target	Target: Nation of Origin	This should be filled out even when the target is not a nation. When a campaign targets a non-state political actor, the nation of origin of that non-state political actor is filled in this field, if that information is available. Distinguishable territories are nations.
+379	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	platforms-advertisement	Platforms: Advertisements	Advertisement through which a campaign targets an actor.
+380	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	platforms-email	Platforms: Email	Email through which a campaign targets an actor.
+381	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	primary-disinformant	Disinformant: Nation of Origin	This should be filled out even when the attacker is not a national government. When a campaign is run by a non-state political actor, the nation of origin of that non-state political actor is filled in this field, if that information is available. Likewise, this should be filled out if the preponderance of attacker activity originates from within a single nation. Distinguishable territories are nations.
+382	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	target-category	Target: Category	When a campaign targets an actor, the category of that actor is filled in this field, if that information is available. Categories are not mutually exclusive. All relevant categories can be added.
+383	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	target-concurrent-events	Target: Concurrent Events	When a campaign targets an actor, events which take place during the campaign are said to be concurrent events.
+384	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	platforms-open-web	Platforms: Open Web	Open web media platform through which a campaign targets an actor.
+385	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	platforms-social-media	Platforms: Social Media	Social media platform through which a campaign targets an actor.
+386	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	platforms-messaging	Platforms: Messaging	Messaging platform through which a campaign targets an actor.
+387	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	platforms	Platforms	Platforms through which a campaign targets an actor.
+388	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	content-language	Content: Language	The language of the disinformation.
+389	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	content-topic	Content: Topic	The subject evident in the campaign.
+390	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	methods-tactics	Methods: Tactics	The tactics evident in the campaign.
+391	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	methods-narrative-techniques	Methods: Narrative Techniques	The narrative techniques evident in the campaign.
+392	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	disinformant-category	Disinformant: Category	When a disinformant targets an actor, the category of that disinformant is filled in this field, if that information is available. Categories are not mutually exclusive. All relevant categories can be added.
+393	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	disinformant-concurrent-events	Disinformant: Concurrent Events	When a disinformant targets an actor, the category of that disinformant is filled in this field, if that information is available. Categories are not mutually exclusive. All relevant categories can be added.
+394	DFRLab-dichotomies-of-disinformation	DFRLab-dichotomies-of-disinformation	disinformant-intent	Disinformant: Intent	This is the intent of the primary disinformant and any other disinformants coded.
+395	cti	cti	planning	Phase	CTI requirementes being generated.
+396	cti	cti	collection	Phase	Data collection initiated.
+397	cti	cti	processing-and-analysis	Phase	Data is being processed and analyzed
+398	cti	cti	dissemination-done	Phase	CTI product created and delivered to stakeholders.
+399	cti	cti	feedback-received	Phase	Feedback received by stakeholders.
+400	cti	cti	feedback-pending	Phase	Feedback pending by stakeholders.
+401	gdpr	gdpr	special-categories	Special Categories	Special categories of personal data, refer to Art. 9 of the GDPR
+402	targeted-threat-index	targeted-threat-index	targeting-sophistication-base-value	Targeting Sophistication – Base Value	The base value of the score ranges from 0 to 5, based on the sophistication of the email’s social engineering techniques used to get the victim to open the attachment. This score considers the content and presentation of the message as well as the claimed sender identity. This determination also includes the content of any associated files; many times malware is injected into legitimate relevant documents.
+403	targeted-threat-index	targeted-threat-index	technical-sophistication-multiplier	Technical Sophistication – Multiplier	The technical sophistication score is a multiplier ranging from 1 to 2 based on how advanced the associated malware is, including malicious file attachments as well as links to malware hosted on another system. We use a multiplier because advanced malware requires significantly more effort and time (or money, in the case of commercial solutions) to custom-tune for a particular target.
+404	vocabulaire-des-probabilites-estimatives	vocabulaire-des-probabilites-estimatives	degré-de-probabilité	Degré de probabilité	Le tableau suivant attribue des valeurs en pourcentage à certains énoncés de probabilité.  Les pourcentages sont tirés de l’ouvrage de Sherman Kent intitulé « Words of Estimative Probability » publié par le Centre for the Study of Intelligence de la CIA en 1964. 0% exprime une impossibilité et 100% exprime une certitude.
+405	pentest	pentest	approach	Approach	This is group is dealing with differents types of pentest
+406	pentest	pentest	scan	Scan	Automated tool that perform network checks
+407	pentest	pentest	exploit	Exploit	Exploitation of a vulnerability
+408	pentest	pentest	post_exploitation	Exploit	Utilizing post exploitation techniques will ensure that a penetration tester maintains some level of access and can potentially lead to deeper footholds into the targets trusted infrastructure. (https://www.offensive-security.com/metasploit-unleashed/msf-post-exploitation/)
+409	pentest	pentest	web	Web	This is group is dealing with web vulnerabilities
+410	pentest	pentest	network	Network	This is group is dealing with network vulnerabilities
+411	pentest	pentest	social_engineering	Social engineering	Social engineering is an attack vector that relies heavily on human interaction and often involves tricking people into breaking normal security procedures. (https://krashconsulting.com/index.php/services/sea/)
+412	pentest	pentest	vulnerability	Vulnerability	This is group is dealing with the classification of weaknesses and vulnerabilities
+413	de-vs	de-vs	Einstufung	Einstufung	
+414	de-vs	de-vs	Schutzwort	Schutzwort	
+415	thales_group	thales_group	distribution		
+416	thales_group	thales_group	to_block	Use it when you want to block Event Attributes on the Thales DIS Proxy (More to come). Distribution: All communities	This TAG will insure you that these Event Attributes will be blocked on the Thales DIS Proxy (More to come). Distribution: All communities
+417	thales_group	thales_group	minarm	Use it when you want to share to the Thales Group MinArm alliance ONLY. Distribution: All communities	This TAG will insure you to share ONLY to the Thales Group MinArm alliance. Distribution: All communities
+418	thales_group	thales_group	acn	Use it when you want to share to the Thales Group ACN alliance ONLY. Distribution: All communities	This TAG will insure you to share ONLY to the Thales Group ACN alliance. Distribution: All communities
+419	thales_group	thales_group	sigpart	Use it when you want to share to the Thales Group Sigpart alliance ONLY. Distribution: All communities	This TAG will insure you to share ONLY to the Thales Group Sigpart alliance. Distribution: All communities
+420	thales_group	thales_group	ioc_confidence	Use it when you want to assign a trust category to an Attribute or Globally to an Event. Distribution: All communities	Distribution: All communities
+421	thales_group	thales_group	tlp:black	(TLP:BLACK) Information cannot be effectively acted outside of strict and reduced circle of a trust. Distribution: Restricted Sharing Group	Distribution: Restricted Sharing Group
+422	thales_group	thales_group	Watcher	Use it when this came from Watcher Platform. Distribution: All communities	Distribution: All communities
+423	current-event	current-event	pandemic	Pandemic	
+424	current-event	current-event	election	Election	
+425	open_threat	open_threat	threat-category	Threats to Information Systems	
+426	open_threat	open_threat	threat-name	Threat Action Name and Rating	
+427	ms-caro-malware-full	ms-caro-malware-full	malware-type	Malware Type: What the threat does on a computer	
+428	ms-caro-malware-full	ms-caro-malware-full	malware-platform	Malware Platform: Operating system that the threat is designed to work on, scripting language, macros, and other file types	
+429	ms-caro-malware-full	ms-caro-malware-full	malware-family	Malware Family: Group of threats with the same name	
+430	gea-nz-entities	gea-nz-entities	parties-party	Parties Party	Information dealing with people or organisations.
+431	gea-nz-entities	gea-nz-entities	parties-qualification	Parties Qualification	Information which relates to persons or organisations of a qualifying nature.
+432	gea-nz-entities	gea-nz-entities	parties-role	Parties Role	Role information which relates to persons or organisations.
+433	gea-nz-entities	gea-nz-entities	parties-party-relationship	Parties Party Relationship	Information about the relationship between two or more parties.
+434	gea-nz-entities	gea-nz-entities	places-address	Places Address	Detailed information related to an address.
+435	gea-nz-entities	gea-nz-entities	places-location-type	Places Location Type	Information of a geospatial or geopolitical nature held by an organisation.
+436	gea-nz-entities	gea-nz-entities	places-address-type	Places Address Type	Identifies the types of address.
+437	gea-nz-entities	gea-nz-entities	places-purpose-of-location	Places Purpose of Location	Information about the purpose of a given address or location.
+438	gea-nz-entities	gea-nz-entities	items-application-&-ict-services	Items Application & ICT Services	Information about application and ICT service assets.
+439	gea-nz-entities	gea-nz-entities	items-ict-infrastructure	Items ICT Infrastructure	Information about man made surroundings that provide setting for organisational activity, such as platforms, networks, facilities, and end user equipment.
+440	gea-nz-entities	gea-nz-entities	items-natural	Items natural	Information held by organisation which relate to natural resources.
+441	gea-nz-entities	gea-nz-entities	items-financial	Items Financial	Information related to financial assistance products.
+442	gea-nz-entities	gea-nz-entities	items-goods	Items Goods	Information related to goods.
+443	gea-nz-entities	gea-nz-entities	items-regulatory	Items Regulatory	Information on regulatory products managed by an organisation.
+444	gea-nz-entities	gea-nz-entities	items-urban-infrastructure	Items Urban Infrastructure	Information related to urban infrastructure.
+445	gea-nz-entities	gea-nz-entities	items-accommodation	Items Accommodation	Information related to short–term accommodation provided on a commercial basis, excluding long–term accommodation and accommodation that is provided on a non–commercial basis.
+446	gea-nz-entities	gea-nz-entities	items-dwelling-type	Items Dwelling Type	Information related to occupied dwelling type is used to monitor trends and developments in housing and institutional dwellings, to plan for the future housing and service needs of the community.
+447	gea-nz-entities	gea-nz-entities	items-artefact	Items Artefact	An artefact is an item of value and manifests in a concrete form such as reports, documents, tables, books, instruction manuals, evidence, etc.
+448	gea-nz-entities	gea-nz-entities	items-waste	Items Waste	Information related to the waste used, managed or produced by the organisation.
+449	gea-nz-entities	gea-nz-entities	items-item-usage	Items Item Usage	Identifies the ways in which an organisation may use an item.
+450	gea-nz-entities	gea-nz-entities	items-other-item	Items Other Item	Detailed information of other items not categorised within Items.
+451	event-classification	event-classification	event-class	Event Classification	
+452	interception-method	interception-method	man-in-the-middle	Man-in-the-middle	Interception where an attacker secretly relayed and possibly altered the communication between two parties.
+453	interception-method	interception-method	man-on-the-side	Man-on-the-side	Interception where an attacker could read and send messages between two parties but not alter messages.
+454	interception-method	interception-method	passive	Passive	Interception where an attacker could read messages between two parties.
+455	interception-method	interception-method	search-result-poisoning	Search result poisoning	Interception where an attacker creates malicious websites intended to show up in search engine queries.
+456	interception-method	interception-method	dns	Dns	Interception where domain name resolution is altered to re-direct traffic to a malicious IP address.
+457	interception-method	interception-method	host-file	Host file	Interception where the HOSTS file is modified to re-direct traffic to a malicious IP address.
+458	interception-method	interception-method	other	Other	Other.
+459	gea-nz-motivators	gea-nz-motivators	plans-budget	Plans Budget	Information relating to budget direction or processes.
+460	gea-nz-motivators	gea-nz-motivators	plans-strategy	Plans Strategy	Detailed information relating to strategic management.
+461	gea-nz-motivators	gea-nz-motivators	plans-effort	Plans Effort	Information relating to the required effort to achieve or fulfil a work related activity.
+462	gea-nz-motivators	gea-nz-motivators	plans-measure	Plans Measure	Information which tracks the effectiveness in relation to activities managed by the organisation (inputs/outputs) or employee performance.
+463	gea-nz-motivators	gea-nz-motivators	plans-risk	Plans Risk	Information about person(s) or thing(s) which relate to risk management within organisation.
+464	gea-nz-motivators	gea-nz-motivators	plans-specification	Plans Specification	Information dealing with properties and constraints.
+465	gea-nz-motivators	gea-nz-motivators	controls-operational	Controls Operational	Information about controls that provide the foundation for administration of an organisation.
+466	gea-nz-motivators	gea-nz-motivators	controls-finance	Controls Finance	Information about the financial structures that provide management and control over the economic resources of the organisation.
+467	gea-nz-motivators	gea-nz-motivators	controls-industry	Controls Industry	Information about industry practice issued by an industry specific regulation or professional body.
+468	gea-nz-motivators	gea-nz-motivators	controls-technological	Controls Technological	Information about technical constraints.
+469	gea-nz-motivators	gea-nz-motivators	controls-law	Controls Law	Information about controls in the form of legislation (statues, regulations, etc.).
+470	gea-nz-motivators	gea-nz-motivators	controls-personal	Controls Personal	Information about the constraints an individual places on interactions with the government, or agency.
+471	gea-nz-motivators	gea-nz-motivators	controls-security	Controls Security	Information about the constraints security places on interactions within and across the government, agencies and 3th parties.
+472	gea-nz-motivators	gea-nz-motivators	contracts-arrangement	Contracts Arrangement	Information relating to contracts, agreements or other arrangements with other agencies, governments, public or private organizations.
+473	gea-nz-motivators	gea-nz-motivators	contracts-rights	Contracts Rights	Information relating to moral or legal entitlement to have or do something.
+474	gea-nz-motivators	gea-nz-motivators	contracts-obligation	Contracts Obligation	Information which is held by an organisation which relates to its obligations.
+475	gea-nz-motivators	gea-nz-motivators	contracts-jurisdiction	Contracts Jurisdicrion	nformation about political and geographical areas in which an organisation operates.
+476	gea-nz-motivators	gea-nz-motivators	controls-risk-governance	Controls Risk Governance	
+477	gsma-network-technology	gsma-network-technology	user	User	
+478	gsma-network-technology	gsma-network-technology	applications	Applications	
+479	gsma-network-technology	gsma-network-technology	end-devices-and-components	End devices and components	
+480	gsma-network-technology	gsma-network-technology	services	Services	
+481	gsma-network-technology	gsma-network-technology	radio-access-network	Radio Access Network (RAN)	
+482	gsma-network-technology	gsma-network-technology	support-and-provisioning-systems	Support and provisioning systems	
+483	gsma-network-technology	gsma-network-technology	interconnects	Interconnects	
+484	gsma-network-technology	gsma-network-technology	core	Core	
+485	gsma-network-technology	gsma-network-technology	sim-secure-element-modules	SIM, Secure Element and Modules	
+486	diamond-model	diamond-model	Adversary	An adversary is the actor/organization responsible for utilizing a capability against the victim to achieve their intent.	
+487	diamond-model	diamond-model	Capability	The capability describes the tools and/or techniques of the adversary used in the event. It includes all means to affect the victim from the most manual “unsophisticated” methods (e.g., manual password guessing) to the most sophisticated automated techniques.	
+488	diamond-model	diamond-model	Infrastructure	The infrastructure feature describes the physical and/or logical communication structures the adversary uses to deliver a capability, maintain control of capabilities (e.g., commandand-control/C2), and effect results from the victim (e.g., exfiltrate data). As with the other features, the infrastructure can be as specific or broad as necessary. Examples include: Internet Protocol (IP) addresses, domain names, e-mail addresses, Morse code flashes from a phone’s voice-mail light watched from across a street, USB devices found in a parking lot and inserted into a workstation, or the compromising emanations from hardware (e.g., Van Eck Phreaking) being collected by a nearby listening post.	
+489	diamond-model	diamond-model	Victim	A victim is the target of the adversary and against whom vulnerabilities and exposures are exploited and capabilities used. A victim can be described in whichever way necessary and appropriate: organization, person, target email address, IP address, domain, etc. However, it is useful to define the victim persona and their assets separately as they serve different analytic functions. Victim personae are useful in non-technical analysis such as cyber-victimology and social-political centered approaches whereas victim assets are associated with common technical approaches such as vulnerability analysis..	
+490	file-type	file-type	type	File category	
+491	phishing	phishing	techniques	Techniques	Phishing techniques used.
+492	phishing	phishing	distribution	Distribution	How the phishing is distributed.
+493	phishing	phishing	report-type	Report type	How the phishing information was reported.
+494	phishing	phishing	report-origin	Report origin	Origin or source of the phishing information such as tools or services.
+495	phishing	phishing	action	Action	Action(s) taken related to the phishing tagged with this taxonomy.
+496	phishing	phishing	state	State	State of the phishing.
+497	phishing	phishing	psychological-acceptability	Psychological acceptability	Quality of the phishing by its level of acceptance by the target.
+498	phishing	phishing	principle-of-persuasion	Principle of Persuasion	The principle of persuasion used during the attack to higher psychological acceptability.
+499	csirt-americas	csirt-americas	defacement	Defacement	
+500	csirt-americas	csirt-americas	malware	Malware	
+501	csirt-americas	csirt-americas	ddos	DDoS	
+502	csirt-americas	csirt-americas	phishing	Phishing	
+503	csirt-americas	csirt-americas	spam	Spam	
+504	csirt-americas	csirt-americas	botnet	Botnet	
+505	csirt-americas	csirt-americas	fastflux	Fastflux	
+506	csirt-americas	csirt-americas	cryptojacking	Cryptojacking	
+507	csirt-americas	csirt-americas	xss	XSS	
+508	csirt-americas	csirt-americas	sqli	SQL Injection	
+509	csirt-americas	csirt-americas	vulnerability	Vulnerability	
+510	csirt-americas	csirt-americas	infoleak	Information leak	
+511	csirt-americas	csirt-americas	compromise	System compromise	
+512	csirt-americas	csirt-americas	other	Other	
+513	data-classification	data-classification	regulated-data	Regulated data	Data which is regulated under a specific regulation or law such as PII, SPD, PCI or PHI.
+514	data-classification	data-classification	commercially-confidential-information	Commercially confidential information (CCI)	Data which represents a specific commercial value and is confidential to an organisation such as trade secrets, customer accounts.
+515	data-classification	data-classification	financially-sensitive-information	Financially sensitive information (FSI)	Data which represents a specific financial value to an organisation such as payroll, investment information.
+516	data-classification	data-classification	valuation-sensitive-information	Valuation sensitive information (VSI)	Data which is sensitive to the valuation of an organisation such as inside information (as defined by a Financial Services Authority).
+517	data-classification	data-classification	sensitive-information	Sensitive information	Data which is sensitive such as email or letters.
+518	information-security-data-source	information-security-data-source	type-of-information	Type of information	Type of provided information
+519	information-security-data-source	information-security-data-source	originality	Originality	Originality and novelty of the provided information
+520	information-security-data-source	information-security-data-source	timeliness-sharing-behavior	Timeliness sharing behavior	Timeliness of the provided information
+521	information-security-data-source	information-security-data-source	integrability-format	Integrability format	Level of integrability format for the provided information
+522	information-security-data-source	information-security-data-source	integrability-interface	Integrability interface	Level of integrability interface for the provided information
+523	information-security-data-source	information-security-data-source	trustworthiness-creditabilily	Trustworthiness creditability	Source of the creditability
+524	information-security-data-source	information-security-data-source	trustworthiness-traceability	Trustworthiness traceability	Traceability of the provided information
+525	information-security-data-source	information-security-data-source	trustworthiness-feedback-mechanism	Trustworthiness feedback mechanism	Feedback such as user ratings or comments regarding the usefulness of the provided information
+526	information-security-data-source	information-security-data-source	type-of-source	Type of source	Types of information security data source
+527	ics	ics	ot-security-issues	OT IR Security Issues	
+528	ics	ics	ot-network-data-transmission-protocols-automatic-automobile-vehicle-aviation	OT Network/Data Transmission Protocols in Automobile / Vehicle / Aviation	
+529	ics	ics	ot-network-data-transmission-protocols-automatic-meter-reading	OT Network/Data Transmission Protocols in Automatic Meter Reading	
+530	ics	ics	ot-network-data-transmission-protocols-industrial-control-system	OT Network/Data Transmission Protocols in Industrial Control System	
+531	ics	ics	ot-network-data-transmission-protocols-building-automation	OT Network/Data Transmission Protocols in Building Automation	
+532	ics	ics	ot-network-data-transmission-protocols-power-system-automation	OT Network/Data Transmission Protocols in Power System Automation	
+533	ics	ics	ot-network-data-transmission-protocols-process-automation	OT Network/Data Transmission Protocols in Process Automation	
+534	ics	ics	ot-communication-interface	OT IR Communication Interface	
+535	ics	ics	ot-operating-systems	OT Operating Systems	
+536	ics	ics	ot-components-category	OT Components Category	
+537	kill-chain	kill-chain	Reconnaissance	Research, identification and selection of targets, often represented as crawling Internet websites such as conference proceedings and mailing lists for email addresses, social relationships, or information on specific technologies.	
+538	kill-chain	kill-chain	Weaponization	Coupling a remote access trojan with an exploit into a deliverable payload, typically by means of an automated tool (weaponizer). Increasingly, client application data files such as Adobe Portable Document Format (PDF) or Microsoft Office documents serve as the weaponized deliverable.	
+539	kill-chain	kill-chain	Delivery	Transmission of the weapon to the targeted environment. The three most prevalent delivery vectors for weaponized payloads by APT actors, as observed by the Lockheed Martin Computer Incident Response Team (LM-CIRT) for the years 2004-2010, are email attachments, websites, and USB removable media.	
+540	kill-chain	kill-chain	Exploitation	After the weapon is delivered to victim host, exploitation triggers intruders' code. Most often, exploitation targets an application or operating system vulnerability, but it could also more simply exploit the users themselves or leverage an operating system feature that auto-executes code.	
+541	kill-chain	kill-chain	Installation	Installation of a remote access trojan or backdoor on the victim system allows the adversary to maintain persistence inside the environment.	
+542	kill-chain	kill-chain	Command and Control	Typically, compromised hosts must beacon outbound to an Internet controller server to establish a C2 channel. APT malware especially requires manual interaction rather than conduct activity automatically. Once the C2 channel establishes, intruders have 'hands on the keyboard' access inside the target environment.	
+543	kill-chain	kill-chain	Actions on Objectives	Only now, after progressing through the first six phases, can intruders take actions to achieve their original objectives. Typically, this objective is data exfiltration which involves collecting, encrypting and extracting information from the victim environment; violations of data integrity or availability are potential objectives as well. Alternatively, the intruders may only desire access to the initial victim box for use as a hop point to compromise additional systems and move laterally inside the network.	
+544	analyst-assessment	analyst-assessment	experience	Experience	The analyst experience expressed in years range in the field tagged. The year range is based on a standard 40-hour work week.
+545	analyst-assessment	analyst-assessment	binary-reversing-arch	Reversing arch	Architecture that the analyst has experience with.
+546	analyst-assessment	analyst-assessment	binary-reversing-experience	Reversing experience	The analyst experience in reversing expressed in years range in the field tagged. The year range is based on a standard 40-hour work week.
+547	analyst-assessment	analyst-assessment	os	Operating System	Operating System that the analyst has experience with.
+548	analyst-assessment	analyst-assessment	web	Web applications-related skills	Web application vulnerabilities and technique that the analyst has experience with.
+549	analyst-assessment	analyst-assessment	web-experience	Experience	The analyst experience expressed to web application security in years range in the field tagged.
+550	analyst-assessment	analyst-assessment	crypto-experience	Experience	The analyst experience related to cryptography expressed in years range in the field tagged.
+551	passivetotal	passivetotal	sinkholed	Sinkhole Status	
+552	passivetotal	passivetotal	ever-compromised	Ever Compromised?	
+553	passivetotal	passivetotal	dynamic-dns	Dynamic DNS	
+554	passivetotal	passivetotal	class	Classification	
+555	PAP	PAP	RED	(PAP:RED) Non-detectable actions only. Recipients may not use PAP:RED information on the network. Only passive actions on logs, that are not detectable from the outside.	
+556	PAP	PAP	AMBER	(PAP:AMBER) Passive cross check. Recipients may use PAP:AMBER information for conducting online checks, like using services provided by third parties (e.g. VirusTotal), or set up a monitoring honeypot.	
+557	PAP	PAP	GREEN	(PAP:GREEN) Active actions allowed. Recipients may use PAP:GREEN information to ping the target, block incoming/outgoing traffic from/to the target or specifically configure honeypots to interact with the target.	
+558	PAP	PAP	WHITE	(PAP:WHITE) No restrictions in using this information.	
+559	workflow	workflow	todo	Todo	Todo are the actions to be performed by one or more analyst(s) to apply cognitive methods, evaluation(s), weightening information, to validate hypothesis or complete additional tasks to improve the overall information or data being tagged with a todo. 
+560	workflow	workflow	state	State	State are the different states of the information or data being tagged.
+561	pandemic	pandemic	covid-19	COVID-19	
+562	false-positive	false-positive	risk	Risk	Risk of having false positives in the tagged value.
+563	false-positive	false-positive	confirmed	Confirmed	Confirmed false positives in the tagged value.
+564	economical-impact	economical-impact	loss	Loss	A financial impact evaluated as a casuality.
+565	economical-impact	economical-impact	gain	Gain	A financial impact evaluated as a benefit.
+566	iep	iep	commercial-use	COMMERCIAL USE	States whether Recipients are permitted to use information received in commercial products or services.
+567	iep	iep	external-reference	EXTERNAL REFERENCE	This statement can be used to convey a description or reference to any applicable licenses, agreements, or conditions between the producer and receiver.
+568	iep	iep	encrypt-in-transit	ENCRYPT IN TRANSIT	States whether the received information has to be encrypted when it is retransmitted by the recipient.
+569	iep	iep	encrypt-at-rest	ENCRYPT AT REST	States whether the received information has to be encrypted by the Recipient when it is stored at rest.
+570	iep	iep	permitted-actions	PERMITTED ACTIONS	States the permitted actions that Recipients can take upon information received.
+571	iep	iep	affected-party-notifications	AFFECTED PARTY NOTIFICATIONS	Recipients are permitted notify affected third parties of a potential compromise or threat.
+572	iep	iep	traffic-light-protocol	TRAFFIC LIGHT PROTOCOL	Recipients are permitted to redistribute the information received within the redistribution scope as defined by the enumerations.
+573	iep	iep	provider-attribution	PROVIDER ATTRIBUTION	Recipients could be required to attribute or anonymize the Provider when redistributing the information received.
+574	iep	iep	obfuscate-affected-parties	OBFUSCATE AFFECTED PARTIES	Recipients could be required to obfuscate or anonymize information that could be used to identify the victims before redistributing the information received.
+575	iep	iep	unmodified-resale	UNMODIFIED RESALE	States whether the recipient MAY or MUST NOT resell the information received unmodified or in a semantically equivalent format.
+576	iep	iep	start-date	POLICY START DATE	States the UTC date that the IEP is effective from.
+577	iep	iep	end-date	POLICY END DATE	States the UTC date that the IEP is effective until.
+578	iep	iep	reference	POLICY REFERENCE	This statement can be used to provide a URL reference to the specific IEP implementation.
+579	iep	iep	name	POLICY NAME	This statement can be used to provide a name for an IEP implementation.
+580	iep	iep	version	POLICY VERSION	States the version of the IEP framework that has been used.
+581	iep	iep	id	POLICY ID	Provides a unique ID to identify a specific IEP implementation.
+582	course-of-action	course-of-action	passive	Passive actions have no influence of the adversarys doing.	
+583	course-of-action	course-of-action	active	Active actions can impact the adversary doing.	
+584	ecsirt	ecsirt	abusive-content	Abusive Content	Abusive Content.
+585	ecsirt	ecsirt	malicious-code	Malicious Code	Software that is intentionally included or inserted in a system for a harmful purpose. A user interaction is normally necessary to activate the code.
+586	ecsirt	ecsirt	information-gathering	Information Gathering	Information Gathering.
+587	ecsirt	ecsirt	intrusion-attempts	Intrusion Attempts	Intrusion Attempts.
+588	ecsirt	ecsirt	intrusions	Intrusions	A successful compromise of a system or application (service). This can have been caused remotely by a known or new vulnerability, but also by an unauthorized local access. Also includes being part of a botnet.
+589	ecsirt	ecsirt	availability	Availability	By this kind of an attack a system is bombarded with so many packets that the operations are delayed or the system crashes. DoS examples are ICMP and SYN floods, Teardrop attacks and mail-bombing. DDoS often is based on DoS attacks originating from botnets, but also other scenarios exist like DNS Amplification attacks. However, the availability also can be affected by local actions (destruction, disruption of power supply, etc.) – or by Act of God, spontaneous failures or human error, without malice or gross neglect being involved.
+590	ecsirt	ecsirt	information-content-security	Information Content Security	Besides a local abuse of data and systems the information security can be endangered by a successful account or application compromise. Furthermore attacks are possible that intercept and access information during transmission (wiretapping, spoofing or hijacking). Human/configuration/software error can also be the cause.
+591	ecsirt	ecsirt	fraud	Fraud	Fraud.
+592	ecsirt	ecsirt	vulnerable	Vulnerable	Open resolvers, world readable printers, vulnerability apparent from Nessus etc scans, virus signatures not up-to-date, etc
+593	ecsirt	ecsirt	other	Other	All incidents which don't fit in one of the given categories should be put into this class. If the number of incidents in this category increases, it is an indicator that the classification scheme must be revised
+594	ecsirt	ecsirt	test	Test	Meant for testing.
+595	CERT-XLM	CERT-XLM	abusive-content	Abusive Content	Abusive Content.
+596	CERT-XLM	CERT-XLM	malicious-code	Malicious Code	Software that is intentionally included or inserted in a system for a harmful purpose. A user interaction is normally necessary to activate the code.
+597	CERT-XLM	CERT-XLM	information-gathering	Information Gathering	This group is for the reconnaissance; generally, it is the step before attacking.
+598	CERT-XLM	CERT-XLM	intrusion-attempts	Intrusion Attempts	This group is for attack detected/tried but without success.
+599	CERT-XLM	CERT-XLM	intrusion	Intrusion	This group is for successful unauthorized access to a system.
+600	CERT-XLM	CERT-XLM	availability	Availability	By this kind of an attack a system is bombarded with so many packets that the operations are delayed or the system crashes.
+601	CERT-XLM	CERT-XLM	information-content-security	Information Content Security	This group is dealing with non-legitimate access or modification to data.
+602	CERT-XLM	CERT-XLM	fraud	Fraud	This group is for unauthorized use of resources using resources for unauthorized purposes including profit-making ventures (eg, the use of e-mail to participate in illegal profit chain letters or pyramid schemes).
+603	CERT-XLM	CERT-XLM	vulnerable	Vulnerable	Vulnerable
+604	CERT-XLM	CERT-XLM	conformity	Conformity	This group is for catching breach about controls given by the company or externals entities.
+605	CERT-XLM	CERT-XLM	other	Other	Other
+606	CERT-XLM	CERT-XLM	test	Test	Meant for testing.
+607	europol-event	europol-event	infected-by-known-malware	System(s) infected by known malware	The presence of any of the types of malware was detected in a system.
+608	europol-event	europol-event	dissemination-malware-email	Dissemination of malware by email	Malware attached to a message or email message containing link to malicious URL.
+609	europol-event	europol-event	hosting-malware-webpage	Hosting of malware on web page	 Web page disseminating one or various types of malware.
+610	europol-event	europol-event	c&c-server-hosting	Hosting of malware on web page	Web page disseminating one or various types of malware.
+611	europol-event	europol-event	worm-spreading	Replication and spreading of a worm	System infected by a worm trying to infect other systems.
+612	europol-event	europol-event	connection-malware-port	Connection to (a) suspicious port(s) linked to specific malware	System attempting to gain access to a port normally linked to a specific type of malware.
+613	europol-event	europol-event	connection-malware-system	Connection to (a) suspicious system(s) linked to specific malware	System attempting to gain access to an IP address or URL normally linked to a specific type of malware, e.g. C&C or a distribution page for components linked to a specific botnet.
+614	europol-event	europol-event	flood	Flood of requests	Mass mailing of requests (network packets, emails, etc...) from one single source to a specific service, aimed at affecting its normal functioning.
+615	europol-event	europol-event	exploit-tool-exhausting-resources	Exploit or tool aimed at exhausting resources (network, processing capacity, sessions, etc...)	One single source using specially designed software to affect the normal functioning of a specific service, by exploiting a vulnerability.
+616	europol-event	europol-event	packet-flood	Packet flooding	Mass mailing of requests (network packets, emails, etc...) from various sources to a specific service, aimed at affecting its normal functioning.
+617	europol-event	europol-event	exploit-framework-exhausting-resources	Exploit or tool distribution aimed at exhausting resources	Various sources using specially designed software to affect the normal functioning of a specific service, by exploiting a vulnerability.
+618	europol-event	europol-event	vandalism	Vandalism	Logical and physical activities which – although they are not aimed at causing damage to information or at preventing its transmission among systems – have this effect.
+619	europol-event	europol-event	disruption-data-transmission	Intentional disruption of data transmission and processing mechanisms	Logical and physical activities aimed at causing damage to information or at preventing its transmission among systems.
+620	europol-event	europol-event	system-probe	System probe	Single system scan searching for open ports or services using these ports for responding.
+621	europol-event	europol-event	network-scanning	Network scanning	Scanning a network aimed at identifying systems which are active in the same network.
+622	europol-event	europol-event	dns-zone-transfer	DNS zone transfer	Transfer of a specific DNS zone.
+623	europol-event	europol-event	wiretapping	Wiretapping	Logical or physical interception of communications.
+624	europol-event	europol-event	dissemination-phishing-emails	Dissemination of phishing emails	Mass emailing aimed at collecting data for phishing purposes with regard to the victims.
+625	europol-event	europol-event	hosting-phishing-sites	Hosting phishing sites	Hosting web sites for phishing purposes.
+626	europol-event	europol-event	aggregation-information-phishing-schemes	Aggregation of information gathered through phishing schemes	Collecting data obtained through phishing attacks on web pages, email accounts, etc...
+627	europol-event	europol-event	exploit-attempt	Exploit attempt	Unsuccessful use of a tool exploiting a specific vulnerability of the system.
+628	europol-event	europol-event	sql-injection-attempt	SQL injection attempt	Unsuccessful attempt to manipulate or read the information of a database by using the SQL injection technique.
+629	europol-event	europol-event	xss-attempt	XSS attempt	Unsuccessful attempts to perform attacks by using cross-site scripting techniques.
+630	europol-event	europol-event	file-inclusion-attempt	File inclusion attempt	Unsuccessful attempt to include files in the system under attack by using file inclusion techniques.
+631	europol-event	europol-event	brute-force-attempt	Brute force attempt	Unsuccessful login attempt by using sequential credentials for gaining access to the system.
+632	europol-event	europol-event	password-cracking-attempt	Password cracking attempt	Attempt to acquire access credentials by breaking the protective cryptographic keys.
+633	europol-event	europol-event	dictionary-attack-attempt	Dictionary attack attempt	Unsuccessful login attempt by using system access credentials previously loaded into a dictionary.
+634	europol-event	europol-event	exploit	Use of a local or remote exploit	Successful use of a tool exploiting a specific vulnerability of the system.
+635	europol-event	europol-event	sql-injection	SQL injection	Manipulation or reading of information contained in a database by using the SQL injection technique.
+636	europol-event	europol-event	xss	XSS	Attacks performed with the use of cross-site scripting techniques.
+637	europol-event	europol-event	file-inclusion	File inclusion	Inclusion of files into a system under attack with the use of file inclusion techniques.
+638	europol-event	europol-event	control-system-bypass	Control system bypass	Unauthorised access to a system or component by bypassing an access control system in place.
+639	europol-event	europol-event	theft-access-credentials	Theft of access credentials	Unauthorised access to a system or component by using stolen access credentials.
+640	europol-event	europol-event	unauthorized-access-system	Unauthorised access to a system	Unauthorised access to a system or component.
+641	europol-event	europol-event	unauthorized-access-information	Unauthorised access to information	Unauthorised access to a set of information.
+642	europol-event	europol-event	data-exfiltration	Data exfiltration	Unauthorised access to and sharing of a specific set of information.
+643	europol-event	europol-event	modification-information	Modification of information	Unauthorised changes to a specific set of information.
+644	europol-event	europol-event	deletion-information	Deletion of information	Unauthorised deleting of a specific set of information.
+645	europol-event	europol-event	illegitimate-use-resources	Misuse or unauthorised use of resources	Use of institutional resources for purposes other than those intended.
+646	europol-event	europol-event	illegitimate-use-name	Illegitimate use of the name of an institution or third party	Using the name of an institution without permission to do so.
+647	europol-event	europol-event	email-flooding	Email flooding	Sending an unusually large quantity of email messages.
+648	europol-event	europol-event	spam	Sending an unsolicited message	Sending an email message that was unsolicited or unwanted by the recipient.
+649	europol-event	europol-event	copyrighted-content	Distribution or sharing of copyright protected content	Distribution or sharing of content protected by copyright and related rights.
+650	europol-event	europol-event	content-forbidden-by-law	Dissemination of content forbidden by law (publicly prosecuted offences)	Distribution or sharing of illegal content such as child pornography, racism, xenophobia, etc...
+651	europol-event	europol-event	unspecified	Other unspecified event	Other unlisted events.
+652	europol-event	europol-event	undetermined	Undetermined	Field aimed at the classification of unprocessed events, which have remained undetermined from the beginning.
+653	dark-web	dark-web	topic	Topic	Topic associated with the materials tagged
+654	dark-web	dark-web	motivation	Motivation	Motivation with the materials tagged
+655	dark-web	dark-web	structure	Structure	Structure of the materials tagged
+656	euci	euci	TS-UE/EU-TS	TRES SECRET UE/EU TOP SECRET	Information and material the unauthorised disclosure of which could cause exceptionally grave prejudice to the essential interests of the European Union or of one or more of the Member States.
+657	euci	euci	S-UE/EU-S	SECRET UE/EU SECRET	Information and material the unauthorised disclosure of which could seriously harm the essential interests of the European Union or of one or more of the Member States.
+658	euci	euci	C-UE/EU-C	CONFIDENTIEL UE/EU CONFIDENTIAL	Information and material the unauthorised disclosure of which could harm the essential interests of the European Union or of one or more of the Member States.
+659	euci	euci	R-UE/EU-R	RESTREINT UE/EU RESTRICTED	Information and material the unauthorised disclosure of which could be disadvantageous to the interests of the European Union or of one or more of the Member States.
+660	approved-category-of-action	approved-category-of-action	cat1	Cat1	Minimal Exposure - Passive Collection: CAT 1 actions provide the least exposure of an indicator, either through adversary observation or disclosure. Usage of the indicator is restricted to passive monitoring on Government or Cleared Partner networks, or through a classified passive capability or Operation. CAT 1 actions do not interact with or affect malicious network traffic.
+661	approved-category-of-action	approved-category-of-action	cat2	Cat2	Moderate Exposure - Government or Cleared Partner Internal Active Collection: CAT 2 actions expose the usage of an indicator through non-disruptive collection techniques which require interactions with an adversary, within Government or Cleared Partner networks. While it is not the intent to disrupt the adversary it is possible that an adversary may discover they are subject to such techniques.
+662	approved-category-of-action	approved-category-of-action	cat3	Cat3	Moderate Exposure - Government or Cleared Partner Internal Countermeasures: CAT 3 actions expose the usage of an indicator through inward-facing countermeasures. Malicious network traffic is affected in some manner, however the results are not directly observable to the adversary or external parties and is, therefore, more difficult to attribute as a deliberate action. Usage of the indicator is restricted to Government and Cleared Partner networks, or a classified capability or Operation. This implies a lower likelihood for non-approved disclosures.
+663	approved-category-of-action	approved-category-of-action	cat4	Cat4	Moderate Exposure - Government Actions on External Networks: CAT 4 actions expose the usage of an indicator through actions which occur on internet accessible networks, without the authorization of the network or information owner. Such actions are conducted as classified Operations under the auspices of national legislative and compliance provisions. Action consequences are observable to the adversary and other, public parties and it is possible they may be attributed as Government sanctioned actions.
+664	approved-category-of-action	approved-category-of-action	cat5	Cat5	High Exposure - Public Actions Which Enable Internal Countermeasures: CAT 5 actions expose the usage of an indicator through the public release of information which enables internal actions on networks not owned and controlled by the Government (i.e. industry, commercial or foreign governments). These actions are official public releases and are attributable as Government sanctioned actions.
+665	approved-category-of-action	approved-category-of-action	cat6	Cat6	High Exposure - Actions on Adversary Infrastructure: CAT 6 actions expose the usage of an indicator through actions which occur on adversary owned networks, without the authorization of the network or information owner. Such actions are conducted as classified Operations under the auspices of national legislative and compliance provisions. Action consequences are observable to the adversary, and possibly other public parties, and it is possible they may deduce this as FVEY action.
+666	stealth_malware	stealth_malware	type	Stealth technique type	
+667	rt_event_status	rt_event_status	event-status	Event Status	
+668	dcso-sharing	dcso-sharing	event-type		
+669	retention	retention	expired	Set when the retention period has expired	
+670	retention	retention	1d	1 day	
+671	retention	retention	2d	2 days	
+672	retention	retention	7d	7 days	
+673	retention	retention	2w	2 weeks	
+674	retention	retention	1m	1 month	
+675	retention	retention	2m	2 months	
+676	retention	retention	3m	3 months	
+677	retention	retention	6m	6 months	
+678	retention	retention	1y	1 year	
+679	retention	retention	10y	10 year	
+680	failure-mode-in-machine-learning	failure-mode-in-machine-learning	intentionally-motivated-failures-summary	Intentionally-Motivated Failures Summary	Intentional failures wherein the failure is caused by an active adversary attempting to subvert the system to attain her goals – either to misclassify the result, infer private training data, or to steal the underlying algorithm.
+681	failure-mode-in-machine-learning	failure-mode-in-machine-learning	unintended-failures-summary	Unintended Failures Summary	Unintentional failures wherein the failure is because an ML system produces a formally correct but completely unsafe outcome.
+682	trust	trust	trust	How much trust the analyst has with this indicator.	
+683	trust	trust	frequency	Recency/count of occurence at which the indicator occurs in data.	
+684	trust	trust	valid	Whether this indicator was pushed as trusted but cannot be trusted (ie. MD5 cannot be valid because it is cryptographically broken).	
+685	scrippsco2-sampling-stations	scrippsco2-sampling-stations	ALT	Alert, NWT, Canada	
+686	scrippsco2-sampling-stations	scrippsco2-sampling-stations	PTB	Point Barrow, Alaska	
+687	scrippsco2-sampling-stations	scrippsco2-sampling-stations	STP	Station P	
+688	scrippsco2-sampling-stations	scrippsco2-sampling-stations	LJO	La Jolla Pier, California	
+689	scrippsco2-sampling-stations	scrippsco2-sampling-stations	BCS	Baja California Sur, Mexico	
+690	scrippsco2-sampling-stations	scrippsco2-sampling-stations	MLO	Mauna Loa Observatory, Hawaii	
+691	scrippsco2-sampling-stations	scrippsco2-sampling-stations	KUM	Cape Kumukahi, Hawaii 	
+692	scrippsco2-sampling-stations	scrippsco2-sampling-stations	CHR	Christmas Island, Fanning Island	
+693	scrippsco2-sampling-stations	scrippsco2-sampling-stations	SAM	American Samoa	
+694	scrippsco2-sampling-stations	scrippsco2-sampling-stations	KER	Kermadec Islands, Raoul Island	
+695	scrippsco2-sampling-stations	scrippsco2-sampling-stations	NZD	Baring Head, New Zealand	
+696	scrippsco2-sampling-stations	scrippsco2-sampling-stations	PSA	Palmer Station, Antarctica	
+697	scrippsco2-sampling-stations	scrippsco2-sampling-stations	SPO	South Pole	
+698	incident-disposition	incident-disposition	incident	Incident	
+699	incident-disposition	incident-disposition	not-an-incident	Not an incident	
+700	incident-disposition	incident-disposition	duplicate	Duplicate	
+701	maec-malware-capabilities	maec-malware-capabilities	maec-malware-capability	MAEC Malware capability	
+702	nis	nis	impact-sectors-impacted	Sectors impacted	The impact on services, in the real world, indicating the sectors of the society and economy, where there is an impact on the services.
+703	nis	nis	impact-severity	Severity of the impact	The severity of the impact, nationally, in the real world, for society and/or the economy, i.e. the level of disruption for the country or a large region of the country, the level of risks for health and/or safety, the level of physical damages and/or financial costs.
+704	nis	nis	impact-outlook	Outlook	The outlook for the incident, the prognosis, for the coming hours, considering the impact in the real world, the impact on services, for the society and/or the economy
+705	nis	nis	nature-root-cause	Root cause category	The Root cause category is used to indicate what type event or threat triggered the incident.
+706	nis	nis	nature-severity	Severity of the threat	The severity of the threat is used to indicate, from a technical perspective, the potential impact, the risk associated with the threat. For example, the severity is high if an upcoming storm is exceptionally strong, if an observed DDoS attack is exceptionally powerful, or if a software vulnerability is easily exploited and present in many different systems. For example, in certain situations a critical software vulnerability would require concerted and urgent work by different organizations.
+707	nis	nis	test	Test	A test predicate meant to test interoperability between tools. Tags contained within this predicate are to be ignored.
+708	eu-marketop-and-publicadmin	eu-marketop-and-publicadmin	critical-infra-operators	Critical Infrastructure Operators	
+709	eu-marketop-and-publicadmin	eu-marketop-and-publicadmin	info-services	Information Society services enablers	
+710	eu-marketop-and-publicadmin	eu-marketop-and-publicadmin	public-admin	Public administration	
+711	action-taken	action-taken	informed ISP/Hosting Service Provider	Informed ISP/Hosting Service Provider	
+712	action-taken	action-taken	informed Registrar	Informed Registrar	
+713	action-taken	action-taken	informed Registrant	Informed Registrant	
+714	action-taken	action-taken	informed abuse-contact (domain)	Informed abuse-contact (domain)	
+715	action-taken	action-taken	informed abuse-contact (IP)	Informed abuse-contact (IP)	
+716	action-taken	action-taken	informed legal department	Informed legal department	
+717	use-case-applicability	use-case-applicability	announced-administrative/user-action	Announced administrative/user action	The process to communicate administrative activities or special user actions was in place and working correctly. Internal sensors are working and detecting privileged or irregular administrative behaviour.
+718	use-case-applicability	use-case-applicability	unannounced-administrative/user-action	Unannounced administrative/user action	Internal sensors have detected privileged or user activity, which was not previously communicated. This category also includes improper usage.
+719	use-case-applicability	use-case-applicability	log-management-rule-configuration-error	Log management rule configuration error	This category reflects false alerts that were raised due to configuration errors in the central log management system, often a SIEM, rule.
+720	use-case-applicability	use-case-applicability	detection-device/rule-configuration-error	Detection device/rule configuration error	This category reflects rules on detection devices, which are usually passive or active components of network security.
+721	use-case-applicability	use-case-applicability	bad-IOC/rule-pattern-value	Bad IOC/rule pattern value	Products often require external indicator information or security feeds to be applied on active or passive infrastructure components to create alerts.
+722	use-case-applicability	use-case-applicability	test-alert	Test alert	This alert reflects alerts created for testing purposes. 
+723	use-case-applicability	use-case-applicability	confirmed-attack-with-IR-actions	Confirmed Attack with IR actions	This alert represents the classic true positives, where all security controls in place were circumvented, a security control was lacking or a misconfiguration of a security element occurred.
+724	use-case-applicability	use-case-applicability	confirmed-attack-attempt-without-IR-actions	Confirmed Attack attempt without IR actions	This category reflects an attempt by a threat actor, which in the end could be prevented by in place security measures but passed security controls associated with the delivery phase of the Cyber Kill Chain.
+725	mwdb	mwdb	location_type	Location Type	Type of malicious URL.
+726	mwdb	mwdb	family	Malware Family	
+727	gsma-fraud	gsma-fraud	technical	Technical	
+728	gsma-fraud	gsma-fraud	subscription	Subscription	
+729	gsma-fraud	gsma-fraud	distribution	Distribution	
+730	gsma-fraud	gsma-fraud	business	Business	
+731	gsma-fraud	gsma-fraud	prepaid	Prepaid	
+732	interactive-cyber-training-technical-setup	interactive-cyber-training-technical-setup	environment-structure	Environment Structure	The environment structure refers to the basic characteristic of the event.
+733	interactive-cyber-training-technical-setup	interactive-cyber-training-technical-setup	deployment	Deployment	The environment of cyber training can either be deployed on premise or on cloud infrastructures
+734	interactive-cyber-training-technical-setup	interactive-cyber-training-technical-setup	orchestration	Orchestration	The composition of parts and components of a pool of tasks. The goal is to setup a holistic scenario and integrate cyber training session. Furthermore, it includes a declarative description of the overall process in the form of a composite and harmonic collaboration.
+735	threatmatch	threatmatch	sector	Extensive list of sector definition tags	
+736	threatmatch	threatmatch	incident-type	Incident tags are used by the ThreatMatch platform to categorise a relevant incident event.	
+737	threatmatch	threatmatch	malware-type	Malware tags are used by the ThreatMatch platform to categorise malware types.	
+738	threatmatch	threatmatch	alert-type	Alert tags are used by the ThreatMatch platform to categorise a relevant threat.	
+739	interactive-cyber-training-training-environment	interactive-cyber-training-training-environment	training-type	Training Type	Education in cybersecurity follows different approaches. The level of interaction and hands-on experience distinguishes different types of training.
+740	interactive-cyber-training-training-environment	interactive-cyber-training-training-environment	scenario	Scenario	The scenario is a main component of cybersecurity training. Scenarios are needed to reach the goal of the training.
+741	ms-caro-malware	ms-caro-malware	malware-type	Malware Type: What the threat does on a computer	
+742	ms-caro-malware	ms-caro-malware	malware-platform	Malware Platform: Operating system that the threat is designed to work on, scripting language, macros, and other file types	
+743	maec-delivery-vectors	maec-delivery-vectors	maec-delivery-vector	MAEC Delivery Vector	
+744	accessnow	accessnow	anti-corruption-transparency	Anti-Corruption and transparency	The organization campaigns, or takes other actions against corruption and transparency.
+745	accessnow	accessnow	anti-war-violence	Anti-War / Anti-Violence	The organization campaigns, or takes other actions against war
+746	accessnow	accessnow	culture	Culture	The organization campaigns or acts to promote cultural events
+747	accessnow	accessnow	economic-change	Economic Change	Issues of economic policy, wealth distribution, etc.
+748	accessnow	accessnow	education	Education	The organization is concerned with some form of education
+749	accessnow	accessnow	election-monitoring	Election Monitoring	The organization is an election monitor, or involved in election monitoring
+750	accessnow	accessnow	environment	Environment	The organization campaigns or acts to protect the environment
+751	accessnow	accessnow	freedom-expression	Freedom of Expression	The organization is concerned with freedom of speech issues
+752	accessnow	accessnow	freedom-tool-development	Freedom Tool Development	The organization develops tools for use in defending or extending digital rights
+753	accessnow	accessnow	funding	Funding	 The organization is a funder of organizations or projects working with at risk users
+754	accessnow	accessnow	health	Health Issues	The organization prevents epidemic illness or acts on curing them
+755	accessnow	accessnow	human-rights	Human Rights Issues	relating to the detection, recording, exposure, or challenging of abuses of human rights
+756	accessnow	accessnow	internet-telecom	Internet and Telecoms	Issues of digital rights in electronic communications
+757	accessnow	accessnow	lgbt-gender-sexuality	LGBT / Gender / Sexuality	Issues relating to the Lesbian, Gay, Bi, Transgender community
+758	accessnow	accessnow	policy	Policy	The organization is a policy think-tank, or policy advocate
+759	accessnow	accessnow	politics	Politics	The organization takes a strong political view or is a political entity
+760	accessnow	accessnow	privacy	Privacy	Issues relating to the individual's reasonable right to privacy
+761	accessnow	accessnow	rapid-response	Rapid Response	The organization provides rapid response type capability for civil society
+762	accessnow	accessnow	refugees	Refugees	Issues relating to displaced people
+763	accessnow	accessnow	security	Security	Issues relating to physical or information security
+764	accessnow	accessnow	womens-right	Women's Rights	Issues pertaining to inequality between men and women, or issues of particular relevance to women
+765	accessnow	accessnow	youth-rights	Youth Rights	Issues of particular relevance to youth
+766	cycat	cycat	type	Type	Type of entry in the catalogue.
+767	cycat	cycat	scope	Scope	Scope of usage for the entry in the catalogue.
+768	information-security-indicators	information-security-indicators	IEX	Intrusions and external attacks	Indicators of this category give information on the occurrence of incidents caused by external malicious threat sources.
+769	information-security-indicators	information-security-indicators	IMF	Malfunctions	Indicators of this category provides information on the occurrence of incidents caused by malfunctions, breakdowns or human errors.
+770	information-security-indicators	information-security-indicators	IDB	Internal deviant behaviours	Indicators of this category provide information on the occurrence of incidents regarding internal deviant behaviours (including especially usurpation of rights or of identity).
+771	information-security-indicators	information-security-indicators	IWH	Whole incident categories	Indicators of this category are indicators that concern all categories of incidents.
+772	information-security-indicators	information-security-indicators	VBH	Behavioural vulnerabilities	Indicators of this category apply to the existence of abnormal behaviours that could lead to security incidents.
+773	information-security-indicators	information-security-indicators	VSW	Software vulnerabilities	Indicators of this category apply to the existence of weaknesses in software that could be exploited and lead to security incidents.
+774	information-security-indicators	information-security-indicators	VCF	Configuration vulnerabilities	Indicators of this category apply to the existence of weaknesses in the configuration of IT devices that could be exploited and lead to security incidents.
+775	information-security-indicators	information-security-indicators	VTC	General security technical vulnerabilities	Indicators of this category measure the existence of weaknesses in the IT and physical architecture that could be exploited and lead to security incidents.
+776	information-security-indicators	information-security-indicators	VOR	General security organizational vulnerabilities	Indicators of this category measure the existence of weaknesses in the organization that could be exploited and lead to security incidents.
+777	information-security-indicators	information-security-indicators	IMP	Impact	Indicators as regards impact measurement.
+778	nato	nato	classification	Classification	
+779	fr-classif	fr-classif	classifiees-defense	Informations classifiées défense	
+780	fr-classif	fr-classif	non-classifiees-defense	Informations non classifiées defense	
+781	fr-classif	fr-classif	non-classifiees	Informations non classifiées	
+782	cryptocurrency-threat	cryptocurrency-threat	SIM Swapping	An identity theft technique that takes over a victim's mobile device to steal credentials and break into wallets or exchange accounts to steal cryptocurrency.	
+783	cryptocurrency-threat	cryptocurrency-threat	Crypto Dusting	A new form of blockchain spam that erodes the recipient's reputation by sending cryptocurrency from known money mixers.	
+784	cryptocurrency-threat	cryptocurrency-threat	Sanction Evasion	Nation states using cryptocurrencies has been promoted by the Iranian and Venezuelan governments.	
+785	cryptocurrency-threat	cryptocurrency-threat	Next-Generation Crypto Mixers	Money laundering services that promise to exchange tainted tokens for freshly mined crypto, but in reality, cleanse cryptocurrency through exchanges.	
+786	cryptocurrency-threat	cryptocurrency-threat	Shadow Money Service Businesses	Unlicensed Money Service Businesses (MSBs) banking cryptocurrency without the knowledge of host financial institutions, and thus exposing banks to unknown risk.	
+787	cryptocurrency-threat	cryptocurrency-threat	Datacenter-Scale Crypto Jacking: 	Takeover attacks that mine for cryptocurrency at a massive scale have been discovered in datacenters, including AWS.	
+788	cryptocurrency-threat	cryptocurrency-threat	Lightning Network Transactions	"Enable anonymous bitcoin transactions by going ""off-chain,"" and cannow scale to $2,150,000."	
+789	cryptocurrency-threat	cryptocurrency-threat	Decentralized Stable Coins	Stabilized tokens that can be designed for use as private coins.	
+790	cryptocurrency-threat	cryptocurrency-threat	Email Extortion and Bomb Threats	Cyber-extortionists stepped up mass-customized phishing emails campaigns using old passwords and spouse names in 2018. Bomb threat extortion scams demanding bitcoin spiked in December.	
+791	cryptocurrency-threat	cryptocurrency-threat	Crypto Robbing Ransomware	Cyber-extortionists began distributing new malware that empties cryptocurrency wallets and steals private keys while holding user data hostage.	
+792	iep2-reference	iep2-reference	id_ref	POLICY ID REFERENCE	Refers to a unique IEP Policy ID to identify a specific IEP policy at a remote location.
+793	iep2-reference	iep2-reference	url	URL	This is the remote URL specifying the IEP Policy File that contains the IEP Policy you wish to use.
+794	iep2-reference	iep2-reference	iep_version	IEP POLICY VERSION	States the version of the IEP framework that has been used. Must be set to 2.0.
+795	misinformation-website-label	misinformation-website-label	fake-news	Fake news	Sources that fabricate information, disseminate deceptive content, or grossly distort actual news reports
+796	misinformation-website-label	misinformation-website-label	satire	Satire	Sources that use humor, irony, exaggeration, ridicule, and false information to comment current events
+797	misinformation-website-label	misinformation-website-label	extreme-bias	'Extreme' Bias	Sources that come from a particular point of view and may rely on propaganda, decontextualized information, opinions distorded as facts
+798	misinformation-website-label	misinformation-website-label	conspiracy	Conspiracy	Sources that are well-known promoters of kooky conspiracy theories. Ex: 9/11 conspiracies, chem-trails, lizard people in the sewer systems, birther rumors, flat earth theory fluoride as mind control, vaccines as mind control etc
+799	misinformation-website-label	misinformation-website-label	rumor	Rumor Mill	Sources that traffic in rumors, gossip, innuendo, unverified claims
+800	misinformation-website-label	misinformation-website-label	state-news	State News	Sources in repressive states operating under government sanction
+801	misinformation-website-label	misinformation-website-label	junk-sciences	Junk Sciences	Sources that promotes pseudo-sciences, metaphysics, naturalistic fallacies, and other scientificallt dubious claims
+802	misinformation-website-label	misinformation-website-label	hate-news	Hate News	Sources that promote racism, misogyny, homophobia, and other forms of discrimination
+803	misinformation-website-label	misinformation-website-label	clickbait	Clickbait	Sources that provide generally credible content, but use exaggerated, misleading, OR questionable headlines, social media descriptions, and/or images.  These sources may also use sensational language to generate interest, clickthroughs, and shares, but their content is typically verifiable
+804	misinformation-website-label	misinformation-website-label	proceed-with-caution	Proceed with caution-unreliable	Sources that may be reliable but whose contents require further verification or to be read in conjunction with other sources
+805	misinformation-website-label	misinformation-website-label	political	Political	Sources that provide generally verifiable information in support of certain points of view or political orientations
+806	misinformation-website-label	misinformation-website-label	credible	Credible-reliable	Sources that circulate news and information in a manner consistent with traditional and ethical practices in journalism
+807	misinformation-website-label	misinformation-website-label	unknown	Unknown-unidentified	Sources that have not yet been analyzed (many of these were suggested by readers/users or are found on other lists and resources).
+808	maec-malware-obfuscation-methods	maec-malware-obfuscation-methods	maec-obfuscation-methods	MAEC Obfuscation methods	
+809	type	type	OSINT	Open Source Intelligence	gathered from open sources
+810	type	type	SIGINT	Signal Intelligence	gathered from interception of signals
+811	type	type	TECHINT	Technical Intelligence	gathered from analysis of weapons and equipment used by the armed forces of foreign nations, or environmental conditions
+812	type	type	CYBINT	Cyberspace Intelligence	gathered from active or passive exploitation (CNE) in the cyberspace
+813	type	type	DNINT	Digital Network Intelligence	gathered from active or passive expoilation (CNE) in the digital network.
+814	type	type	HUMINT	Human Intelligence	gathered from a person in the location in question
+815	type	type	MEDINT	Medical Intelligence	gathered from analysis of medical records and/or actual physiological examinations to determine health and/or particular ailments/allergetic conditions for consideration
+816	type	type	GEOINT	Geospatial Intelligence	gathered from satellite, aerial photography, mapping/terrain data
+817	type	type	IMINT	Imagery Intelligence	gathered from satellite and aerial photography
+818	type	type	MASINT	Measurement and signature intelligence	gathered from electro-optical, nuclear survey, geophysical measurements, radar, materials analysis
+819	type	type	FININT	Financial Intelligence	gathered from analysis of monetary or financial transactions
+820	tor	tor	tor-relay-type	Tor Relay Type	
+821	DML	DML	8	Goals	"If the actor is part of a larger organized operation they may be receiving their goals from a higher level source or handler.  Depending on how organized and sophisticated the adversary's campaigns are, these goals may not even be shared with the operator(s) themselves.  In cases of non-targeted threat actors, this may be much less organized or distributed.
+Goals are nearly impossible to detect (directly) but they're almost always the toughest question C-level leaders ask about post-breach.  ""Who was it and why?""  These kinds of questions can never truthfully be answered unless you're operating at Detection Maturity Level 8 against your adversary and can prove reliably that you know what their goals are.  Short of that, it's guessing at what the adversary's true intentions were based on behavioral observations made at lower DMLs (e.g. data stolen, directories listed, employees or programs targeted, etc).  I anticipate less than a handful of organizations truly operate at this level, consistently, against the threat actors they  face because it's nearly impossible to detect based on goals alone.  "
+822	DML	DML	7	Strategy	" If the adversary's high level goal is to ""replicate Acme Company's Super Awesome Product Foo in 2 years or less"" their supporting strategies might include: 
+1.  Implant physical persons into the companies that produce this technology, in positions with physical access to the information necessary to fulfill this goal.
+2.  Compromise these organizations via cyber attack, and exfiltrate data from the systems containing the information necessary to fulfill this goal.
+For less targeted attacks, the strategy may be completely different, with shorter durations or different objectives. The important distinguishing factor about Goals (DML-8) and Strategy (DML-7) is that they are largely subjective in nature.  They are very non-technical, and are often reflective of the adversary's (or their handler's) true intentions (and strategies for fulfilling those intentions).  They represent what the adversary wants.  For these reasons, they are not easily detectable via conventional cyber means for most private organizations.   It's very common for DML-8 or DML-7 to not even be on the day-to-day radar of most Detection or Response specialists, and if they are it's typically in the context of having received a strategic intelligence report from an intelligence source about the adversary."
+823	DML	DML	6	Tactics	To successfully operate at DML-6, one must be able to reliably detect a tactic being employed regardless of the Technique or Procedure used by the adversary, the Tools they chose to use, or the Artifacts and Atomic Indicators left behind as a result of employing the tactic.  While this may sound impossible on the surface, it absolutely is possible.   In nearly all cases, tactics are not detected directly by a single indicator or artifact serving as the smoking gun, or a single detection signature or analytic technique.   Tactics become known only after observation of multiple activities in aggregate, with respect to time and circumstance.  As a result, detection of tactics are usually done by skilled analysts, rather than technical correlation or analytics systems.
+824	DML	DML	5	Techniques	From a maturity perspective, being able to detect an adversary's techniques is superior to being able to detect their procedures.   The primary difference being techniques are specific to an individual.  So when respecting this distinction, the ability to detect a specific actor operating within your environment by technique exclusively is an advantage.   The best analogy to this is a rifled barrel, which leaves uniquely identifiable characteristics in the side of a bullet. Because of this, ballistics specialists can forensically match a spent round to the exact weapon from which it was fired with a high degree of certainty. Not just any weapon by calibur or model, but the exact weapon used to fire that specific round.  Human beings are creatures of habit, and most adversaries aren't aware of the fact that every time they attack they're leaving evidence of their personal techniques behind for us to find. The same applies for the tool builders writing the tools these adversaries use.  It's our obligation to find these distinctions and ensure we're looking for them.  It's personal behavior and habits that are the hardest for humans to change, so put the hurt on your adversaries by finding creative ways to detect their behaviors and habits in your environment.    
+825	DML	DML	4	Procedures	"Given today's detection technology, and readily available correlation and analytics techniques, it's amazing that more organizations haven't reached Detection Maturity Level 4 for most of their adversaries.  Procedures are one of the most effective ways of detecting adversary activity and can really inflict the most pain against lesser experienced ""B-teams"".   In it's most simple form, detecting a procedure is as simple as detecting a sequence of two or more of the individual steps employed by the actor.  The goal here is to isolate activities that the adversary appears to perform methodically, two or more times during an incident. "
+826	DML	DML	3	Tools	"Being able to detect at DML-3 means you can reliably detect the adversary's tools, regardless of minor functionality changes to the tool, or the Artifacts or Atomic Indicators it may leave behind.   Detecting tools falls into two main areas.  The first is detecting the transfer and presence of the tool.  This includes being able to observe the tool being transferred over the network, being able to locate it sitting at rest on a file system, or being able to identify it loaded in memory.
+The second, and more important area of tool detection, is detecting the tool reliably by functionality.  For example, let's take a given webshell that has 25 functions.  If we want to claim DML-3 level detection for this webshell we have to exercise each of those 25 functions and understand what each of them do.  What do they look like at the host, network, and event log level when they are exercised?  We then aim to build detections for as many of those 25 functions across those data domains as we possibly can, reliably, balancing false positives and other constraints.  The reason behind this is simple, we want to be able to detect this version of the tool and as many future variants of the tool as we can by function that it performs.  If the adversary decides to change up 5 of the 25 functions for which we have detections, we're still detecting the entire tool.  In order for the adversary to use this tool completely undetected in our environment, they'll be forced to change every one of those functions; or at least the ones that we were able to reliably build detections against. "
+827	DML	DML	2	Host & Network Artifacts	"DML-2 is where most organizations spend too much of their resources; attempting to collect what they call ""threat intelligence"" in the form of Host & Network Artifacts.  The reality is, these are merely just indicators that are observed either during or after the attack.   They're like symptoms of the flu but not the flu itself.   I often use the analogy ""chasing the vapor trail"" when I think of DML-2 because chasing after Host & Network Artifacts is much like chasing the vapor trail behind an aircraft.  We know the enemy aircraft is up there in front of us somewhere, if we just keep chasing this vapor trial we'll eventually catch up to the aircraft and find our enemy right?  Wrong.  Having a mature detection and response program means your operating above DML-2 and you're actually locked onto the aircraft itself.  You know how it operates, you know what it's capabilities are, you know the Tactics, Techniques, and Procedures of it's pilot and you can almost predict what it's next moves might be.   This is precisely why good Cyber Intelligence Analysts will almost never attribute activity to a specific threat actor, group, or country based on just Host & Network Artifacts alone; they understand this DML concept and realize when they're likely just staring at the vapor trail.  They understand that in reality the vapor trail (indicators) could be from any number of aircraft (tools), with any number of pilots (actors) behind the stick."
+828	DML	DML	1	Atomic IOCs	"These are the atomic particles that make up Host & Network artifacts.  If you're detecting at Detection Maturity Level 1, it means you are probably taking ""feeds of intel"" from various sharing organizations and vendors in the form of lists, like domains and IP addresses, and feeding them into your detection technologies.   Let me be clear on my position here.  There are a few, and I mean a very precious few, circumstances where this makes sense and can be done reliably.  These are edge cases where specific atomic indicators have a high enough ""shelf life"" where it makes sense to go ahead and create detection capabilities from them.  Examples of this include unique strings found inside a binary, or perhaps an adversary is foolish enough to sit on the same recon, delivery, C2, or exfiltration infrastructure allowing you to detect reliably on their domain names or IP addresses.  These might be viable cases where detecting on atomic indicator alone makes sense.   Unfortunately, for the remaining 99% of the time, attempting to detect on this kind of data is suboptimal, for a number of reasons."
+829	DML	DML	0	None or Unknown	For organizations who either don't operate at DML-1 or higher, or they don't even know where they operate on this scale, we have Detection Maturity Level - 0.   Instead of pointing out all the negative things associated with this level, I'll take the high road and lend a bit of positive encouragement.   Congratulations, you are at ground zero.  It can only get better from here.
+830	collaborative-intelligence	collaborative-intelligence	request	Request	Request predicate covers all the requests which can be done by analysts or organisations willing to get additional information to support their analysis.
