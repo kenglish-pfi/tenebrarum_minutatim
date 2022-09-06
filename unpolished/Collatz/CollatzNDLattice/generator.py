@@ -12,8 +12,7 @@ import numpy as np
     [n, a, b, t]
     n : current numerator
     a + b : current denominator
-    t : addend for next numerator -- this is the non-commutative term and only comes into play with the "up" operand 
-         ( and is the reason we do not have a linear inverse-up operator)
+    t : addend for next numerator 
 '''
 nd_label_root = "_"
 nd_vec_root = np.array([0, -1, 1, -1])
@@ -131,11 +130,11 @@ class Node:
         return rev_dn
 
     def invup_vec(self):
-        # we can't use a simple single step transform ... have to computer prior numnerator to extract "t"
+        # we can't use a simple single step transform ... 
         n_, a_, b_, t_ = self.vec
         a, b = a_//(-3), b_//(-2)
         t = t_//(-3)
-        n = (n_ - t)//(-2)  # a subtraction followed by division can't be done in one matrix step
+        n = (n_ - t)//(-2)  # subtraction followed by division can't be done in one matrix step
         return np.array([n, a, b, t])
 
     def forward(self, zero_for_down_one_for_up):
