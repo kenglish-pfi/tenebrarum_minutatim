@@ -5,7 +5,10 @@
 
 '''
 
+import itertools
+import math
 import numpy as np
+from sympy.functions.special import tensor_functions
 
 '''
     State vector for lattice is:
@@ -69,7 +72,7 @@ def getRotatedLabelSet(label_bits):
     return rotations
 #
 
-def solutionFromLabel(label):
+def matrixFromLabel(label):
     rank = len(label)
     mat = np.zeros((rank,rank))
     y = np.zeros((rank))
@@ -82,11 +85,40 @@ def solutionFromLabel(label):
             y[i] = 1
         else:
             mat[i][i] = -1
+    return mat, y
+
+def solutionFromLabel(label):
+    mat, y = matrixFromLabel(label)
     x = np.linalg.solve(mat, y)
     det = np.linalg.det(mat)
     numer = closest_int(x[-1]*det)
     denom = closest_int(det)
     return (numer, denom), x
+
+def numerMatrixFromLabel(label, column):
+    mat, y = matrixFromLabel(label)
+    mat.T[column] = y
+    return mat
+
+#
+def matrixIndexVals(M, indexes):
+    rank = M.shape[1]
+    v = np.zeros(rank)
+    row = 0
+    for idx in indexes:
+        v[row] = M[row, idx]
+        row = row +1
+    return v
+#
+def determinantParts(M):
+    parts = []
+    rank = M.shape[1]
+    for p in itertools.permutations(list(range(rank))):
+        sign = tensor_functions.eval_levicivita(*p)
+        t = (sign, *matrixIndexVals(M, p))
+        if abs(math.prod(t))> 0.000001:
+            parts.append(t)
+    return parts
 #
 
 class Node:
@@ -167,6 +199,43 @@ class Node:
         '''
         return solutionFromLabel(self.label)
     #
+
+    def t_sym(self):
+        ''' Generate t as a symbolic string
+            One obvious intersting charateristic:
+              dn() is essentially a subtraction operation
+              up() is essentially a multiplication operation
+        '''
+        if self.label == "_":
+            return "(-1)"
+        elif self.label[-1] == "0":
+            parent = self.reverse(0)
+            return "(%d - %s)"%(parent.vec[2], parent.t_sym())
+        else:
+            parent = self.reverse(1)
+            return "(-3 * %s)"%(parent.t_sym())
+
+    def t_prev_sym(self):
+        ''' Get the prior t value that fed into this node as a symbolic string
+        '''
+        if self.label == "_":
+            return "!"
+        elif self.label[-1] == "0":
+            return "0"
+        else:
+            return self.reverse(1).t_sym()
+    #        
+
+    def numerMatrix(self, column):
+        return numerMatrixFromLabel(self.label, column)
+
+    def Dx0_Parts(self):
+        ''' Extract the x_0 determinant parts which comprise the x_0 numerator as a list of tuples such that:
+            D_x_0 = SUM(PROD(tup)) for tup in tuples.
+
+            Reason: Trying to eyeball relationship of parts of n, b, t
+        '''
+        return determinantParts(self.numerMatrix(0))
 #
 class NodeRoot(Node):
     ''' The starting point for the lattices
@@ -174,4 +243,6 @@ class NodeRoot(Node):
     def __init__(self):
         super().__init__(nd_label_root, nd_vec_root)
 #
+
+
 
