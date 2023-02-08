@@ -72,6 +72,37 @@ def getRotatedLabelSet(label_bits):
     return rotations
 #
 
+def labelFromInt(generation, val):
+    return "_" + format(val, 'b').zfill(generation)
+#
+
+
+def getSolutionSet(generation):
+    def rotateTillDup(numbits, to_rotate):
+        collect = set()
+        while to_rotate not in collect:
+            collect.add(to_rotate)
+            rac = to_rotate & 1
+            if rac == 1:
+                to_rotate =  (to_rotate >> 1) | (2**(numbits-1))
+            else:
+                to_rotate =  (to_rotate >> 1) 
+        return collect 
+    def i2l(val):
+        return labelFromInt(generation, val)
+    sets = []
+    vals = set(range(2**generation))
+    while len(vals) > 0:
+        s = rotateTillDup(generation, vals.pop())
+        sets.append(s)
+        vals = vals - s
+    result = []
+    for ss in sets:
+        result.append(list(map(i2l, ss)))
+
+    return result
+#
+
 def matrixFromLabel(label):
     rank = len(label)
     mat = np.zeros((rank,rank))
@@ -123,6 +154,13 @@ def determinantParts(M):
 
 class Node:
     def __init__(self, label, vec):
+        ''' label: a string like "_101" that identifies the node position in the binary tree
+            vec:  a numpy array of 4 values: [n, a, b, t]
+                   n: the current numerator
+                   a: the denominator "3-factor"
+                   b: the denominator "2-factor"
+                   t: the carried addend for future numerator calculations
+        '''
         self.label = label
         self.vec = vec 
         self.rank = len(label)
@@ -244,5 +282,12 @@ class NodeRoot(Node):
         super().__init__(nd_label_root, nd_vec_root)
 #
 
+def nodeFromLabel(label):
+    n = NodeRoot()
+    for digit_str in label[1:]:
+        up_dn = int(digit_str)
+        n = n.forward(up_dn)
+    return n
+#
 
 
